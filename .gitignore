@@ -1,29 +1,26 @@
-# Dependencies
-node_modules/
+node_modules
 
-# Build output
-dist/
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
 
 # Local documentation (not synced to GitHub)
 docs/
-
-# Environment files (contain secrets)
-.env
-.env.local
-.env.*.local
-
-# Editor / OS
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-.idea/
-.vscode/
-*.code-workspace
-
-# Logs
-*.log
-npm-debug.log*
-
-# TypeScript
-*.tsbuildinfo

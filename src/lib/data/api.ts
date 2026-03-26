@@ -14,6 +14,8 @@
  * - A mock data option for developing without the CMS running
  */
 
+import { env } from '$env/dynamic/public'
+
 import type {
   Institution,
   Person,
@@ -27,7 +29,7 @@ import type {
 // Configuration
 // ---------------------------------------------------------------------------
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8055'
+const API_BASE = env.PUBLIC_API_URL ?? 'http://localhost:8055'
 
 // ---------------------------------------------------------------------------
 // Generic fetch helper
