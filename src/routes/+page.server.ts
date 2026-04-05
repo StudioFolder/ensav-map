@@ -2,6 +2,10 @@ import { fetchDatasetSummaries } from '$lib/data/api'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
-  const datasets = await fetchDatasetSummaries()
-  return { datasets }
+  try {
+    const datasets = await fetchDatasetSummaries()
+    return { datasets, sourceError: false }
+  } catch {
+    return { datasets: [], sourceError: true }
+  }
 }
