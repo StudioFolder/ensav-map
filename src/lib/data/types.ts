@@ -147,3 +147,71 @@ export interface EnsavData {
   partnerships: Partnership[]
   locations: Location[]
 }
+
+export interface Pfe {
+  Id: number
+  Title: string
+  'Student 1': string | null
+  'Student 2': string | null
+  'Student 3': string | null
+}
+
+export interface P45 {
+  Id: number
+  Title: string
+  'Supervisor 1': string | null
+  'Supervisor 2': string | null
+  'Supervisor 3': string | null
+}
+
+export interface PfeFrance {
+  Id: number
+  Title: string
+  'Student 1': string | null
+  'Student 2': string | null
+  'Student 3': string | null
+}
+
+export interface These {
+  Id: number
+  Title: string
+  'Student 1': string | null
+  'Student 2': string | null
+  'Student 3': string | null
+}
+
+export interface Partenariat {
+  Id: number
+  Type: string | null
+  Programme: string | null
+  'Institution (full name)': string | null
+}
+
+export interface Memoire {
+  Id: number
+  Type: string
+  Cycle: string | null
+  Title: string
+  'Student 1': string | null
+  'Student 2': string | null
+  'Student 3': string | null
+  'Publication year': string | null
+  Continent: string | null
+  'Country 1': string | null
+  'Country 2': string | null
+  'Country 3': string | null
+  'Country 4': string | null
+  Region: string | null
+  'City 1': string | null
+  'City 2': string | null
+  'City 3': string | null
+  'City 4': string | null
+  Neighbourhood: string | null
+  Landmark: string | null
+  Institution: string | null
+  'Institution (full name)': string | null
+  'Reference code': string | null
+  'ArchiRes link': string | null
+  Status: string | null
+  'Review notes': string | null
+}
