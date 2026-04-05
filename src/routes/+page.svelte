@@ -60,15 +60,15 @@
           href={ds.href}
           class="block p-5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors"
         >
-          <div class="flex items-center gap-2 mb-1">
-            <div class="text-lg font-bold text-gray-800">{ds.label}</div>
-            {#if isUpdatedSince(ds.lastUpdated)}
-              <span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
-            {/if}
-          </div>
+          <div class="text-lg font-bold text-gray-800 mb-1">{ds.label}</div>
           <div class="text-sm text-gray-500">{ds.count} entries</div>
           {#if ds.lastUpdated}
-            <div class="text-xs text-gray-400 mt-1">updated {timeAgo(ds.lastUpdated)}</div>
+            <div class="text-xs text-gray-400 mt-1 flex items-center gap-1.5">
+              {#if isUpdatedSince(ds.lastUpdated)}
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+              {/if}
+              <span>updated {timeAgo(ds.lastUpdated)}</span>
+            </div>
           {/if}
         </a>
       {/each}
