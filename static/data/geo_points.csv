@@ -1,0 +1,285 @@
+Name,Type,City,Province,Country,Continent,Latitude,Longitude
+Technische Hochschule Köln,institution,Cologne,,Allemagne,Europe,50.933913,6.988513
+Technische Universität Darmstadt,institution,Darmstadt,,Allemagne,Europe,49.861480,8.687600
+Fachhochschule Erfurt,institution,Erfurt,,Allemagne,Europe,50.972500,11.041111
+Karlsruhe Institute of Technology,institution,Karlsruhe,,Allemagne,Europe,49.009389,8.411611
+Hochschule Mainz,institution,Mayence,,Allemagne,Europe,50.000000,8.261500
+Technische Universität München,institution,Munich,,Allemagne,Europe,48.149100,11.568000
+Fachhochschule Münster,institution,Münster,,Allemagne,Europe,51.969000,7.600400
+Jade Hochschule Wilhelmshaven/Oldenburg/Elsfleth,institution,Oldenbourg,,Allemagne,Europe,53.139722,8.209722
+"Facultad de Arquitectura, Diseño y Urbanismo - Universidad de Buenos Aires",institution,Buenos Aires,,Argentine,Amérique du Sud,-34.542500,-58.446900
+"Facultad de Arquitectura, Urbanismo y Diseño - Universidad Nacional de Córdoba",institution,Córdoba,,Argentine,Amérique du Sud,-31.439600,-64.189700
+Technische Universität Wien,institution,Vienne,,Autriche,Europe,48.198956,16.369892
+University of Antwerp,institution,Anvers,,Belgique,Europe,51.223160,4.408300
+Université Libre de Bruxelles,institution,Bruxelles,,Belgique,Europe,50.827750,4.432750
+Université de Liège,institution,Liège,,Belgique,Europe,50.643801,5.586467
+Katholieke Universiteit Leuven,institution,Louvain,,Belgique,Europe,50.875600,4.707100
+Arts² - École Supérieure des Arts,institution,Mons,,Belgique,Europe,50.449757,3.951727
+Faculdade de Arquitetura e Urbanismo - Universidade Federal do Rio de Janeiro,institution,Rio de Janeiro,,Brésil,Amérique du Sud,-22.861200,-43.221700
+Pontifícia Universidade Católica do Rio de Janeiro,institution,Rio de Janeiro,,Brésil,Amérique du Sud,-22.979100,-43.232800
+Universidade Presbiteriana Mackenzie,institution,São Paulo,,Brésil,Amérique du Sud,-23.547500,-46.651900
+Universidad Diego Portales,institution,Santiago,,Chili,Amérique du Sud,-33.444000,-70.654400
+Universidad de Santiago de Chile,institution,Santiago,,Chili,Amérique du Sud,-33.451600,-70.682600
+College of Architecture and Urban Planning - Tongji University,institution,Shanghai,,Chine,Asie,31.289900,121.501200
+Universidad Nacional de Colombia,institution,Bogotá,,Colombie,Amérique du Sud,4.636100,-74.083000
+Korea National University of Arts,institution,Séoul,,Corée du Sud,Asie,37.484200,127.006900
+Seoul National University,institution,Séoul,,Corée du Sud,Asie,37.459200,126.952700
+Escuela Técnica Superior de Arquitectura de Barcelona - Universitat Politècnica de Catalunya,institution,Barcelone,,Espagne,Europe,41.395473,2.155563
+Escuela Técnica Superior de Arquitectura de Madrid - Universidad Politécnica de Madrid,institution,Madrid,,Espagne,Europe,40.453611,-3.729167
+Escuela Técnica Superior de Arquitectura de Valladolid - Universidad de Valladolid,institution,Valladolid,,Espagne,Europe,41.655180,-4.723700
+Eesti Kunstiakadeemia,institution,Tallinn,,Estonie,Europe,59.442222,24.744444
+Fondation Maison des Sciences de l'Homme,institution,Paris,,France,Europe,48.836400,2.371400
+National Technical University of Athens,institution,Athènes,,Grèce,Europe,37.987864,23.731614
+Bezalel Academy of Arts and Design,institution,Jérusalem,,Israël,Asie,31.792000,35.243600
+Università degli Studi di Catania,institution,Catane,,Italie,Europe,37.524600,15.073800
+Università degli Studi di Genova,institution,Gênes,,Italie,Europe,44.404730,8.931230
+Politecnico di Milano,institution,Milan,,Italie,Europe,45.475833,9.227500
+Università degli Studi di Napoli Federico II,institution,Naples,,Italie,Europe,40.852222,14.309600
+Università degli Studi di Palermo,institution,Palerme,,Italie,Europe,38.109500,13.360200
+Sapienza Università di Roma,institution,Rome,,Italie,Europe,41.901220,12.512667
+Università Roma Tre,institution,Rome,,Italie,Europe,41.877633,12.472716
+Università Iuav di Venezia,institution,Venise,,Italie,Europe,45.437300,12.318000
+Kyoto Institute of Technology,institution,Kyoto,,Japon,Asie,35.049300,135.782000
+Académie Libanaise des Beaux-Arts,institution,Beyrouth,,Liban,Asie,33.877200,35.528000
+Vilnius Gediminas Technical University,institution,Vilnius,,Lituanie,Europe,54.686500,25.273500
+École d'Architecture de Casablanca,institution,Casablanca,,Maroc,Afrique,33.573100,-7.589800
+École Nationale d'Architecture de Fès,institution,Fès,,Maroc,Afrique,34.033300,-5.000000
+Université Internationale de Rabat,institution,Rabat,,Maroc,Afrique,33.954000,-6.871000
+Universidad Nacional Autónoma de México,institution,Mexico City,,Mexique,Amérique du Nord,19.326200,-99.183900
+Delft University of Technology,institution,Delft,,Pays-Bas,Europe,52.005600,4.378000
+Technische Universiteit Eindhoven,institution,Eindhoven,,Pays-Bas,Europe,51.447643,5.486240
+Cracow University of Technology,institution,Cracovie,,Pologne,Europe,50.062000,19.918800
+Faculdade de Arquitectura da Universidade do Porto,institution,Porto,,Portugal,Europe,41.150083,-8.636180
+Ion Mincu University of Architecture and Urban Planning,institution,Bucarest,,Roumanie,Europe,44.438000,26.100700
+Glasgow School of Art,institution,Glasgow,,Royaume-Uni,Europe,55.873300,-4.265300
+Vysoké učení technické v Brně - Fakulta architektury,institution,Brno,,République tchèque,Europe,49.192900,16.627000
+Czech Technical University in Prague,institution,Prague,,République tchèque,Europe,50.104947,14.389705
+České vysoké učení technické v Praze - Faculty of Civil Engineering,institution,Prague,,République tchèque,Europe,50.104947,14.389705
+Slovak University of Technology in Bratislava - Faculty of Architecture and Design,institution,Bratislava,,Slovaquie,Europe,48.148600,17.107700
+Slovak University of Technology in Bratislava - Faculty of Civil Engineering,institution,Bratislava,,Slovaquie,Europe,48.153200,17.109500
+Univerza v Ljubljani - Fakulteta za arhitekturo,institution,Ljubljana,,Slovénie,Europe,46.045560,14.503890
+"Haute École du Paysage, d'Ingénierie et d'Architecture de Genève",institution,Genève,,Suisse,Europe,46.209000,6.153000
+École Polytechnique Fédérale de Lausanne,institution,Lausanne,,Suisse,Europe,46.518340,6.565220
+Chulalongkorn University,institution,Bangkok,,Thaïlande,Asie,13.737300,100.529200
+École Nationale d'Architecture et d'Urbanisme de Tunis,institution,Tunis,,Tunisie,Afrique,36.873333,10.338369
+Istanbul Bilgi University,institution,Istanbul,,Turquie,Asie,41.054000,28.979000
+Istanbul Technical University,institution,Istanbul,,Turquie,Asie,41.041111,28.989306
+Ain Shams University - Faculty of Engineering,institution,Le Caire,,Égypte,Afrique,30.075808,31.281116
+Illinois Institute of Technology - College of Architecture,institution,Chicago (Illinois),,États-Unis,Amérique du Nord,41.834100,-87.623700
+Gerald D. Hines College of Architecture and Design - University of Houston,institution,Houston (Texas),,États-Unis,Amérique du Nord,29.723000,-95.343300
+Abbaye Belle-Étoile,landmark,,Orne,France,Europe,48.77646618137102,-0.6224193571478066
+Golfe du Morbihan,landmark,,Morbihan,France,Europe,47.57884509135004,-2.8869494003138207
+"Pyrénées, Vallée d'Ossau",landmark,,Pyrénées-Atlantiques,France,Europe,42.98731032859008,-0.42543696029838474
+Adour,landmark,Bayonne,Pyrénées-Atlantiques,France,Europe,43.4931906029431,-1.476006611329212
+Briançonnais,landmark,Briançon,Hautes-Alpes,France,Europe,44.94799075369036,5.234021338261578
+Massif du Luberon,landmark,Buoux,Vaucluse,France,Europe,43.83166198192985,5.3792259273242555
+Massif des Vosges,landmark,Graufthal,Bas-Rhin,France,Europe,48.819855982409734,7.280516081425146
+Bourbonnais,landmark,Laprugne,Allier,France,Europe,45.98625087863512,3.742570447246227
+Grande soufflerie de Meudon,landmark,Meudon,Hauts-de-Seine,France,Europe,48.80018060806149,2.2364492214657883
+Hôpital Bichat,landmark,Paris,Paris,France,Europe,48.8994249371671,2.332514402548799
+Ferme de la Haute-Borne,landmark,"Pierrelaye, Méry-sur-Oise, Saint-Ouen-l'Aumône",Val-d'Oise,France,Europe,49.04517555519664,2.1560104800442867
+La Grande Arche,landmark,Puteaux,Hauts-de-Seine,France,Europe,48.89123505645646,2.237204036571013
+Plateau de Saclay,landmark,Saclay,Essonne,France,Europe,48.739953867800004,2.1696675865294295
+Haut-Allier,landmark,Saint-Julien-des-Chazes,Haute-Loire,France,Europe,45.04702751167066,3.583968963630428
+Site des Nielles,landmark,Saint-Malo,Ille-et-Vilaine,France,Europe,48.66758428070542,-1.9860781459455814
+"Quartier Luminy, Marseille",neighbourhood,Marseille,Bouches-du-Rhône,France,Europe,43.23763307751101,5.4282205927872
+"11e arrondissement, Paris",neighbourhood,Paris,Paris,France,Europe,48.86466637170572,2.376795326280864
+"15e arrondissement, Paris",neighbourhood,Paris,Paris,France,Europe,48.844472904747036,2.2771716015291217
+"1er arrondissement, Quartier des Halles, Paris",neighbourhood,Paris,Paris,France,Europe,48.86223295796568,2.345604808944753
+"Quartier des Olympiades, Paris",neighbourhood,Paris,Paris,France,Europe,48.824730183150734,2.365054371404512
+"La Défense, Puteaux",neighbourhood,Puteaux,Hauts-de-Seine,France,Europe,48.89185795321053,2.2405358114967657
+"Quartier de l'Alma-Gare, Roubaix",neighbourhood,Roubaix,Nord,France,Europe,50.69794420781379,3.1675357258352523
+"Les Martinets, Rueil-Malmaison",neighbourhood,Rueil-Malmaison,Hauts-de-Seine,France,Europe,48.88396626796223,2.171677238289188
+Kaboul,city,Kaboul,,Afghanistan,Asie,34.5269503,69.1850584
+Umgeni,city,Umgeni,,Afrique du Sud,Afrique,-30.4813701,30.4924606
+Shkodra,city,Shkodra,,Albanie,Europe,42.0681371,19.5121437
+Adghers,city,Adghers,,Algérie,Afrique,,
+Alger,city,Alger,,Algérie,Afrique,36.7729333,3.0588445
+Azrou,city,Azrou,,Algérie,Afrique,25.5520246,6.8663263
+Bab Boudir,city,Bab Boudir,,Algérie,Afrique,,
+Dellys,city,Dellys,,Algérie,Afrique,36.9140699,3.9129556
+Tipaza,city,Tipaza,,Algérie,Afrique,36.5271570,2.1672012
+Berlin,city,Berlin,,Allemagne,Europe,52.5173885,13.3951309
+Berlin Ouest,city,Berlin Ouest,,Allemagne,Europe,53.8920204,11.4648493
+Dachau,city,Dachau,,Allemagne,Europe,48.2592477,11.4354419
+Dresde,city,Dresde,,Allemagne,Europe,51.0493286,13.7381437
+Luckenwalde,city,Luckenwalde,,Allemagne,Europe,52.0902045,13.1741882
+Mannheim,city,Mannheim,,Allemagne,Europe,49.4892913,8.4673098
+Munich,city,Munich,,Allemagne,Europe,48.149100,11.568000
+Al-Ula,city,Al-Ula,,Arabie Saoudite,Asie,26.5588965,37.9596519
+Buenos Aires,city,Buenos Aires,,Argentine,Amérique du Sud,-34.542500,-58.446900
+Cordoba,city,Cordoba,,Argentine,Amérique du Sud,-31.4166867,-64.1834193
+Epecuen,city,Epecuen,,Argentine,Amérique du Sud,-34.7197826,-58.4483896
+Tigre,city,Tigre,,Argentine,Amérique du Sud,-34.4235341,-58.5817628
+Erevan,city,Erevan,,Arménie,Asie,40.1777112,44.5126233
+Uluru,city,Uluru,,Australie,Océanie,-25.3448570,131.0325171
+Vienne,city,Vienne,,Autriche,Europe,48.198956,16.369892
+Anvers,city,Anvers,,Belgique,Europe,51.223160,4.408300
+Auvelais,city,Auvelais,,Belgique,Europe,50.4470193,4.6354624
+Bruxelles,city,Bruxelles,,Belgique,Europe,50.827750,4.432750
+Charleroi,city,Charleroi,,Belgique,Europe,50.4116233,4.4445280
+Brasilia,city,Brasilia,,Brésil,Amérique du Sud,-15.7939869,-47.8828000
+Rio de Janeiro,city,Rio de Janeiro,,Brésil,Amérique du Sud,-22.861200,-43.221700
+São Paulo,city,São Paulo,,Brésil,Amérique du Sud,-23.547500,-46.651900
+Calarasi,city,Calarasi,,Bulgarie,Europe,44.3151875,27.1390156
+Sofia,city,Sofia,,Bulgarie,Europe,42.6977028,23.3217359
+Varna,city,Varna,,Bulgarie,Europe,43.2073873,27.9166653
+Ouagadougou,city,Ouagadougou,,Burkina Faso,Afrique,12.3681873,-1.5270944
+Bohicon,city,Bohicon,,Bénin,Afrique,7.1816331,2.0695683
+Phnom Penh,city,Phnom Penh,,Cambodge,Asie,11.5730391,104.8578070
+Douala,city,Douala,,Cameroun,Afrique,4.0429389,9.7062018
+Edea,city,Edea,,Cameroun,Afrique,3.7990131,10.1265567
+Yaoundé,city,Yaoundé,,Cameroun,Afrique,3.8689867,11.5213344
+Mashteuiatsh,city,Mashteuiatsh,,Canada,Amérique du Nord,48.5759083,-72.2287743
+Montréal,city,Montréal,,Canada,Amérique du Nord,45.5031824,-73.5698065
+Wetomaci,city,Wetomaci,,Canada,Amérique du Nord,47.9024882,-73.7851140
+Santiago,city,Santiago,,Cap-Vert,Afrique,15.1200758,-23.6348181
+Malleco,city,Malleco,,Chili,Amérique du Sud,-37.7960595,-72.6516866
+Dalian,city,Dalian,,Chine,Asie,38.9130495,121.6098013
+Hong-Kong,city,Hong-Kong,,Chine,Asie,22.3492155,114.1857978
+Shanghai,city,Shanghai,,Chine,Asie,31.289900,121.501200
+Shenzhen,city,Shenzhen,,Chine,Asie,22.5445741,114.0545429
+Wuhan,city,Wuhan,,Chine,Asie,30.5788910,114.2921197
+Nicosie,city,Nicosie,,Chypre,Europe,35.1746503,33.3638783
+Anyang,city,Anyang,,Corée du Sud,Asie,37.3938528,126.9570605
+Panmunjeon,city,Panmunjeon,,Corée du Sud,Asie,37.9422324,126.6804794
+Songdo,city,Songdo,,Corée du Sud,Asie,37.4299382,126.6547155
+Séoul,city,Séoul,,Corée du Sud,Asie,37.484200,127.006900
+Abidjan,city,Abidjan,,Côte d'Ivoire,Afrique,5.3203570,-4.0161070
+Copenhague,city,Copenhague,,Danemark,Europe,55.6867243,12.5700724
+Gribskov,city,Gribskov,,Danemark,Europe,56.0429851,12.3288121
+Barcelone,city,Barcelone,,Espagne,Europe,41.395473,2.155563
+Madrid,city,Madrid,,Espagne,Europe,40.453611,-3.729167
+Tenerife,city,Tenerife,,Espagne,Europe,28.2935785,-16.6214471
+Valladolid,city,Valladolid,,Espagne,Europe,41.655180,-4.723700
+Helsinki,city,Helsinki,,Finlande,Asie,60.1666204,24.9435408
+Ableiges,city,Ableiges,Val-d'Oise,France,Europe,49.09090140082123,1.9811649207949293
+Alfortville,city,Alfortville,Val-de-Marne,France,Europe,48.787288127649944,2.4259738087044953
+Auch,city,Auch,Gers,France,Europe,43.64625777828602,0.5919668969702374
+Calais,city,Calais,Pas-de-Calais,France,Europe,50.95034230226558,1.8830714965819104
+"Callen, Moustey, Marcheprime",city,"Callen, Moustey, Marcheprime",Gironde,France,Europe,44.693793400583075,-0.8541551028760338
+Cergy-Pontoise,city,Cergy-Pontoise,Val-d'Oise,France,Europe,49.03426545237055,2.08118557713494
+Chamonix-Mont-Blanc,city,Chamonix-Mont-Blanc,Haute-Savoie,France,Europe,45.8879183657783,6.859817286954289
+Chantonnay,city,Chantonnay,Vendée,France,Europe,46.70665886426707,-1.0294655026160913
+Corbeil-Essonnes,city,Corbeil-Essonnes,Essonne,France,Europe,48.61012322551248,2.4748775234468847
+Deville,city,Deville,Ardennes,France,Europe,49.879906614782676,4.705614145248929
+Dreux,city,Dreux,Eure-et-Loir,France,Europe,48.74538818610734,1.362638892344954
+Fleurance,city,Fleurance,Gers,France,Europe,43.849201533570735,0.6632578578375543
+Fumel,city,Fumel,Lot-et-Garonne,France,Europe,44.48690100377322,0.9562543200983407
+Gallargues-le-Montueux,city,Gallargues-le-Montueux,Gard,France,Europe,43.721513192503224,4.173341257237034
+Genillé,city,Genillé,Indre-et-Loire,France,Europe,47.16464120297483,1.132876870579013
+Jarnac,city,Jarnac,Charente,France,Europe,45.68474651920947,-0.16993284967337818
+Joinville,city,Joinville,Haute-Marne,France,Europe,48.4429086056635,5.137555659784835
+Magnac-Laval,city,Magnac-Laval,Haute-Vienne,France,Europe,46.214469792914684,1.1661614141663206
+Maripasoula,city,Maripasoula,,France,Amérique du Nord,3.6420269,-54.0299468
+Marseille,city,Marseille,Bouches-du-Rhône,France,Europe,43.29593928060475,5.373691538311485
+"Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",city,"Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",Yvelines,France,Europe,48.79488633947698,2.033185103534181
+Nay,city,Nay,Pyrénées-Atlantiques,France,Europe,43.17657515437649,-0.2623384170590637
+Neuville-sous-Montreuil,city,Neuville-sous-Montreuil,Pas-de-Calais,France,Europe,50.473478281903965,1.774992526820831
+Paris,city,Paris,Paris,France,Europe,48.861653462592045,2.3407796271707255
+Pointe-à-Pitre,city,Pointe-à-Pitre,,France,Amérique du Nord,16.2408636,-61.5334077
+"Puteaux, Courbevoie",city,"Puteaux, Courbevoie",Hauts-de-Seine,France,Europe,48.88911002913607,2.253450623624353
+Rambouillet,city,Rambouillet,Yvelines,France,Europe,48.68028551216234,1.8130540332549552
+Rennes,city,Rennes,Ille-et-Vilaine,France,Europe,48.11642474434265,-1.6775140737066234
+Roubaix,city,Roubaix,Nord,France,Europe,50.68337222928733,3.195923399057051
+Rouen,city,Rouen,Seine-Maritime,France,Europe,49.43664289482642,1.120745548092146
+Saint-Malo,city,Saint-Malo,Ille-et-Vilaine,France,Europe,48.65335846409817,-2.0123118491196066
+Tréguennec,city,Tréguennec,Finistère,France,Europe,47.87478872622139,-4.352597618430918
+Versailles,city,Versailles,,France,Amérique du Nord,48.8035403,2.1266886
+Vitry-sur-Seine,city,Vitry-sur-Seine,Val-de-Marne,France,Europe,48.793733865488925,2.383251366076514
+Épinal,city,Épinal,Vosges,France,Europe,48.17407775797531,6.450644833979116
+Athènes,city,Athènes,,Grèce,Europe,37.987864,23.731614
+Le Pirée,city,Le Pirée,,Grèce,Europe,37.9431594,23.6470593
+Conakry,city,Conakry,,Guinée,Afrique,9.5170602,-13.6998434
+Auroville,city,Auroville,,Inde,Asie,12.0073927,79.8099471
+Manali,city,Manali,,Inde,Asie,32.2454608,77.1872926
+Pondichéry,city,Pondichéry,,Inde,Asie,10.9156489,79.8069488
+Jakarta,city,Jakarta,,Indonésie,Asie,-6.1754049,106.8271680
+Bandar-e Anzali,city,Bandar-e Anzali,,Iran,Asie,37.4716356,49.4685904
+Téhéran,city,Téhéran,,Iran,Asie,35.6892523,51.3896004
+Alviano,city,Alviano,,Italie,Europe,42.5882078,12.2959357
+Consonno,city,Consonno,,Italie,Europe,45.7842766,9.3935149
+Gênes,city,Gênes,,Italie,Europe,44.404730,8.931230
+Lampedusa,city,Lampedusa,,Italie,Europe,35.5111342,12.5962914
+Milan,city,Milan,,Italie,Europe,45.475833,9.227500
+Naples,city,Naples,,Italie,Europe,40.852222,14.309600
+Padoue,city,Padoue,,Italie,Europe,45.4077172,11.8734455
+Palerme,city,Palerme,,Italie,Europe,38.109500,13.360200
+Rome,city,Rome,,Italie,Europe,41.901220,12.512667
+Senerchia,city,Senerchia,,Italie,Europe,40.7402630,15.2031500
+Troina,city,Troina,,Italie,Europe,37.7852205,14.6004464
+Udine,city,Udine,,Italie,Europe,46.0634632,13.2358377
+Venise,city,Venise,,Italie,Europe,45.437300,12.318000
+Kyoto,city,Kyoto,,Japon,Asie,35.049300,135.782000
+Noto,city,Noto,,Japon,Asie,37.3104029,137.1477258
+Osaka,city,Osaka,,Japon,Asie,34.6937569,135.5014539
+Tokyo,city,Tokyo,,Japon,Asie,35.6768601,139.7638947
+Bcharré,city,Bcharré,,Liban,Asie,34.2507231,36.0099915
+Beyrouth,city,Beyrouth,,Liban,Asie,33.877200,35.528000
+Andrapakamambolo,city,Andrapakamambolo,,Madagascar,Afrique,,
+Antananarivo,city,Antananarivo,,Madagascar,Afrique,-18.9100122,47.5255809
+Tananarive,city,Tananarive,,Madagascar,Afrique,-18.9100122,47.5255809
+Azrou,city,Azrou,,Maroc,Afrique,35.1572487,-3.7686110
+Bou Iblane,city,Bou Iblane,,Maroc,Afrique,33.9958638,-6.8438127
+Casablanca,city,Casablanca,,Maroc,Afrique,33.573100,-7.589800
+Dar Bouazza,city,Dar Bouazza,,Maroc,Afrique,33.5215831,-7.8164369
+Goulmina,city,Goulmina,,Maroc,Afrique,31.6926270,-4.9532620
+Marrakech,city,Marrakech,,Maroc,Afrique,31.6258257,-7.9891608
+Oualidia,city,Oualidia,,Maroc,Afrique,32.7314358,-9.0340271
+Ourgane,city,Ourgane,,Maroc,Afrique,30.9079990,-7.5409869
+Ourika,city,Ourika,,Maroc,Afrique,31.3780274,-7.8048323
+Rabat,city,Rabat,,Maroc,Afrique,33.954000,-6.871000
+Rissani,city,Rissani,,Maroc,Afrique,31.2618886,-3.9593135
+Tanger,city,Tanger,,Maroc,Afrique,35.7696302,-5.8033522
+Mexico,city,Mexico,,Mexique,Amérique du Nord,19.3207722,-99.1514678
+Arlit,city,Arlit,,Niger,Afrique,18.7390790,7.3933310
+Lagos,city,Lagos,,Nigeria,Afrique,6.4550575,3.3941795
+Svalbard,city,Svalbard,,Norvège,Europe,78.7198519,20.3493328
+Kagbeni,city,Kagbeni,,Népal,Asie,28.8377595,83.7843101
+Tachkent,city,Tachkent,,Ouzbékistan,Asie,41.3123363,69.2787079
+Amsterdam,city,Amsterdam,,Pays-Bas,Europe,52.3730796,4.8924534
+Rotterdam,city,Rotterdam,,Pays-Bas,Europe,51.9244424,4.4777500
+Manille,city,Manille,,Philippines,Asie,14.5904492,120.9803621
+Varsovie,city,Varsovie,,Pologne,Europe,52.2333742,21.0711489
+Leça da Palmeira,city,Leça da Palmeira,,Portugal,Europe,41.1938981,-8.6977387
+Lisbonne,city,Lisbonne,,Portugal,Europe,38.7077507,-9.1365919
+Porto,city,Porto,,Portugal,Europe,41.150083,-8.636180
+Callao,city,Callao,,Pérou,Amérique du Sud,-11.9496688,-77.1288139
+Lima,city,Lima,,Pérou,Amérique du Sud,-12.0459808,-77.0305912
+Trujillo,city,Trujillo,,Pérou,Amérique du Sud,-8.1116778,-79.0287742
+Giurgiu,city,Giurgiu,,Roumanie,Europe,43.8961275,25.9656448
+Glasgow,city,Glasgow,,Royaume-Uni,Europe,55.873300,-4.265300
+Londres,city,Londres,,Royaume-Uni,Europe,51.5074456,-0.1277653
+Pointe-Noire,city,Pointe-Noire,,République du Congo,Afrique,-4.7975373,11.8503297
+Belgrade,city,Belgrade,,Serbie,Europe,44.8153318,20.4456588
+Singapour,city,Singapour,,Singapour,Asie,1.2899175,103.8519072
+Nuwara Eliya,city,Nuwara Eliya,,Sri Lanka,Asie,7.0124020,80.7571612
+Bâle,city,Bâle,,Suisse,Europe,47.5581077,7.5878261
+Fribourg,city,Fribourg,,Suisse,Europe,46.6789116,7.1027113
+Genève,city,Genève,,Suisse,Europe,46.209000,6.153000
+Homs,city,Homs,,Syrie,Asie,34.7333334,36.7166667
+Bargny,city,Bargny,,Sénégal,Afrique,14.6938290,-17.2297410
+Dakar,city,Dakar,,Sénégal,Afrique,14.6934250,-17.4479380
+Maka Diama,city,Maka Diama,,Sénégal,Afrique,16.2158289,-16.3816183
+Palmarin,city,Palmarin,,Sénégal,Afrique,14.0131020,-16.7644620
+N'djamena,city,N'djamena,,Tchad,Afrique,12.1191543,15.0502758
+Bangkok,city,Bangkok,,Thaïlande,Asie,13.737300,100.529200
+Carthage,city,Carthage,,Tunisie,Afrique,36.8548083,10.3309924
+Djerba,city,Djerba,,Tunisie,Afrique,33.7735976,10.8861888
+Tunis,city,Tunis,,Tunisie,Afrique,36.873333,10.338369
+Istanbul,city,Istanbul,,Turquie,Asie,41.054000,28.979000
+Mugla,city,Mugla,,Turquie,Asie,37.1642053,28.2624288
+Hanoi,city,Hanoi,,Vietnam,Asie,21.0283334,105.8540410
+Ho Chi Minh-Ville,city,Ho Chi Minh-Ville,,Vietnam,Asie,10.7755254,106.7021047
+Mang Thit,city,Mang Thit,,Vietnam,Asie,10.1830409,106.0963124
+Le Caire,city,Le Caire,,Égypte,Afrique,30.075808,31.281116
+Dubai,city,Dubai,,Émirats arabes unis,Asie,25.0742823,55.1885387
+Chicago,city,Chicago,,États-Unis,Amérique du Nord,41.8755616,-87.6244212
+Fort Yukon,city,Fort Yukon,,États-Unis,Amérique du Nord,66.5647222,-145.2738880
+Glendale,city,Glendale,,États-Unis,Amérique du Nord,34.1469416,-118.2478471
+Houston,city,Houston,,États-Unis,Amérique du Nord,29.7589382,-95.3676974
+Las Vegas,city,Las Vegas,,États-Unis,Amérique du Nord,36.1674263,-115.1484131
+Los Alamos,city,Los Alamos,,États-Unis,Amérique du Nord,35.8813700,-106.2989590
+Los Angeles,city,Los Angeles,,États-Unis,Amérique du Nord,34.0536909,-118.2427660
+Marfa,city,Marfa,,États-Unis,Amérique du Nord,30.3117621,-104.0231460
+New York,city,New York,,États-Unis,Amérique du Nord,40.7127281,-74.0060152
