@@ -38,7 +38,7 @@
   const LAST_VISIT_KEY = 'ensav_last_visit'
   const THEME_KEY = 'ensav_theme'
   let lastVisit: Date | null = $state(null)
-  let theme: 'dark' | 'light' = $state('light')
+  let theme: 'dark' | 'light' = $state('dark')
 
   let query = $state('')
   let searchReady = $state(false)
@@ -51,7 +51,9 @@
     const stored = localStorage.getItem(LAST_VISIT_KEY)
     if (stored) lastVisit = new Date(stored)
     localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString())
-    theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    const savedTheme = localStorage.getItem(THEME_KEY) as 'dark' | 'light' | null
+    theme = savedTheme ?? 'dark'
+    document.documentElement.classList.toggle('dark', theme === 'dark')
 
     try {
       await initSearch()
@@ -120,8 +122,66 @@
 <div class="flex h-screen overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- Globe — fills remaining horizontal space -->
-  <div class="flex-1 min-w-0 bg-gray-950">
+  <div class="relative flex-1 min-w-0 bg-gray-950">
     <Globe points={data.globePoints} geoPoints={data.geoPoints} onselect={openItems} />
+
+    {#if selectedItems.length > 0}
+      <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+      <div
+        class="absolute inset-0 z-50 flex items-center justify-center"
+        onclick={(e) => { if (e.target === e.currentTarget) closeItem() }}
+      >
+        <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+        <div class="relative z-10 w-full max-w-xl bg-white dark:bg-gray-900 rounded-xl shadow-xl max-h-[85%] flex flex-col mx-8">
+          <div class="flex items-start justify-between px-6 pt-5 pb-4 border-b border-gray-100 dark:border-gray-800 shrink-0">
+            <div>
+              {#if selectedItems.length > 1 && selectedGroupLabel}
+                <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedGroupLabel}</h2>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{selectedItems.length} projects</p>
+              {:else}
+                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">
+                  {DATASET_LABELS[selectedItems[0].dataset] ?? selectedItems[0].dataset}
+                </p>
+                <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedItems[0].label}</h2>
+              {/if}
+            </div>
+            <button
+              type="button"
+              onclick={closeItem}
+              class="ml-4 mt-0.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 shrink-0"
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+          <div class="overflow-y-auto">
+            {#each selectedItems as item, i}
+              {#if selectedItems.length > 1}
+                <div class="px-6 pt-4 pb-2 {i > 0 ? 'border-t border-gray-100 dark:border-gray-800' : ''}">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">
+                    {DATASET_LABELS[item.dataset] ?? item.dataset}
+                  </p>
+                  <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">{item.label}</h3>
+                </div>
+              {/if}
+              <div class="px-6 {selectedItems.length > 1 ? 'pb-4' : 'py-4'}">
+                <dl class="space-y-2">
+                  {#each recordEntries(item.record) as [key, value]}
+                    <div class="grid grid-cols-[10rem_1fr] gap-3 text-sm">
+                      <dt class="text-gray-400 dark:text-gray-500 pt-0.5 truncate">{key}</dt>
+                      <dd class="text-gray-800 dark:text-gray-200 break-words">{value}</dd>
+                    </div>
+                  {/each}
+                </dl>
+              </div>
+            {/each}
+          </div>
+        </div>
+      </div>
+    {/if}
+
   </div>
 
   <!-- Sidebar — fixed width, scrollable -->
@@ -235,59 +295,3 @@
 
 </div>
 
-{#if selectedItems.length > 0}
-  <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-  <div
-    class="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
-    onclick={(e) => { if (e.target === e.currentTarget) closeItem() }}
-  >
-    <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
-    <div class="relative z-10 w-full sm:max-w-xl bg-white dark:bg-gray-900 sm:rounded-xl shadow-xl max-h-[85vh] flex flex-col">
-      <div class="flex items-start justify-between px-6 pt-5 pb-4 border-b border-gray-100 dark:border-gray-800 shrink-0">
-        <div>
-          {#if selectedItems.length > 1 && selectedGroupLabel}
-            <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedGroupLabel}</h2>
-            <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{selectedItems.length} projects</p>
-          {:else}
-            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">
-              {DATASET_LABELS[selectedItems[0].dataset] ?? selectedItems[0].dataset}
-            </p>
-            <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedItems[0].label}</h2>
-          {/if}
-        </div>
-        <button
-          type="button"
-          onclick={closeItem}
-          class="ml-4 mt-0.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 shrink-0"
-          aria-label="Close"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-      </div>
-      <div class="overflow-y-auto">
-        {#each selectedItems as item, i}
-          {#if selectedItems.length > 1}
-            <div class="px-6 pt-4 pb-2 {i > 0 ? 'border-t border-gray-100 dark:border-gray-800' : ''}">
-              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">
-                {DATASET_LABELS[item.dataset] ?? item.dataset}
-              </p>
-              <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">{item.label}</h3>
-            </div>
-          {/if}
-          <div class="px-6 {selectedItems.length > 1 ? 'pb-4' : 'py-4'}">
-            <dl class="space-y-2">
-              {#each recordEntries(item.record) as [key, value]}
-                <div class="grid grid-cols-[10rem_1fr] gap-3 text-sm">
-                  <dt class="text-gray-400 dark:text-gray-500 pt-0.5 truncate">{key}</dt>
-                  <dd class="text-gray-800 dark:text-gray-200 break-words">{value}</dd>
-                </div>
-              {/each}
-            </dl>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </div>
-{/if}

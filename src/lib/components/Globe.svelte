@@ -22,12 +22,15 @@
 
   const trianglePath = d3.symbol().type(d3.symbolTriangle).size(10)()!
 
-  const maxCount = Math.max(1, ...geoPoints.map((p) => p.titles.length))
+  // Institutions are represented by partenariat triangles — exclude them from the circle layer
+  const cityPoints = geoPoints.filter((p) => p.type !== 'institution')
+
+  const maxCount = Math.max(1, ...cityPoints.map((p) => p.titles.length))
   const rScale = d3.scaleSqrt().domain([1, maxCount]).range([0.8, 6]).clamp(true)
 
   const coordKey = (lat: number, lon: number) => `${lat.toFixed(3)},${lon.toFixed(3)}`
   const partenariatKeys = new Set(points.map((p) => coordKey(p.lat, p.lon)))
-  const geoKeys = new Set(geoPoints.map((p) => coordKey(p.lat, p.lon)))
+  const geoKeys = new Set(cityPoints.map((p) => coordKey(p.lat, p.lon)))
   const overlaps = new Set([...partenariatKeys].filter((k) => geoKeys.has(k)))
   const OFFSET = 5
 
@@ -83,7 +86,7 @@
     function renderGeoPoints() {
       const groups = geoGroup
         .selectAll<SVGGElement, GeoPoint>('g')
-        .data(geoPoints, (d) => `${d.lat},${d.lon}`)
+        .data(cityPoints, (d) => `${d.lat},${d.lon}`)
         .join(
           (enter) => {
             const g = enter.append('g')

@@ -11,6 +11,7 @@
   <table class="w-full text-sm text-left border-collapse">
     <thead>
       <tr class="border-b-2 border-gray-200 dark:border-gray-800">
+        <th class="pb-2 pr-6 font-medium text-gray-400 tabular-nums w-8">#</th>
         <th class="pb-2 pr-6 font-medium text-gray-500">Titre</th>
         <th class="pb-2 pr-6 font-medium text-gray-500">Étudiant·e(s)</th>
         <th class="pb-2 pr-6 font-medium text-gray-500">Année</th>
@@ -19,8 +20,9 @@
       </tr>
     </thead>
     <tbody>
-      {#each data.memoires as m}
+      {#each data.memoires as m, i}
         <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800/50">
+          <td class="py-2 pr-6 text-gray-400 tabular-nums">{i + 1}</td>
           <td class="py-2 pr-6">{m.Title}</td>
           <td class="py-2 pr-6 text-gray-500">{[m['Student 1'], m['Student 2'], m['Student 3']].filter(Boolean).join(', ') || '—'}</td>
           <td class="py-2 pr-6 text-gray-400">{m['Publication year'] ?? '—'}</td>
