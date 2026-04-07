@@ -184,7 +184,34 @@ export interface Partenariat {
   Id: number
   Type: string | null
   Programme: string | null
+  Institution: string | null
   'Institution (full name)': string | null
+  City: string | null
+  Country: string | null
+  'Geographic coordinates': string | null
+}
+
+export interface GeoPoint {
+  name: string
+  type: string
+  city: string
+  province: string
+  country: string
+  continent: string
+  lat: number
+  lon: number
+  titles: Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>
+}
+
+export interface GlobePoint {
+  lat: number
+  lon: number
+  institution: string
+  city: string
+  country: string
+  programme: string
+  type: 'mobilites' | 'hors_mobilites'
+  record: Record<string, unknown>
 }
 
 export interface Memoire {

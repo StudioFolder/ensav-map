@@ -1,0 +1,94 @@
+Name (FR),Name (EN),Level,ISO code,Parent ISO,Parent name (FR)
+Afrique,Africa,continent,,,
+Amérique du Nord,North America,continent,,,
+Amérique du Sud,South America,continent,,,
+Antarctique,Antarctica,continent,,,
+Arctique,Arctic,continent,,,
+Asie,Asia,continent,,,
+Europe,Europe,continent,,,
+Mer du Nord,North Sea,continent,,,
+Océanie,Oceania,continent,,,
+Afghanistan,Afghanistan,country,AF,,Asie
+Afrique du Sud,South Africa,country,ZA,,Afrique
+Albanie,Albania,country,AL,,Europe
+Algérie,Algeria,country,DZ,,Afrique
+Allemagne,Germany,country,DE,,Europe
+Arabie Saoudite,Saudi Arabia,country,SA,,Asie
+Argentine,Argentina,country,AR,,Amérique du Sud
+Arménie,Armenia,country,AM,,Asie
+Australie,Australia,country,AU,,Océanie
+Autriche,Austria,country,AT,,Europe
+Belgique,Belgium,country,BE,,Europe
+Brésil,Brazil,country,BR,,Amérique du Sud
+Bulgarie,Bulgaria,country,BG,,Europe
+Burkina Faso,Burkina Faso,country,BF,,Afrique
+Bénin,Benin,country,BJ,,Afrique
+Cambodge,Cambodia,country,KH,,Asie
+Cameroun,Cameroon,country,CM,,Afrique
+Canada,Canada,country,CA,,Amérique du Nord
+Cap-Vert,Cape Verde,country,CV,,Afrique
+Chili,Chile,country,CL,,Amérique du Sud
+Chine,China,country,CN,,Asie
+Chypre,Cyprus,country,CY,,Europe
+Colombie,Colombia,country,CO,,Amérique du Sud
+Corée du Sud,South Korea,country,KR,,Asie
+Côte d'Ivoire,Ivory Coast,country,CI,,Afrique
+Danemark,Denmark,country,DK,,Europe
+Espagne,Spain,country,ES,,Europe
+Estonie,Estonia,country,EE,,Europe
+Finlande,Finland,country,FI,,Europe
+France,France,country,FR,,Europe
+Grèce,Greece,country,GR,,Europe
+Guinée,Guinea,country,GN,,Afrique
+Inde,India,country,IN,,Asie
+Indonésie,Indonesia,country,ID,,Asie
+Irak,Iraq,country,IQ,,Asie
+Iran,Iran,country,IR,,Asie
+Israël,Israel,country,IL,,Asie
+Italie,Italy,country,IT,,Europe
+Japon,Japan,country,JP,,Asie
+Jordanie,Jordan,country,JO,,Asie
+Liban,Lebanon,country,LB,,Asie
+Lituanie,Lithuania,country,LT,,Europe
+Madagascar,Madagascar,country,MG,,Afrique
+Maroc,Morocco,country,MA,,Afrique
+Maurice,Mauritius,country,MU,,Afrique
+Mexique,Mexico,country,MX,,Amérique du Nord
+Niger,Niger,country,NE,,Afrique
+Nigeria,Nigeria,country,NG,,Afrique
+Norvège,Norway,country,NO,,Europe
+Népal,Nepal,country,NP,,Asie
+Ouzbékistan,Uzbekistan,country,UZ,,Asie
+Palestine,Palestine,country,PS,,Asie
+Pays-Bas,Netherlands,country,NL,,Europe
+Philippines,Philippines,country,PH,,Asie
+Pologne,Poland,country,PL,,Europe
+Portugal,Portugal,country,PT,,Europe
+Pérou,Peru,country,PE,,Amérique du Sud
+Roumanie,Romania,country,RO,,Europe
+Royaume-Uni,United Kingdom,country,GB,,Europe
+Russie,Russia,country,RU,,Europe
+République du Congo,Republic of the Congo,country,CG,,Afrique
+République démocratique du Congo,Democratic Republic of the Congo,country,CD,,Afrique
+République tchèque,Czech Republic,country,CZ,,Europe
+Serbie,Serbia,country,RS,,Europe
+Singapour,Singapore,country,SG,,Asie
+Slovaquie,Slovakia,country,SK,,Europe
+Slovénie,Slovenia,country,SI,,Europe
+Soudan,Sudan,country,SD,,Afrique
+Sri Lanka,Sri Lanka,country,LK,,Asie
+Suisse,Switzerland,country,CH,,Europe
+Suède,Sweden,country,SE,,Europe
+Syrie,Syria,country,SY,,Asie
+Sénégal,Senegal,country,SN,,Afrique
+Tanzanie,Tanzania,country,TZ,,Afrique
+Tchad,Chad,country,TD,,Afrique
+Thaïlande,Thailand,country,TH,,Asie
+Tunisie,Tunisia,country,TN,,Afrique
+Turquie,Turkey,country,TR,,Europe
+Vietnam,Vietnam,country,VN,,Asie
+Yémen,Yemen,country,YE,,Asie
+Zambie,Zambia,country,ZM,,Afrique
+Égypte,Egypt,country,EG,,Afrique
+Émirats arabes unis,United Arab Emirates,country,AE,,Asie
+États-Unis,United States,country,US,,Amérique du Nord
