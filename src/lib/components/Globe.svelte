@@ -48,6 +48,7 @@
       .translate([SIZE / 2, SIZE / 2])
       .rotate([0, -20])
       .clipAngle(90)
+      .precision(0.1)
 
     const pathGen = d3.geoPath().projection(projection)
     const svg = d3.select(svgEl)
@@ -72,9 +73,56 @@
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .attr('d', pathGen as any)
 
+    // Arc group sits between land and data points so arcs appear behind markers
+    const arcGroup = svg.append('g').attr('class', 'arcs')
     // Travaux circles rendered below partenariat triangles
     const geoGroup = svg.append('g').attr('class', 'geo-points')
     const pointsGroup = svg.append('g').attr('class', 'points')
+
+    // Name → [lon, lat] lookup for resolving city fields to coordinates
+    const coordsByName = new Map<string, [number, number]>()
+    for (const p of geoPoints) {
+      coordsByName.set(p.name, [p.lon, p.lat])
+    }
+
+    // Compute all arcs upfront — one arc per city-to-city connection across all records
+    type ArcDatum = { from: [number, number]; to: [number, number]; key: string }
+    const allArcs: ArcDatum[] = []
+    for (const d of cityPoints) {
+      const from: [number, number] = [d.lon, d.lat]
+      const key = `${d.lat},${d.lon}`
+      const seen = new Set<string>()
+      for (const t of d.titles) {
+        for (const field of ['City 1', 'City 2', 'City 3', 'City 4']) {
+          const city = t.record[field] as string | null
+          if (!city || city === d.name || seen.has(city)) continue
+          const to = coordsByName.get(city)
+          if (!to) continue
+          seen.add(city)
+          allArcs.push({ from, to, key })
+        }
+      }
+    }
+
+    // Which geo_point is currently hovered — arcs for that point become brighter
+    let hoveredKey: string | null = null
+
+    function renderArcs() {
+      arcGroup
+        .selectAll<SVGPathElement, ArcDatum>('path')
+        .data(allArcs)
+        .join('path')
+        .attr('fill', 'none')
+        .attr('stroke', (d) => d.key === hoveredKey ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.07)')
+        .attr('stroke-width', (d) => d.key === hoveredKey ? 1 : 0.5)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .attr('d', ({ from, to }) => {
+          if (!isVisible(from[0], from[1])) return ''
+          // geoPath with clipAngle(90) naturally clips arcs at the limb
+          // so destinations behind the globe terminate at the edge automatically
+          return pathGen({ type: 'LineString', coordinates: [from, to] } as any) ?? ''
+        })
+    }
 
     function isVisible(lon: number, lat: number): boolean {
       const rotate = projection.rotate()
@@ -93,8 +141,14 @@
               .attr('cursor', 'pointer')
               .on('mousemove', (event: MouseEvent, d) => {
                 tooltip = { kind: 'geo', x: event.clientX, y: event.clientY, point: d }
+                hoveredKey = `${d.lat},${d.lon}`
+                renderArcs()
               })
-              .on('mouseout', () => { tooltip = null })
+              .on('mouseout', () => {
+                tooltip = null
+                hoveredKey = null
+                renderArcs()
+              })
               .on('click', (_event: MouseEvent, d) => {
                 if (!d.titles.length) return
                 onselect(
@@ -178,6 +232,7 @@
 
     renderGeoPoints()
     renderPoints()
+    renderArcs()
 
     // Scroll to zoom
     svgEl.addEventListener('wheel', (event) => {
@@ -190,6 +245,7 @@
       svg.select('.land').attr('d', pathGen as any)
       renderGeoPoints()
       renderPoints()
+      renderArcs()
     }, { passive: false })
 
     // Drag to rotate
@@ -216,6 +272,7 @@
           svg.select('.land').attr('d', pathGen as any)
           renderGeoPoints()
           renderPoints()
+          renderArcs()
         })
     )
   })

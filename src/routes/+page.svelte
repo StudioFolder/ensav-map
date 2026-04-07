@@ -110,6 +110,7 @@
     if (e.key === 'Escape') closeItem()
   }
 
+
   function recordEntries(record: Record<string, unknown>): [string, string][] {
     return Object.entries(record)
       .filter(([k, v]) => !SKIP_FIELDS.has(k) && !k.startsWith('nc_') && v != null && v !== '')
