@@ -9,7 +9,7 @@ import {
   fetchTheses,
 } from '$lib/data/api'
 import type { PageServerLoad } from './$types'
-import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup } from '$lib/data/types'
+import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup, ContinentRecord } from '$lib/data/types'
 import type { SearchItem, Dataset } from '$lib/search/index'
 import geoPointsCsv from '../../static/data/geo_points.csv?raw'
 import geoAreasCsv from '../../static/data/geo_areas.csv?raw'
@@ -148,6 +148,20 @@ function buildCountryZones(
   return zones
 }
 
+// The Continent field in NocoDB is a single text column, but authors
+// sometimes list multiple continents in it (e.g. "Antarctique / Arctique"
+// for a memoire about polar architecture). We split on the common
+// separators and trim. Lenient — unknown tokens fall through to ad-hoc
+// buckets so bad data stays visible in the UI instead of being silently
+// dropped.
+function parseContinents(raw: string | null | undefined): string[] {
+  if (!raw) return []
+  return raw
+    .split(/[/;,&]/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0)
+}
+
 function buildContinentGroups(
   allDatasets: Array<{ rows: Record<string, unknown>[]; key: string }>,
   allPartenariats: Array<{ rows: Partenariat[]; key: string }>,
@@ -156,21 +170,24 @@ function buildContinentGroups(
   countries: Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>,
   continentEN: Map<string, string>
 ): { groups: ContinentGroup[]; missing: SearchItem[]; uniqueShown: number } {
-  const byContinent = new Map<string, Set<string>>()
+  // Per continent: dedup by key, keeping a rich ContinentRecord for each unique entry
+  // so the frontend can render tooltips on hover without a second lookup.
+  const byContinent = new Map<string, Map<string, ContinentRecord>>()
 
   // Seed with all known continents so empty ones still appear as 0-count columns
   for (const nameFR of continentEN.keys()) {
-    byContinent.set(nameFR, new Set())
+    byContinent.set(nameFR, new Map())
   }
 
   // Running union of every key added to any bucket — the number of distinct
   // records that appear at least once in the continents view.
   const shownKeys = new Set<string>()
 
-  const add = (continent: string, key: string) => {
+  const add = (continent: string, key: string, rec: ContinentRecord) => {
     if (!continent) return
-    if (!byContinent.has(continent)) byContinent.set(continent, new Set())
-    byContinent.get(continent)!.add(key)
+    if (!byContinent.has(continent)) byContinent.set(continent, new Map())
+    const m = byContinent.get(continent)!
+    if (!m.has(key)) m.set(key, rec)
     shownKeys.add(key)
   }
 
@@ -179,11 +196,20 @@ function buildContinentGroups(
   // with identical titles are counted distinctly.
   const travauxAssigned = new Set<string>()
 
+  // An explicit Continent field on a row is authoritative. When present,
+  // defer the record to the fallback loop below which parses it via
+  // parseContinents. Otherwise we'd clobber author intent with the
+  // country/geoPoint derivation (e.g. a memoire about polar architecture
+  // that lists Russia as Country 1 would be filed under Europe).
+  const hasExplicitContinent = (rec: Record<string, unknown>) =>
+    parseContinents(rec['Continent'] as string | null | undefined).length > 0
+
   // Travaux with a city-level geo point
   for (const pt of geoPoints.filter((p) => p.type !== 'institution')) {
     for (const t of pt.titles) {
+      if (hasExplicitContinent(t.record)) continue
       const k = `${t.dataset}|${t.record['Id']}`
-      add(pt.continent, k)
+      add(pt.continent, k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
       travauxAssigned.add(k)
     }
   }
@@ -193,8 +219,9 @@ function buildContinentGroups(
     const country = countries.get(cz.nameFR)
     if (!country) continue
     for (const t of cz.titles) {
+      if (hasExplicitContinent(t.record)) continue
       const k = `${t.dataset}|${t.record['Id']}`
-      add(country.parentNameFR, k)
+      add(country.parentNameFR, k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
       travauxAssigned.add(k)
     }
   }
@@ -202,14 +229,19 @@ function buildContinentGroups(
   const missing: SearchItem[] = []
 
   // Travaux fallback: rows without geoPoint/countryZone match.
-  // If the row has its own Continent field, assign via that; otherwise it's missing.
+  // If the row has its own Continent field, assign via that (possibly to
+  // multiple continents); otherwise it's missing.
   for (const { rows, key } of allDatasets) {
+    const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
     rows.forEach((row, index) => {
       const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
       if (travauxAssigned.has(rowKey)) return
-      const rowContinent = (row['Continent'] as string | null | undefined) ?? ''
-      if (rowContinent) {
-        add(rowContinent, rowKey)
+      const continents = parseContinents(row['Continent'] as string | null | undefined)
+      if (continents.length > 0) {
+        const title = String(row['Title'] ?? '—')
+        const person = String(row[personField] ?? '')
+        const rec: ContinentRecord = { dataset: key, label: title, person, record: row }
+        for (const c of continents) add(c, rowKey, rec)
         return
       }
       missing.push({
@@ -223,13 +255,17 @@ function buildContinentGroups(
   }
 
   // Partenariats — one unique entry per row (keyed by Id). Rows without a
-  // Continent field go into the missing list instead.
+  // Continent field go into the missing list instead. Multi-continent
+  // entries get added to each parsed bucket.
   for (const { rows, key } of allPartenariats) {
     rows.forEach((row, index) => {
       const r = row as unknown as Record<string, unknown>
-      const continent = (r['Continent'] as string | null | undefined) ?? ''
-      if (continent) {
-        add(continent, `${key}|${row['Id'] ?? `idx${index}`}`)
+      const continents = parseContinents(r['Continent'] as string | null | undefined)
+      if (continents.length > 0) {
+        const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
+        const label = String(row['Institution (full name)'] ?? row['Institution'] ?? '—')
+        const rec: ContinentRecord = { dataset: key, label, person: '', record: r }
+        for (const c of continents) add(c, rowKey, rec)
         return
       }
       missing.push({
@@ -243,11 +279,20 @@ function buildContinentGroups(
   }
 
   const groups: ContinentGroup[] = []
-  for (const [nameFR, keys] of byContinent) {
+  for (const [nameFR, recs] of byContinent) {
+    const partenariatRecords: ContinentRecord[] = []
+    const travauxRecords: ContinentRecord[] = []
+    for (const [k, rec] of recs) {
+      if (k.startsWith('partenariats_')) partenariatRecords.push(rec)
+      else travauxRecords.push(rec)
+    }
     groups.push({
       nameFR,
       nameEN: continentEN.get(nameFR) ?? nameFR,
-      count: keys.size,
+      count: recs.size,
+      partenariatCount: partenariatRecords.length,
+      partenariatRecords,
+      travauxRecords,
     })
   }
   groups.sort((a, b) => b.count - a.count)

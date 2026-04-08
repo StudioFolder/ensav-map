@@ -226,10 +226,20 @@ export interface GlobePoint {
   record: Record<string, unknown>
 }
 
+export interface ContinentRecord {
+  dataset: string
+  label: string
+  person: string
+  record: Record<string, unknown>
+}
+
 export interface ContinentGroup {
   nameFR: string   // French name (matches continent values in geo_points/partenariats data)
   nameEN: string   // English name (from geo_areas.csv)
   count: number    // number of records associated with this continent
+  partenariatCount: number // subset of `count` that comes from the two partenariats datasets
+  partenariatRecords: ContinentRecord[]
+  travauxRecords: ContinentRecord[]
 }
 
 export interface Memoire {

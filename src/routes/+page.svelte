@@ -39,7 +39,14 @@
   const LAST_VISIT_KEY = 'ensav_last_visit'
   const THEME_KEY = 'ensav_theme'
   let lastVisit: Date | null = $state(null)
-  let theme: 'dark' | 'light' = $state('dark')
+  // Read the theme the blocking script in app.html already applied to <html>,
+  // so the Globe is created with the correct palette on the first client render
+  // (avoids a canvas/globe mismatch where CSS is dark but the SVG is still light).
+  let theme: 'dark' | 'light' = $state(
+    typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light'
+  )
 
   let projectionType = $state<'orthographic' | 'naturalEarth' | 'continents'>('orthographic')
 
@@ -54,9 +61,6 @@
     const stored = localStorage.getItem(LAST_VISIT_KEY)
     if (stored) lastVisit = new Date(stored)
     localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString())
-    const savedTheme = localStorage.getItem(THEME_KEY) as 'dark' | 'light' | null
-    theme = savedTheme ?? 'dark'
-    document.documentElement.classList.toggle('dark', theme === 'dark')
 
     try {
       await initSearch()
@@ -126,73 +130,73 @@
 <div class="flex h-screen overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- Globe — fills remaining horizontal space -->
-  <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#3a3a3a]' : 'bg-gray-950'}">
+  <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#e5e5e5] dark:bg-[#3a3a3a]' : 'bg-gray-200 dark:bg-gray-950'}">
     {#if projectionType === 'continents'}
       <ContinentView continentGroups={data.continentGroups} />
     {:else}
-      {#key projectionType}
-        <Globe points={data.globePoints} geoPoints={data.geoPoints} countryZones={data.countryZones} {projectionType} onselect={openItems} />
+      {#key `${projectionType}-${theme}`}
+        <Globe points={data.globePoints} geoPoints={data.geoPoints} countryZones={data.countryZones} {projectionType} {theme} onselect={openItems} />
       {/key}
     {/if}
 
     {#if !data.sourceError}
       {@const s = data.recordStats}
-      <div class="absolute bottom-3 left-3 z-10 bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
+      <div class="absolute bottom-3 left-3 z-10 bg-white/60 dark:bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
         {#if projectionType === 'continents'}
           {@const totalDots = data.continentGroups.reduce((sum, g) => sum + g.count, 0)}
           {@const extraDots = totalDots - data.continentUniqueShown}
           <div class="flex justify-between gap-6">
-            <span class="text-white/40">Shown</span>
-            <span class="text-white/70 font-medium">{totalDots}</span>
+            <span class="text-black/40 dark:text-white/40">Shown</span>
+            <span class="text-black/70 dark:text-white/70 font-medium">{totalDots}</span>
           </div>
           <div class="flex justify-between gap-6">
-            <span class="text-white/25">↳ single-continent</span>
-            <span class="text-white/40">{data.continentUniqueShown}</span>
+            <span class="text-black/25 dark:text-white/25">↳ single-continent</span>
+            <span class="text-black/40 dark:text-white/40">{data.continentUniqueShown}</span>
           </div>
           <div class="flex justify-between gap-6">
-            <span class="text-white/25">↳ multi-continent</span>
-            <span class="text-white/40">{extraDots}</span>
+            <span class="text-black/25 dark:text-white/25">↳ multi-continent</span>
+            <span class="text-black/40 dark:text-white/40">{extraDots}</span>
           </div>
           <button
             type="button"
             onclick={() => openItems(data.continentMissing, 'No geographic info')}
             class="flex justify-between gap-6 w-full text-left group"
           >
-            <span class="text-white/40 group-hover:text-white/90 transition-colors">Not shown</span>
-            <span class="text-white/70 group-hover:text-white/90 transition-colors">{data.continentMissing.length}</span>
+            <span class="text-black/40 dark:text-white/40 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">Not shown</span>
+            <span class="text-black/70 dark:text-white/70 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">{data.continentMissing.length}</span>
           </button>
-          <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
-            <span class="text-white/40">Total</span>
-            <span class="text-white/70 font-medium">{totalDots + data.continentMissing.length}</span>
+          <div class="flex justify-between gap-6 border-t border-black/10 dark:border-white/10 pt-1.5">
+            <span class="text-black/40 dark:text-white/40">Total</span>
+            <span class="text-black/70 dark:text-white/70 font-medium">{totalDots + data.continentMissing.length}</span>
           </div>
           <div class="flex justify-between gap-6">
-            <span class="text-white/40">Total (NocoDB)</span>
-            <span class="text-white/70 font-medium">{s.total}</span>
+            <span class="text-black/40 dark:text-white/40">Total (NocoDB)</span>
+            <span class="text-black/70 dark:text-white/70 font-medium">{s.total}</span>
           </div>
         {:else}
           <div class="flex justify-between gap-6">
-            <span class="text-white/40">Visualised</span>
-            <span class="text-white/70 font-medium">{s.visualised}</span>
+            <span class="text-black/40 dark:text-white/40">Visualised</span>
+            <span class="text-black/70 dark:text-white/70 font-medium">{s.visualised}</span>
           </div>
           <button
             type="button"
             onclick={() => openItems(s.noGeoItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'No geographic info')}
             class="flex justify-between gap-6 w-full text-left group"
           >
-            <span class="text-white/40 group-hover:text-white/90 transition-colors">No geographic info</span>
-            <span class="text-white/70 group-hover:text-white/90 transition-colors">{s.noGeo}</span>
+            <span class="text-black/40 dark:text-white/40 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">No geographic info</span>
+            <span class="text-black/70 dark:text-white/70 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">{s.noGeo}</span>
           </button>
           <button
             type="button"
             onclick={() => openItems(s.otherMissingItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'Other missing')}
             class="flex justify-between gap-6 w-full text-left group"
           >
-            <span class="text-white/40 group-hover:text-white/90 transition-colors">Other missing</span>
-            <span class="text-white/70 group-hover:text-white/90 transition-colors">{s.otherMissing}</span>
+            <span class="text-black/40 dark:text-white/40 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">Other missing</span>
+            <span class="text-black/70 dark:text-white/70 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">{s.otherMissing}</span>
           </button>
-          <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
-            <span class="text-white/40">Total</span>
-            <span class="text-white/70 font-medium">{s.total}</span>
+          <div class="flex justify-between gap-6 border-t border-black/10 dark:border-white/10 pt-1.5">
+            <span class="text-black/40 dark:text-white/40">Total</span>
+            <span class="text-black/70 dark:text-white/70 font-medium">{s.total}</span>
           </div>
         {/if}
       </div>
@@ -202,19 +206,19 @@
       <button
         type="button"
         onclick={() => { projectionType = 'orthographic' }}
-        class="px-2.5 py-1 rounded transition-colors {projectionType === 'orthographic' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'orthographic' ? 'text-black/80 dark:text-white/80 font-medium' : 'text-black/30 dark:text-white/30 hover:text-black/50 dark:hover:text-white/50'}"
       >Globe</button>
-      <span class="text-white/20">/</span>
+      <span class="text-black/20 dark:text-white/20">/</span>
       <button
         type="button"
         onclick={() => { projectionType = 'naturalEarth' }}
-        class="px-2.5 py-1 rounded transition-colors {projectionType === 'naturalEarth' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'naturalEarth' ? 'text-black/80 dark:text-white/80 font-medium' : 'text-black/30 dark:text-white/30 hover:text-black/50 dark:hover:text-white/50'}"
       >Map</button>
-      <span class="text-white/20">/</span>
+      <span class="text-black/20 dark:text-white/20">/</span>
       <button
         type="button"
         onclick={() => { projectionType = 'continents' }}
-        class="px-2.5 py-1 rounded transition-colors {projectionType === 'continents' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'continents' ? 'text-black/80 dark:text-white/80 font-medium' : 'text-black/30 dark:text-white/30 hover:text-black/50 dark:hover:text-white/50'}"
       >Continents</button>
     </div>
 
