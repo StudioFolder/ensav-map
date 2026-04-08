@@ -5,13 +5,54 @@
   import type { GlobePoint, GeoPoint, CountryZone } from '$lib/data/types'
   import type { SearchItem } from '$lib/search/index'
 
-  let { points, geoPoints, countryZones, projectionType, onselect }: {
+  let { points, geoPoints, countryZones, projectionType, theme, onselect }: {
     points: GlobePoint[]
     geoPoints: GeoPoint[]
     countryZones: CountryZone[]
     projectionType: 'orthographic' | 'naturalEarth'
+    theme: 'dark' | 'light'
     onselect: (items: SearchItem[], groupLabel?: string) => void
   } = $props()
+
+  // Canvas palette — kept in sync with the app theme. The parent component
+  // re-mounts this component when `theme` changes (via {#key}), so reading it
+  // once here is enough; no reactivity needed inside onMount.
+  // Two ocean shades: the globe (orthographic) uses a slightly lighter tone
+  // so the sphere stands out against the canvas background, while the flat
+  // map keeps the darker/deeper tone that already matches the wrapper.
+  const COLORS = theme === 'dark'
+    ? {
+        globeOcean: '#484848',
+        mapOcean: '#3a3a3a',
+        land: '#5c5c5c',
+        pointFill: '#ffffff',
+        pointStroke: '#ffffff',
+        triangleFill: '#000000',
+        baseZoneFill: 'transparent',
+        baseZoneStroke: 'rgba(255,255,255,0.18)',
+        hoveredZoneFill: 'rgba(255,255,255,0.18)',
+        hoveredZoneStroke: 'rgba(255,255,255,0.65)',
+        connectedZoneFill: 'rgba(255,255,255,0.10)',
+        connectedZoneStroke: 'rgba(255,255,255,0.45)',
+        baseArc: 'rgba(255,255,255,0.07)',
+        hoveredArc: 'rgba(255,255,255,0.75)',
+      }
+    : {
+        globeOcean: '#f2f2f2',
+        mapOcean: '#e5e5e5',
+        land: '#d4d4d4',
+        pointFill: '#171717',
+        pointStroke: '#171717',
+        triangleFill: '#171717',
+        baseZoneFill: 'transparent',
+        baseZoneStroke: 'rgba(0,0,0,0.22)',
+        hoveredZoneFill: 'rgba(0,0,0,0.18)',
+        hoveredZoneStroke: 'rgba(0,0,0,0.7)',
+        connectedZoneFill: 'rgba(0,0,0,0.10)',
+        connectedZoneStroke: 'rgba(0,0,0,0.45)',
+        baseArc: 'rgba(0,0,0,0.10)',
+        hoveredArc: 'rgba(0,0,0,0.75)',
+      }
 
   let svgEl: SVGSVGElement
   type TooltipData =
@@ -65,7 +106,7 @@
 
     // Background
     if (projectionType === 'naturalEarth') {
-      svg.append('rect').attr('x', 0).attr('y', 0).attr('width', viewW).attr('height', viewH).attr('fill', '#3a3a3a')
+      svg.append('rect').attr('x', 0).attr('y', 0).attr('width', viewW).attr('height', viewH).attr('fill', COLORS.mapOcean)
     } else {
       svg
         .append('circle')
@@ -73,7 +114,7 @@
         .attr('cx', SIZE / 2)
         .attr('cy', SIZE / 2)
         .attr('r', RADIUS)
-        .attr('fill', '#3a3a3a')
+        .attr('fill', COLORS.globeOcean)
     }
 
     // Land
@@ -82,7 +123,7 @@
       .attr('class', 'land')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .datum(land as any)
-      .attr('fill', '#4e4e4e')
+      .attr('fill', COLORS.land)
       .attr('stroke', 'none')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .attr('d', pathGen as any)
@@ -181,16 +222,16 @@
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('fill', (d: any) => {
           const id = String(d.id)
-          if (id === hoveredIso) return 'rgba(255,255,255,0.18)'
-          if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return 'rgba(255,255,255,0.10)'
-          return 'transparent'
+          if (id === hoveredIso) return COLORS.hoveredZoneFill
+          if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return COLORS.connectedZoneFill
+          return COLORS.baseZoneFill
         })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('stroke', (d: any) => {
           const id = String(d.id)
-          if (id === hoveredIso) return 'rgba(255,255,255,0.65)'
-          if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return 'rgba(255,255,255,0.45)'
-          return 'rgba(255,255,255,0.18)'
+          if (id === hoveredIso) return COLORS.hoveredZoneStroke
+          if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return COLORS.connectedZoneStroke
+          return COLORS.baseZoneStroke
         })
         .attr('stroke-width', 0.8)
         .attr('cursor', 'pointer')
@@ -243,7 +284,7 @@
         .data(allArcs)
         .join('path')
         .attr('fill', 'none')
-        .attr('stroke', (d) => (d.key === hoveredKey || d.key2 === hoveredKey) ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.07)')
+        .attr('stroke', (d) => (d.key === hoveredKey || d.key2 === hoveredKey) ? COLORS.hoveredArc : COLORS.baseArc)
         .attr('stroke-width', (d) => (d.key === hoveredKey || d.key2 === hoveredKey) ? 1 : 0.5)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('d', ({ from, to }) => {
@@ -308,8 +349,8 @@
               })
             g.append('circle').attr('class', 'hit').attr('fill', 'transparent').attr('stroke', 'none')
             g.append('circle').attr('class', 'visual')
-              .attr('fill', '#ffffff').attr('fill-opacity', 0.5)
-              .attr('stroke', '#ffffff').attr('stroke-width', 0.3)
+              .attr('fill', COLORS.pointFill).attr('fill-opacity', 0.5)
+              .attr('stroke', COLORS.pointStroke).attr('stroke-width', 0.3)
               .attr('pointer-events', 'none')
             return g
           },
@@ -356,7 +397,7 @@
               })
             g.append('circle').attr('r', 4).attr('fill', 'transparent').attr('stroke', 'none')
             g.append('path').attr('d', trianglePath)
-              .attr('fill', '#000000').attr('fill-opacity', 0.9).attr('stroke', 'none')
+              .attr('fill', COLORS.triangleFill).attr('fill-opacity', 0.9).attr('stroke', 'none')
               .attr('pointer-events', 'none')
             return g
           },
@@ -439,7 +480,7 @@
 
   {#if tooltip}
     <div
-      class="fixed z-50 pointer-events-none bg-gray-900/95 text-white text-xs rounded-lg px-3 py-2 shadow-xl max-w-56 border border-white/10"
+      class="fixed z-50 pointer-events-none bg-white/95 text-gray-900 dark:bg-gray-900/95 dark:text-white text-xs rounded-lg px-3 py-2 shadow-xl max-w-56 border border-black/10 dark:border-white/10"
       style="left: {tooltip.x + 14}px; top: {tooltip.y - 10}px"
     >
       {#if tooltip.kind === 'globe'}
@@ -447,47 +488,47 @@
           {tooltip.point.institution || 'Unknown institution'}
         </div>
         {#if tooltip.point.city || tooltip.point.country}
-          <div class="text-gray-300">
+          <div class="text-gray-700 dark:text-gray-300">
             {[tooltip.point.city, tooltip.point.country].filter(Boolean).join(', ')}
           </div>
         {/if}
         {#if tooltip.point.programme}
-          <div class="text-gray-400 mt-0.5">{tooltip.point.programme}</div>
+          <div class="text-gray-500 dark:text-gray-400 mt-0.5">{tooltip.point.programme}</div>
         {/if}
-        <div class="text-gray-400 mt-0.5">
+        <div class="text-gray-500 dark:text-gray-400 mt-0.5">
           {tooltip.point.type === 'mobilites' ? 'Mobilités' : 'Hors mobilités'}
         </div>
       {:else if tooltip.kind === 'geo'}
         <div class="font-semibold leading-snug">{tooltip.point.name}</div>
         {#if tooltip.point.country}
-          <div class="text-white/50 mb-1">{tooltip.point.country}</div>
+          <div class="text-black/50 dark:text-white/50 mb-1">{tooltip.point.country}</div>
         {/if}
         {#if tooltip.point.titles.length > 0}
-          <ul class="space-y-1.5 mt-1 border-t border-white/10 pt-1.5">
+          <ul class="space-y-1.5 mt-1 border-t border-black/10 dark:border-white/10 pt-1.5">
             {#each tooltip.point.titles.slice(0, 6) as t}
               <li class="leading-snug">
-                {#if t.person}<div class="font-semibold text-white">{t.person}</div>{/if}
-                <div class="text-white font-normal">{t.title}</div>
+                {#if t.person}<div class="font-semibold text-gray-900 dark:text-white">{t.person}</div>{/if}
+                <div class="text-gray-900 dark:text-white font-normal">{t.title}</div>
               </li>
             {/each}
             {#if tooltip.point.titles.length > 6}
-              <li class="text-white/40">+{tooltip.point.titles.length - 6} more</li>
+              <li class="text-black/40 dark:text-white/40">+{tooltip.point.titles.length - 6} more</li>
             {/if}
           </ul>
         {/if}
       {:else}
         <div class="font-semibold leading-snug">{tooltip.zone.nameEN}</div>
-        <div class="text-white/50 mb-1">{tooltip.zone.nameFR}</div>
+        <div class="text-black/50 dark:text-white/50 mb-1">{tooltip.zone.nameFR}</div>
         {#if tooltip.zone.titles.length > 0}
-          <ul class="space-y-1.5 mt-1 border-t border-white/10 pt-1.5">
+          <ul class="space-y-1.5 mt-1 border-t border-black/10 dark:border-white/10 pt-1.5">
             {#each tooltip.zone.titles.slice(0, 6) as t}
               <li class="leading-snug">
-                {#if t.person}<div class="font-semibold text-white">{t.person}</div>{/if}
-                <div class="text-white font-normal">{t.title}</div>
+                {#if t.person}<div class="font-semibold text-gray-900 dark:text-white">{t.person}</div>{/if}
+                <div class="text-gray-900 dark:text-white font-normal">{t.title}</div>
               </li>
             {/each}
             {#if tooltip.zone.titles.length > 6}
-              <li class="text-white/40">+{tooltip.zone.titles.length - 6} more</li>
+              <li class="text-black/40 dark:text-white/40">+{tooltip.zone.titles.length - 6} more</li>
             {/if}
           </ul>
         {/if}
