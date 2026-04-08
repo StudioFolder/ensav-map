@@ -203,6 +203,18 @@ export interface GeoPoint {
   titles: Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>
 }
 
+export interface CountryZone {
+  isoNumeric: string
+  nameFR: string
+  nameEN: string
+  titles: Array<{
+    title: string
+    dataset: string
+    person: string
+    record: Record<string, unknown>
+  }>
+}
+
 export interface GlobePoint {
   lat: number
   lon: number

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
-  import { initSearch, search, type SearchGroup, type SearchItem } from '$lib/search/index'
+  import { initSearch, search, type SearchGroup, type SearchItem, type Dataset } from '$lib/search/index'
   import Globe from '$lib/components/Globe.svelte'
 
   let { data }: { data: PageData } = $props()
@@ -39,6 +39,8 @@
   const THEME_KEY = 'ensav_theme'
   let lastVisit: Date | null = $state(null)
   let theme: 'dark' | 'light' = $state('dark')
+
+  let projectionType = $state<'orthographic' | 'naturalEarth'>('orthographic')
 
   let query = $state('')
   let searchReady = $state(false)
@@ -123,8 +125,54 @@
 <div class="flex h-screen overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- Globe — fills remaining horizontal space -->
-  <div class="relative flex-1 min-w-0 bg-gray-950">
-    <Globe points={data.globePoints} geoPoints={data.geoPoints} onselect={openItems} />
+  <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#3a3a3a]' : 'bg-gray-950'}">
+    {#key projectionType}
+      <Globe points={data.globePoints} geoPoints={data.geoPoints} countryZones={data.countryZones} {projectionType} onselect={openItems} />
+    {/key}
+
+    {#if !data.sourceError}
+      {@const s = data.recordStats}
+      <div class="absolute bottom-3 left-3 z-10 bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
+        <div class="flex justify-between gap-6">
+          <span class="text-white/40">Visualised</span>
+          <span class="text-white/70 font-medium">{s.visualised}</span>
+        </div>
+        <button
+          type="button"
+          onclick={() => openItems(s.noGeoItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'No geographic info')}
+          class="flex justify-between gap-6 w-full text-left hover:opacity-80 transition-opacity"
+        >
+          <span class="text-white/40">No geographic info</span>
+          <span class="text-white/70">{s.noGeo}</span>
+        </button>
+        <button
+          type="button"
+          onclick={() => openItems(s.otherMissingItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'Other missing')}
+          class="flex justify-between gap-6 w-full text-left hover:opacity-80 transition-opacity"
+        >
+          <span class="text-white/40">Other missing</span>
+          <span class="text-white/70">{s.otherMissing}</span>
+        </button>
+        <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
+          <span class="text-white/40">Total</span>
+          <span class="text-white/70 font-medium">{s.total}</span>
+        </div>
+      </div>
+    {/if}
+
+    <div class="absolute top-3 left-3 z-10 flex items-center gap-1 text-xs">
+      <button
+        type="button"
+        onclick={() => { projectionType = 'orthographic' }}
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'orthographic' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+      >Globe</button>
+      <span class="text-white/20">/</span>
+      <button
+        type="button"
+        onclick={() => { projectionType = 'naturalEarth' }}
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'naturalEarth' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+      >Map</button>
+    </div>
 
     {#if selectedItems.length > 0}
       <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
@@ -252,7 +300,7 @@
                 class="block p-4 bg-white border border-gray-200 hover:border-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-500 rounded-lg transition-colors"
               >
                 <div class="text-sm font-bold text-gray-800 dark:text-gray-200 mb-1">{ds.label}</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400">{ds.count} entries</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400">{ds.count} records</div>
                 {#if ds.lastUpdated}
                   <div class="text-xs text-gray-400 dark:text-gray-500 mt-1 flex items-center gap-1.5">
                     {#if isUpdatedSince(ds.lastUpdated)}
@@ -265,6 +313,13 @@
             {/if}
           {/each}
         </div>
+        {#if !data.sourceError}
+          {@const total = datasets.reduce((sum, ds) => sum + (('count' in ds) ? ds.count : 0), 0)}
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800 flex justify-between items-baseline">
+            <span class="text-xs text-gray-400 dark:text-gray-500">Total in NocoDB</span>
+            <span class="text-sm font-semibold tabular-nums text-gray-600 dark:text-gray-400">{total} records</span>
+          </div>
+        {/if}
       {/if}
 
     </div>
