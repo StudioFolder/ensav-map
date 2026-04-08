@@ -226,6 +226,12 @@ export interface GlobePoint {
   record: Record<string, unknown>
 }
 
+export interface ContinentGroup {
+  nameFR: string   // French name (matches continent values in geo_points/partenariats data)
+  nameEN: string   // English name (from geo_areas.csv)
+  count: number    // number of records associated with this continent
+}
+
 export interface Memoire {
   Id: number
   Type: string

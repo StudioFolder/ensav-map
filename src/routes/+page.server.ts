@@ -9,7 +9,8 @@ import {
   fetchTheses,
 } from '$lib/data/api'
 import type { PageServerLoad } from './$types'
-import type { Partenariat, GlobePoint, GeoPoint, CountryZone } from '$lib/data/types'
+import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup } from '$lib/data/types'
+import type { SearchItem, Dataset } from '$lib/search/index'
 import geoPointsCsv from '../../static/data/geo_points.csv?raw'
 import geoAreasCsv from '../../static/data/geo_areas.csv?raw'
 
@@ -74,15 +75,22 @@ function buildTitleMap(
   return map
 }
 
-function parseGeoAreas(): Map<string, { nameEN: string; isoNumeric: string }> {
-  const map = new Map<string, { nameEN: string; isoNumeric: string }>()
+function parseGeoAreas(): {
+  countries: Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>
+  continents: Map<string, string>
+} {
+  const countries = new Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>()
+  const continents = new Map<string, string>()
   const lines = geoAreasCsv.trim().split('\n')
   for (const line of lines.slice(1)) {
-    const [nameFR, nameEN, level, , isoNumeric] = parseCSVLine(line)
-    if (level !== 'country' || !isoNumeric) continue
-    map.set(nameFR, { nameEN, isoNumeric })
+    const [nameFR, nameEN, level, , isoNumeric, , parentNameFR] = parseCSVLine(line)
+    if (level === 'continent') {
+      continents.set(nameFR, nameEN)
+    } else if (level === 'country' && isoNumeric) {
+      countries.set(nameFR, { nameEN, isoNumeric, parentNameFR: parentNameFR ?? '' })
+    }
   }
-  return map
+  return { countries, continents }
 }
 
 const DATASET_COUNTRY_FIELDS: Record<string, string[]> = {
@@ -96,7 +104,7 @@ const DATASET_COUNTRY_FIELDS: Record<string, string[]> = {
 function buildCountryZones(
   datasets: Array<{ rows: Record<string, unknown>[]; key: string }>,
   geoPointNames: Set<string>,
-  geoAreas: Map<string, { nameEN: string; isoNumeric: string }>
+  geoAreas: Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>
 ): CountryZone[] {
   const byCountry = new Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>>()
 
@@ -138,6 +146,112 @@ function buildCountryZones(
     zones.push({ isoNumeric: areaInfo.isoNumeric, nameFR, nameEN: areaInfo.nameEN, titles })
   }
   return zones
+}
+
+function buildContinentGroups(
+  allDatasets: Array<{ rows: Record<string, unknown>[]; key: string }>,
+  allPartenariats: Array<{ rows: Partenariat[]; key: string }>,
+  geoPoints: GeoPoint[],
+  countryZones: CountryZone[],
+  countries: Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>,
+  continentEN: Map<string, string>
+): { groups: ContinentGroup[]; missing: SearchItem[]; uniqueShown: number } {
+  const byContinent = new Map<string, Set<string>>()
+
+  // Seed with all known continents so empty ones still appear as 0-count columns
+  for (const nameFR of continentEN.keys()) {
+    byContinent.set(nameFR, new Set())
+  }
+
+  // Running union of every key added to any bucket — the number of distinct
+  // records that appear at least once in the continents view.
+  const shownKeys = new Set<string>()
+
+  const add = (continent: string, key: string) => {
+    if (!continent) return
+    if (!byContinent.has(continent)) byContinent.set(continent, new Set())
+    byContinent.get(continent)!.add(key)
+    shownKeys.add(key)
+  }
+
+  // Track which travaux rows have been assigned to any bucket via
+  // geoPoints or countryZones. Keyed by dataset + NocoDB row Id so rows
+  // with identical titles are counted distinctly.
+  const travauxAssigned = new Set<string>()
+
+  // Travaux with a city-level geo point
+  for (const pt of geoPoints.filter((p) => p.type !== 'institution')) {
+    for (const t of pt.titles) {
+      const k = `${t.dataset}|${t.record['Id']}`
+      add(pt.continent, k)
+      travauxAssigned.add(k)
+    }
+  }
+
+  // Travaux that only resolve to a country zone — look up parent continent
+  for (const cz of countryZones) {
+    const country = countries.get(cz.nameFR)
+    if (!country) continue
+    for (const t of cz.titles) {
+      const k = `${t.dataset}|${t.record['Id']}`
+      add(country.parentNameFR, k)
+      travauxAssigned.add(k)
+    }
+  }
+
+  const missing: SearchItem[] = []
+
+  // Travaux fallback: rows without geoPoint/countryZone match.
+  // If the row has its own Continent field, assign via that; otherwise it's missing.
+  for (const { rows, key } of allDatasets) {
+    rows.forEach((row, index) => {
+      const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
+      if (travauxAssigned.has(rowKey)) return
+      const rowContinent = (row['Continent'] as string | null | undefined) ?? ''
+      if (rowContinent) {
+        add(rowContinent, rowKey)
+        return
+      }
+      missing.push({
+        id: `${key}|${row['Title'] ?? 'untitled'}|${index}`,
+        dataset: key as Dataset,
+        label: String(row['Title'] ?? '—'),
+        searchableText: '',
+        record: row,
+      })
+    })
+  }
+
+  // Partenariats — one unique entry per row (keyed by Id). Rows without a
+  // Continent field go into the missing list instead.
+  for (const { rows, key } of allPartenariats) {
+    rows.forEach((row, index) => {
+      const r = row as unknown as Record<string, unknown>
+      const continent = (r['Continent'] as string | null | undefined) ?? ''
+      if (continent) {
+        add(continent, `${key}|${row['Id'] ?? `idx${index}`}`)
+        return
+      }
+      missing.push({
+        id: `partenariat|${row['Institution'] ?? index}`,
+        dataset: key as Dataset,
+        label: String(row['Institution (full name)'] ?? row['Institution'] ?? '—'),
+        searchableText: '',
+        record: r,
+      })
+    })
+  }
+
+  const groups: ContinentGroup[] = []
+  for (const [nameFR, keys] of byContinent) {
+    groups.push({
+      nameFR,
+      nameEN: continentEN.get(nameFR) ?? nameFR,
+      count: keys.size,
+    })
+  }
+  groups.sort((a, b) => b.count - a.count)
+  return { groups, missing, uniqueShown: shownKeys.size }
 }
 
 type StatItem = { label: string; dataset: string; record: Record<string, unknown> }
@@ -270,16 +384,19 @@ export const load: PageServerLoad = async () => {
     ]
 
     const geoPointNames = new Set(basePoints.map((p) => p.name))
-    const geoAreas = parseGeoAreas()
+    const { countries: geoAreas, continents: continentEN } = parseGeoAreas()
     const countryZones = buildCountryZones(allDatasets, geoPointNames, geoAreas)
 
     const allPartenariats = [
       { rows: mobilites, key: 'partenariats_mobilites' },
       { rows: horsMobilites, key: 'partenariats_hors_mobilites' },
     ]
+    const { groups: continentGroups, missing: continentMissing, uniqueShown: continentUniqueShown } =
+      buildContinentGroups(allDatasets, allPartenariats, geoPoints, countryZones, geoAreas, continentEN)
+
     const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
 
-    return { datasets, sourceError: false, globePoints, geoPoints, countryZones, recordStats }
+    return { datasets, sourceError: false, globePoints, geoPoints, countryZones, continentGroups, continentMissing, continentUniqueShown, recordStats }
   } catch {
     return {
       datasets: [],
@@ -287,6 +404,9 @@ export const load: PageServerLoad = async () => {
       globePoints: [],
       geoPoints: basePoints.map((pt) => ({ ...pt, titles: [] })),
       countryZones: [],
+      continentGroups: [],
+      continentMissing: [],
+      continentUniqueShown: 0,
       recordStats: { visualised: 0, noGeo: 0, otherMissing: 0, total: 0, noGeoItems: [], otherMissingItems: [] },
     }
   }

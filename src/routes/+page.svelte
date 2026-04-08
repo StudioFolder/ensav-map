@@ -3,6 +3,7 @@
   import type { PageData } from './$types'
   import { initSearch, search, type SearchGroup, type SearchItem, type Dataset } from '$lib/search/index'
   import Globe from '$lib/components/Globe.svelte'
+  import ContinentView from '$lib/components/ContinentView.svelte'
 
   let { data }: { data: PageData } = $props()
 
@@ -40,7 +41,7 @@
   let lastVisit: Date | null = $state(null)
   let theme: 'dark' | 'light' = $state('dark')
 
-  let projectionType = $state<'orthographic' | 'naturalEarth'>('orthographic')
+  let projectionType = $state<'orthographic' | 'naturalEarth' | 'continents'>('orthographic')
 
   let query = $state('')
   let searchReady = $state(false)
@@ -126,37 +127,74 @@
 
   <!-- Globe — fills remaining horizontal space -->
   <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#3a3a3a]' : 'bg-gray-950'}">
-    {#key projectionType}
-      <Globe points={data.globePoints} geoPoints={data.geoPoints} countryZones={data.countryZones} {projectionType} onselect={openItems} />
-    {/key}
+    {#if projectionType === 'continents'}
+      <ContinentView continentGroups={data.continentGroups} />
+    {:else}
+      {#key projectionType}
+        <Globe points={data.globePoints} geoPoints={data.geoPoints} countryZones={data.countryZones} {projectionType} onselect={openItems} />
+      {/key}
+    {/if}
 
     {#if !data.sourceError}
       {@const s = data.recordStats}
       <div class="absolute bottom-3 left-3 z-10 bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
-        <div class="flex justify-between gap-6">
-          <span class="text-white/40">Visualised</span>
-          <span class="text-white/70 font-medium">{s.visualised}</span>
-        </div>
-        <button
-          type="button"
-          onclick={() => openItems(s.noGeoItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'No geographic info')}
-          class="flex justify-between gap-6 w-full text-left hover:opacity-80 transition-opacity"
-        >
-          <span class="text-white/40">No geographic info</span>
-          <span class="text-white/70">{s.noGeo}</span>
-        </button>
-        <button
-          type="button"
-          onclick={() => openItems(s.otherMissingItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'Other missing')}
-          class="flex justify-between gap-6 w-full text-left hover:opacity-80 transition-opacity"
-        >
-          <span class="text-white/40">Other missing</span>
-          <span class="text-white/70">{s.otherMissing}</span>
-        </button>
-        <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
-          <span class="text-white/40">Total</span>
-          <span class="text-white/70 font-medium">{s.total}</span>
-        </div>
+        {#if projectionType === 'continents'}
+          {@const totalDots = data.continentGroups.reduce((sum, g) => sum + g.count, 0)}
+          {@const extraDots = totalDots - data.continentUniqueShown}
+          <div class="flex justify-between gap-6">
+            <span class="text-white/40">Shown</span>
+            <span class="text-white/70 font-medium">{totalDots}</span>
+          </div>
+          <div class="flex justify-between gap-6">
+            <span class="text-white/25">↳ single-continent</span>
+            <span class="text-white/40">{data.continentUniqueShown}</span>
+          </div>
+          <div class="flex justify-between gap-6">
+            <span class="text-white/25">↳ multi-continent</span>
+            <span class="text-white/40">{extraDots}</span>
+          </div>
+          <button
+            type="button"
+            onclick={() => openItems(data.continentMissing, 'No geographic info')}
+            class="flex justify-between gap-6 w-full text-left group"
+          >
+            <span class="text-white/40 group-hover:text-white/90 transition-colors">Not shown</span>
+            <span class="text-white/70 group-hover:text-white/90 transition-colors">{data.continentMissing.length}</span>
+          </button>
+          <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
+            <span class="text-white/40">Total</span>
+            <span class="text-white/70 font-medium">{totalDots + data.continentMissing.length}</span>
+          </div>
+          <div class="flex justify-between gap-6">
+            <span class="text-white/40">Total (NocoDB)</span>
+            <span class="text-white/70 font-medium">{s.total}</span>
+          </div>
+        {:else}
+          <div class="flex justify-between gap-6">
+            <span class="text-white/40">Visualised</span>
+            <span class="text-white/70 font-medium">{s.visualised}</span>
+          </div>
+          <button
+            type="button"
+            onclick={() => openItems(s.noGeoItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'No geographic info')}
+            class="flex justify-between gap-6 w-full text-left group"
+          >
+            <span class="text-white/40 group-hover:text-white/90 transition-colors">No geographic info</span>
+            <span class="text-white/70 group-hover:text-white/90 transition-colors">{s.noGeo}</span>
+          </button>
+          <button
+            type="button"
+            onclick={() => openItems(s.otherMissingItems.map((it) => ({ id: `${it.dataset}|${it.label}`, dataset: it.dataset as Dataset, label: it.label, searchableText: it.label, record: it.record })), 'Other missing')}
+            class="flex justify-between gap-6 w-full text-left group"
+          >
+            <span class="text-white/40 group-hover:text-white/90 transition-colors">Other missing</span>
+            <span class="text-white/70 group-hover:text-white/90 transition-colors">{s.otherMissing}</span>
+          </button>
+          <div class="flex justify-between gap-6 border-t border-white/10 pt-1.5">
+            <span class="text-white/40">Total</span>
+            <span class="text-white/70 font-medium">{s.total}</span>
+          </div>
+        {/if}
       </div>
     {/if}
 
@@ -172,6 +210,12 @@
         onclick={() => { projectionType = 'naturalEarth' }}
         class="px-2.5 py-1 rounded transition-colors {projectionType === 'naturalEarth' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
       >Map</button>
+      <span class="text-white/20">/</span>
+      <button
+        type="button"
+        onclick={() => { projectionType = 'continents' }}
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'continents' ? 'text-white/80 font-medium' : 'text-white/30 hover:text-white/50'}"
+      >Continents</button>
     </div>
 
     {#if selectedItems.length > 0}
