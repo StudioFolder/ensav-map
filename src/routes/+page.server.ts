@@ -166,7 +166,6 @@ function buildContinentGroups(
   allDatasets: Array<{ rows: Record<string, unknown>[]; key: string }>,
   allPartenariats: Array<{ rows: Partenariat[]; key: string }>,
   geoPoints: GeoPoint[],
-  countryZones: CountryZone[],
   countries: Map<string, { nameEN: string; isoNumeric: string; parentNameFR: string }>,
   continentEN: Map<string, string>
 ): { groups: ContinentGroup[]; missing: SearchItem[]; uniqueShown: number } {
@@ -191,66 +190,70 @@ function buildContinentGroups(
     shownKeys.add(key)
   }
 
-  // Track which travaux rows have been assigned to any bucket via
-  // geoPoints or countryZones. Keyed by dataset + NocoDB row Id so rows
-  // with identical titles are counted distinctly.
-  const travauxAssigned = new Set<string>()
-
-  // An explicit Continent field on a row is authoritative. When present,
-  // defer the record to the fallback loop below which parses it via
-  // parseContinents. Otherwise we'd clobber author intent with the
-  // country/geoPoint derivation (e.g. a memoire about polar architecture
-  // that lists Russia as Country 1 would be filed under Europe).
-  const hasExplicitContinent = (rec: Record<string, unknown>) =>
-    parseContinents(rec['Continent'] as string | null | undefined).length > 0
-
-  // Travaux with a city-level geo point
+  // Continents derived from city-level geo points, keyed by row id. A travaux
+  // row can appear in several geo points (City 1, City 2…) spanning different
+  // continents, so we accumulate into a Set.
+  const geoPointContinents = new Map<string, Set<string>>()
+  const geoPointRecords = new Map<string, ContinentRecord>()
   for (const pt of geoPoints.filter((p) => p.type !== 'institution')) {
+    if (!pt.continent) continue
     for (const t of pt.titles) {
-      if (hasExplicitContinent(t.record)) continue
       const k = `${t.dataset}|${t.record['Id']}`
-      add(pt.continent, k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
-      travauxAssigned.add(k)
-    }
-  }
-
-  // Travaux that only resolve to a country zone — look up parent continent
-  for (const cz of countryZones) {
-    const country = countries.get(cz.nameFR)
-    if (!country) continue
-    for (const t of cz.titles) {
-      if (hasExplicitContinent(t.record)) continue
-      const k = `${t.dataset}|${t.record['Id']}`
-      add(country.parentNameFR, k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
-      travauxAssigned.add(k)
+      if (!geoPointContinents.has(k)) geoPointContinents.set(k, new Set())
+      geoPointContinents.get(k)!.add(pt.continent)
+      if (!geoPointRecords.has(k)) {
+        geoPointRecords.set(k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
+      }
     }
   }
 
   const missing: SearchItem[] = []
 
-  // Travaux fallback: rows without geoPoint/countryZone match.
-  // If the row has its own Continent field, assign via that (possibly to
-  // multiple continents); otherwise it's missing.
+  // Travaux: union continents from every available source so a row with
+  // e.g. Country 1=France / Country 2=USA / Continent=Europe appears under
+  // both Europe and North America. Previously the explicit Continent field
+  // shadowed the country-derived continents, which under-counted multi-
+  // continent works. Sources considered per row:
+  //   (a) every city-level geoPoint that references the row
+  //   (b) every Country N field resolved via the geoAreas map
+  //   (c) the explicit Continent field, parsed with the "/" separator
   for (const { rows, key } of allDatasets) {
     const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
+    const countryFields = DATASET_COUNTRY_FIELDS[key] ?? []
     rows.forEach((row, index) => {
       const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
-      if (travauxAssigned.has(rowKey)) return
-      const continents = parseContinents(row['Continent'] as string | null | undefined)
-      if (continents.length > 0) {
-        const title = String(row['Title'] ?? '—')
-        const person = String(row[personField] ?? '')
-        const rec: ContinentRecord = { dataset: key, label: title, person, record: row }
-        for (const c of continents) add(c, rowKey, rec)
+      const derived = new Set<string>()
+
+      const fromGeo = geoPointContinents.get(rowKey)
+      if (fromGeo) for (const c of fromGeo) derived.add(c)
+
+      for (const f of countryFields) {
+        const v = row[f]
+        if (typeof v !== 'string' || v === '') continue
+        const country = countries.get(v)
+        if (country?.parentNameFR) derived.add(country.parentNameFR)
+      }
+
+      for (const c of parseContinents(row['Continent'] as string | null | undefined)) {
+        derived.add(c)
+      }
+
+      if (derived.size === 0) {
+        missing.push({
+          id: `${key}|${row['Title'] ?? 'untitled'}|${index}`,
+          dataset: key as Dataset,
+          label: String(row['Title'] ?? '—'),
+          searchableText: '',
+          record: row,
+        })
         return
       }
-      missing.push({
-        id: `${key}|${row['Title'] ?? 'untitled'}|${index}`,
-        dataset: key as Dataset,
-        label: String(row['Title'] ?? '—'),
-        searchableText: '',
-        record: row,
-      })
+
+      const title = String(row['Title'] ?? '—')
+      const person = String(row[personField] ?? '')
+      const rec: ContinentRecord =
+        geoPointRecords.get(rowKey) ?? { dataset: key, label: title, person, record: row }
+      for (const c of derived) add(c, rowKey, rec)
     })
   }
 
@@ -437,7 +440,7 @@ export const load: PageServerLoad = async () => {
       { rows: horsMobilites, key: 'partenariats_hors_mobilites' },
     ]
     const { groups: continentGroups, missing: continentMissing, uniqueShown: continentUniqueShown } =
-      buildContinentGroups(allDatasets, allPartenariats, geoPoints, countryZones, geoAreas, continentEN)
+      buildContinentGroups(allDatasets, allPartenariats, geoPoints, geoAreas, continentEN)
 
     const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
 
