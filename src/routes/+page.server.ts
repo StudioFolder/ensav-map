@@ -182,25 +182,25 @@ function buildContinentGroups(
   // records that appear at least once in the continents view.
   const shownKeys = new Set<string>()
 
-  const add = (continent: string, key: string, rec: ContinentRecord) => {
-    if (!continent) return
-    if (!byContinent.has(continent)) byContinent.set(continent, new Map())
-    const m = byContinent.get(continent)!
-    if (!m.has(key)) m.set(key, rec)
-    shownKeys.add(key)
-  }
+  // Resolve a list of FR country names to their EN equivalents via geoAreas;
+  // unknown names fall through unchanged so bad data stays visible in the UI.
+  const toEN = (frNames: string[]): string[] =>
+    frNames.map((fr) => countries.get(fr)?.nameEN ?? fr)
 
-  // Continents derived from city-level geo points, keyed by row id. A travaux
-  // row can appear in several geo points (City 1, City 2…) spanning different
-  // continents, so we accumulate into a Set.
-  const geoPointContinents = new Map<string, Set<string>>()
-  const geoPointRecords = new Map<string, ContinentRecord>()
+  // geoPoint contributions per row, keyed by `${dataset}|${id}`. For each
+  // row we keep a Map<continentFR, Set<countryFR>> so the country-grouped
+  // view in ContinentView.svelte can display each dot under the country
+  // that placed it on this continent.
+  const geoPointMap = new Map<string, Map<string, Set<string>>>()
+  const geoPointRecords = new Map<string, Omit<ContinentRecord, 'countriesFR' | 'countriesEN'>>()
   for (const pt of geoPoints.filter((p) => p.type !== 'institution')) {
     if (!pt.continent) continue
     for (const t of pt.titles) {
       const k = `${t.dataset}|${t.record['Id']}`
-      if (!geoPointContinents.has(k)) geoPointContinents.set(k, new Set())
-      geoPointContinents.get(k)!.add(pt.continent)
+      if (!geoPointMap.has(k)) geoPointMap.set(k, new Map())
+      const cmap = geoPointMap.get(k)!
+      if (!cmap.has(pt.continent)) cmap.set(pt.continent, new Set())
+      if (pt.country) cmap.get(pt.continent)!.add(pt.country)
       if (!geoPointRecords.has(k)) {
         geoPointRecords.set(k, { dataset: t.dataset, label: t.title, person: t.person, record: t.record })
       }
@@ -211,34 +211,45 @@ function buildContinentGroups(
 
   // Travaux: union continents from every available source so a row with
   // e.g. Country 1=France / Country 2=USA / Continent=Europe appears under
-  // both Europe and North America. Previously the explicit Continent field
-  // shadowed the country-derived continents, which under-counted multi-
-  // continent works. Sources considered per row:
-  //   (a) every city-level geoPoint that references the row
-  //   (b) every Country N field resolved via the geoAreas map
-  //   (c) the explicit Continent field, parsed with the "/" separator
+  // both Europe and North America. Sources considered per row:
+  //   (a) every city-level geoPoint that references the row → contributes
+  //       (continent, country) from the geoPoint itself
+  //   (b) every Country N field resolved via the geoAreas map → contributes
+  //       (parentNameFR, country)
+  //   (c) the explicit Continent field, parsed with the "/" separator →
+  //       contributes the continent with no country (lands in "Unknown")
   for (const { rows, key } of allDatasets) {
     const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
     const countryFields = DATASET_COUNTRY_FIELDS[key] ?? []
     rows.forEach((row, index) => {
       const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
-      const derived = new Set<string>()
+      // continent (FR) → set of country FR names attributable to that continent
+      const continentToCountries = new Map<string, Set<string>>()
+      const ensure = (c: string): Set<string> => {
+        if (!continentToCountries.has(c)) continentToCountries.set(c, new Set())
+        return continentToCountries.get(c)!
+      }
 
-      const fromGeo = geoPointContinents.get(rowKey)
-      if (fromGeo) for (const c of fromGeo) derived.add(c)
+      const fromGeo = geoPointMap.get(rowKey)
+      if (fromGeo) {
+        for (const [c, set] of fromGeo) {
+          const target = ensure(c)
+          for (const co of set) target.add(co)
+        }
+      }
 
       for (const f of countryFields) {
         const v = row[f]
         if (typeof v !== 'string' || v === '') continue
         const country = countries.get(v)
-        if (country?.parentNameFR) derived.add(country.parentNameFR)
+        if (country?.parentNameFR) ensure(country.parentNameFR).add(v)
       }
 
       for (const c of parseContinents(row['Continent'] as string | null | undefined)) {
-        derived.add(c)
+        ensure(c)
       }
 
-      if (derived.size === 0) {
+      if (continentToCountries.size === 0) {
         missing.push({
           id: `${key}|${row['Title'] ?? 'untitled'}|${index}`,
           dataset: key as Dataset,
@@ -251,33 +262,62 @@ function buildContinentGroups(
 
       const title = String(row['Title'] ?? '—')
       const person = String(row[personField] ?? '')
-      const rec: ContinentRecord =
-        geoPointRecords.get(rowKey) ?? { dataset: key, label: title, person, record: row }
-      for (const c of derived) add(c, rowKey, rec)
+      const baseRec = geoPointRecords.get(rowKey) ?? { dataset: key, label: title, person, record: row }
+
+      for (const [continent, countrySet] of continentToCountries) {
+        const countriesFR = [...countrySet].sort()
+        const rec: ContinentRecord = {
+          ...baseRec,
+          countriesFR,
+          countriesEN: toEN(countriesFR),
+        }
+        if (!byContinent.has(continent)) byContinent.set(continent, new Map())
+        const m = byContinent.get(continent)!
+        if (!m.has(rowKey)) m.set(rowKey, rec)
+        shownKeys.add(rowKey)
+      }
     })
   }
 
   // Partenariats — one unique entry per row (keyed by Id). Rows without a
   // Continent field go into the missing list instead. Multi-continent
-  // entries get added to each parsed bucket.
+  // entries get added to each parsed bucket. The Country field is only
+  // attributed to the bucket whose continent matches its parentNameFR;
+  // mismatched buckets get an empty country (Unknown).
   for (const { rows, key } of allPartenariats) {
     rows.forEach((row, index) => {
       const r = row as unknown as Record<string, unknown>
       const continents = parseContinents(r['Continent'] as string | null | undefined)
-      if (continents.length > 0) {
-        const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
-        const label = String(row['Institution (full name)'] ?? row['Institution'] ?? '—')
-        const rec: ContinentRecord = { dataset: key, label, person: '', record: r }
-        for (const c of continents) add(c, rowKey, rec)
+      if (continents.length === 0) {
+        missing.push({
+          id: `partenariat|${row['Institution'] ?? index}`,
+          dataset: key as Dataset,
+          label: String(row['Institution (full name)'] ?? row['Institution'] ?? '—'),
+          searchableText: '',
+          record: r,
+        })
         return
       }
-      missing.push({
-        id: `partenariat|${row['Institution'] ?? index}`,
-        dataset: key as Dataset,
-        label: String(row['Institution (full name)'] ?? row['Institution'] ?? '—'),
-        searchableText: '',
-        record: r,
-      })
+      const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
+      const label = String(row['Institution (full name)'] ?? row['Institution'] ?? '—')
+      const countryFR = typeof r['Country'] === 'string' ? (r['Country'] as string) : ''
+      const countryParent = countryFR ? countries.get(countryFR)?.parentNameFR : undefined
+      for (const c of continents) {
+        const matches = !!countryFR && countryParent === c
+        const countriesFR = matches ? [countryFR] : []
+        const rec: ContinentRecord = {
+          dataset: key,
+          label,
+          person: '',
+          record: r,
+          countriesFR,
+          countriesEN: toEN(countriesFR),
+        }
+        if (!byContinent.has(c)) byContinent.set(c, new Map())
+        const m = byContinent.get(c)!
+        if (!m.has(rowKey)) m.set(rowKey, rec)
+        shownKeys.add(rowKey)
+      }
     })
   }
 

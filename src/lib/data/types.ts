@@ -231,6 +231,18 @@ export interface ContinentRecord {
   label: string
   person: string
   record: Record<string, unknown>
+  /**
+   * Countries (FR canonical names from geo_areas.csv) that tie this record
+   * to its continent. May contain multiple entries when a record's countries
+   * span several countries within the same continent (e.g. a memoire about
+   * Iberian architecture spanning Spain and Portugal). Empty when the record
+   * was attributed to the continent only via the explicit `Continent` field
+   * with no resolvable country source — these land in the "Unknown" bucket
+   * in the country-grouped view.
+   */
+  countriesFR: string[]
+  /** English equivalents of `countriesFR`, looked up via geo_areas.csv. */
+  countriesEN: string[]
 }
 
 export interface ContinentGroup {

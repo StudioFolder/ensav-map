@@ -141,7 +141,7 @@
 
     {#if !data.sourceError}
       {@const s = data.recordStats}
-      <div class="absolute bottom-3 left-3 z-10 bg-white/60 dark:bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
+      <div class="absolute top-3 right-3 z-10 bg-white/60 dark:bg-black/40 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
         {#if projectionType === 'continents'}
           {@const totalDots = data.continentGroups.reduce((sum, g) => sum + g.count, 0)}
           {@const extraDots = totalDots - data.continentUniqueShown}

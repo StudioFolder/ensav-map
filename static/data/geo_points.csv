@@ -152,7 +152,7 @@ Barcelone,city,Barcelone,,Espagne,Europe,41.395473,2.155563
 Madrid,city,Madrid,,Espagne,Europe,40.453611,-3.729167
 Tenerife,city,Tenerife,,Espagne,Europe,28.2935785,-16.6214471
 Valladolid,city,Valladolid,,Espagne,Europe,41.655180,-4.723700
-Helsinki,city,Helsinki,,Finlande,Asie,60.1666204,24.9435408
+Helsinki,city,Helsinki,,Finlande,Europe,60.1666204,24.9435408
 Ableiges,city,Ableiges,Val-d'Oise,France,Europe,49.09090140082123,1.9811649207949293
 Alfortville,city,Alfortville,Val-de-Marne,France,Europe,48.787288127649944,2.4259738087044953
 Auch,city,Auch,Gers,France,Europe,43.64625777828602,0.5919668969702374
@@ -171,7 +171,7 @@ Genillé,city,Genillé,Indre-et-Loire,France,Europe,47.16464120297483,1.13287687
 Jarnac,city,Jarnac,Charente,France,Europe,45.68474651920947,-0.16993284967337818
 Joinville,city,Joinville,Haute-Marne,France,Europe,48.4429086056635,5.137555659784835
 Magnac-Laval,city,Magnac-Laval,Haute-Vienne,France,Europe,46.214469792914684,1.1661614141663206
-Maripasoula,city,Maripasoula,,France,Amérique du Nord,3.6420269,-54.0299468
+Maripasoula,city,Maripasoula,,France,Amérique du Sud,3.6420269,-54.0299468
 Marseille,city,Marseille,Bouches-du-Rhône,France,Europe,43.29593928060475,5.373691538311485
 "Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",city,"Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",Yvelines,France,Europe,48.79488633947698,2.033185103534181
 Nay,city,Nay,Pyrénées-Atlantiques,France,Europe,43.17657515437649,-0.2623384170590637
@@ -185,7 +185,7 @@ Roubaix,city,Roubaix,Nord,France,Europe,50.68337222928733,3.195923399057051
 Rouen,city,Rouen,Seine-Maritime,France,Europe,49.43664289482642,1.120745548092146
 Saint-Malo,city,Saint-Malo,Ille-et-Vilaine,France,Europe,48.65335846409817,-2.0123118491196066
 Tréguennec,city,Tréguennec,Finistère,France,Europe,47.87478872622139,-4.352597618430918
-Versailles,city,Versailles,,France,Amérique du Nord,48.8035403,2.1266886
+Versailles,city,Versailles,,France,Europe,48.8035403,2.1266886
 Vitry-sur-Seine,city,Vitry-sur-Seine,Val-de-Marne,France,Europe,48.793733865488925,2.383251366076514
 Épinal,city,Épinal,Vosges,France,Europe,48.17407775797531,6.450644833979116
 Athènes,city,Athènes,,Grèce,Europe,37.987864,23.731614
