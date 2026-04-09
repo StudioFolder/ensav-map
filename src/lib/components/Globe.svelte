@@ -202,6 +202,7 @@
     const arcGroup = svg.append('g').attr('class', 'arcs')
     const geoGroup = svg.append('g').attr('class', 'geo-points')
     const pointsGroup = svg.append('g').attr('class', 'points')
+    const labelsGroup = svg.append('g').attr('class', 'labels').attr('pointer-events', 'none')
 
     // Lookup: isoNumeric → CountryZone
     const countryZonesMap = new Map<string, CountryZone>()
@@ -355,6 +356,7 @@
             renderGeoPoints()
             renderPoints()
             renderArcs()
+            renderLabels()
           }
         })
     }
@@ -651,11 +653,68 @@
         })
     }
 
+    // ---------------------------------------------------------------------------
+    // Render: focus-mode labels (city names + country names)
+    // ---------------------------------------------------------------------------
+
+    const LABEL_FILL = theme === 'dark' ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)'
+
+    function renderLabels() {
+      // City name labels — shown for every visible city dot while focused
+      const cityData = focused && focused.visibleGeoCoordStrs.size > 0
+        ? cityPoints.filter((p) => focused!.visibleGeoCoordStrs.has(coordKey(p.lat, p.lon)) && isVisible(p.lon, p.lat))
+        : []
+
+      labelsGroup
+        .selectAll<SVGTextElement, GeoPoint>('text.lbl-city')
+        .data(cityData, (d) => `${d.lat},${d.lon}`)
+        .join('text')
+        .attr('class', 'lbl-city')
+        .attr('text-anchor', 'start')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', projectionType === 'orthographic' ? '5' : '7')
+        .attr('font-family', 'sans-serif')
+        .attr('fill', LABEL_FILL)
+        .attr('transform', (d) => {
+          const c = projection([d.lon, d.lat])
+          if (!c) return 'translate(-9999,-9999)'
+          const dx = overlaps.has(coordKey(d.lat, d.lon)) ? -OFFSET : 0
+          return `translate(${c[0] + dx + rScale(d.titles.length) + 3},${c[1]})`
+        })
+        .text((d) => d.name)
+
+      // Country name labels — at centroid of each visible zone, only in country focus
+      type CountryLabelDatum = { iso: string; zone: CountryZone; centroid: [number, number] }
+      const countryData: CountryLabelDatum[] = focused?.kind === 'country'
+        ? [...focused.visibleCountryIsos]
+            .map((iso) => ({ iso, zone: countryZonesMap.get(iso)!, centroid: countryCentroids.get(iso)! }))
+            .filter((d) => d.zone && d.centroid && isVisible(d.centroid[0], d.centroid[1]))
+        : []
+
+      labelsGroup
+        .selectAll<SVGTextElement, CountryLabelDatum>('text.lbl-country')
+        .data(countryData, (d) => d.iso)
+        .join('text')
+        .attr('class', 'lbl-country')
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', projectionType === 'orthographic' ? '6' : '8')
+        .attr('font-family', 'sans-serif')
+        .attr('fill', LABEL_FILL)
+        .attr('transform', (d) => {
+          const c = projection(d.centroid)
+          if (!c) return 'translate(-9999,-9999)'
+          return `translate(${c[0]},${c[1]})`
+        })
+        .text((d) => d.zone.nameFR)
+    }
+
     function _renderAll() {
       renderCountryZones()
       renderGeoPoints()
       renderPoints()
       renderArcs()
+      renderLabels()
     }
 
     renderAll = _renderAll
