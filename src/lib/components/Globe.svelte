@@ -660,9 +660,27 @@
     const LABEL_FILL = theme === 'dark' ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)'
 
     function renderLabels() {
-      // City name labels — shown for every visible city dot while focused
+      // In country focus, only label cities that are arc endpoints (directly connected).
+      // Cities in the country with no arc connections get a dot but no label.
+      // In geo focus, all visible cities are already directly connected (focused city + arc neighbours).
+      const arcCityCoordStrs = new Set<string>()
+      if (focused?.kind === 'country') {
+        for (const arc of focused.arcData) {
+          if (arc.key.startsWith('geo:')) {
+            arcCityCoordStrs.add(coordKey(arc.from[1], arc.from[0]))
+            arcCityCoordStrs.add(coordKey(arc.to[1],   arc.to[0]))
+          }
+        }
+      }
+
       const cityData = focused && focused.visibleGeoCoordStrs.size > 0
-        ? cityPoints.filter((p) => focused!.visibleGeoCoordStrs.has(coordKey(p.lat, p.lon)) && isVisible(p.lon, p.lat))
+        ? cityPoints.filter((p) => {
+            if (!focused!.visibleGeoCoordStrs.has(coordKey(p.lat, p.lon))) return false
+            if (!isVisible(p.lon, p.lat)) return false
+            // Country focus: only arc-connected cities get a label
+            if (focused!.kind === 'country') return arcCityCoordStrs.has(coordKey(p.lat, p.lon))
+            return true
+          })
         : []
 
       labelsGroup
