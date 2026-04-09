@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
   import { initSearch, search, type SearchGroup, type SearchItem, type Dataset } from '$lib/search/index'
+  import { DATASET_KEYS, DATASET_LABELS, NOCODB_INTERNAL_FIELDS } from '$lib/config/datasets'
   import { scramble } from '$lib/actions/scramble'
   import Globe from '$lib/components/Globe.svelte'
   import ContinentView from '$lib/components/ContinentView.svelte'
@@ -10,31 +11,10 @@
 
   let { data }: { data: PageData } = $props()
 
-  const ORDER = [
-    'partenariats_mobilites',
-    'partenariats_hors_mobilites',
-    'pfe',
-    'pfe_france',
-    'memoires',
-    'p45',
-    'theses',
-  ]
-
-  const DATASET_LABELS: Record<string, string> = {
-    partenariats_mobilites: 'Partenariats — Mobilités',
-    partenariats_hors_mobilites: 'Partenariats — Hors mobilités',
-    pfe: 'PFE',
-    pfe_france: 'PFE France 2025',
-    memoires: 'Mémoires',
-    p45: 'P45',
-    theses: 'Thèses',
-  }
-
-  const SKIP_FIELDS = new Set(['Id', 'nc_order', 'CreatedAt', 'UpdatedAt'])
 
   const datasets = data.sourceError
-    ? ORDER.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const }))
-    : ORDER
+    ? DATASET_KEYS.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const }))
+    : DATASET_KEYS
         .map((key) => data.datasets.find((d) => d.key === key))
         .filter((d): d is (typeof data.datasets)[number] => d !== undefined)
         .map((d) => ({ ...d, error: false as const }))
@@ -108,7 +88,9 @@
     !data.sourceError ? (
       (data.datasets.find(d => d.key === 'memoires')?.count ?? 0) +
       (data.datasets.find(d => d.key === 'pfe_france')?.count ?? 0) +
-      (data.datasets.find(d => d.key === 'pfe')?.count ?? 0)
+      (data.datasets.find(d => d.key === 'pfe')?.count ?? 0) +
+      (data.datasets.find(d => d.key === 'p45')?.count ?? 0) +
+      (data.datasets.find(d => d.key === 'theses')?.count ?? 0)
     ) : 0
   )
 
@@ -235,7 +217,7 @@
 
   function recordEntries(record: Record<string, unknown>): [string, string][] {
     return Object.entries(record)
-      .filter(([k, v]) => !SKIP_FIELDS.has(k) && !k.startsWith('nc_') && v != null && v !== '')
+      .filter(([k, v]) => !NOCODB_INTERNAL_FIELDS.has(k) && !k.startsWith('nc_') && v != null && v !== '')
       .map(([k, v]) => [k, String(v)])
   }
 </script>
@@ -251,7 +233,7 @@
     {:else if projectionType === 'people'}
       <PeopleView personGroups={visiblePersonGroups} onselect={openItems} />
     {:else if projectionType === 'timeline'}
-      <TimelineView records={visibleTimelineRecords} onselect={openItems} />
+      <TimelineView records={data.timelineRecords} {hiddenDatasets} onselect={openItems} />
     {:else}
       {#key `${projectionType}-${theme}-${[...hiddenDatasets].sort().join(',')}`}
         <Globe points={visibleGlobePoints} geoPoints={visibleGeoPoints} countryZones={visibleCountryZones} {projectionType} {theme} onselect={openItems} onfocuschange={(v) => { globeFocused = v }} clearFocusTrigger={globeClearTrigger} />

@@ -1,16 +1,7 @@
 <script lang="ts">
   import type { PersonGroup } from '$lib/data/types'
   import type { SearchItem, Dataset } from '$lib/search/index'
-
-  const DATASET_LABELS: Record<string, string> = {
-    partenariats_mobilites: 'Partenariats — Mobilités',
-    partenariats_hors_mobilites: 'Partenariats — Hors mobilités',
-    pfe: 'PFE',
-    pfe_france: 'PFE France 2025',
-    memoires: 'Mémoires',
-    p45: 'P45',
-    theses: 'Thèses',
-  }
+  import { DATASET_LABELS } from '$lib/config/datasets'
 
   let { personGroups, onselect }: {
     personGroups: PersonGroup[]
@@ -204,7 +195,7 @@
                   onclick={() => openRecord(r, i, person.name)}
                   class="cursor-pointer text-left w-full text-xs text-gray-400 dark:text-gray-500 leading-tight line-clamp-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                 >
-                  <span class="text-gray-300 dark:text-gray-600">{DATASET_LABELS[r.dataset] ?? r.dataset}</span>
+                  <span class="text-gray-300 dark:text-gray-600">{DATASET_LABELS[r.dataset as keyof typeof DATASET_LABELS] ?? r.dataset}</span>
                   {' · '}{r.title}
                 </button>
               {/each}

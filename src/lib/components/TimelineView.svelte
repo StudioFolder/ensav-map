@@ -1,20 +1,20 @@
 <script lang="ts">
   import type { TimelineRecord } from '$lib/data/types'
   import type { SearchItem, Dataset } from '$lib/search/index'
+  import { DATASET_LABELS } from '$lib/config/datasets'
 
-  const DATASETS: Array<{ key: string; label: string }> = [
-    { key: 'memoires',   label: 'Mémoires' },
-    { key: 'pfe',        label: 'PFE' },
-    { key: 'pfe_france', label: 'PFE France 2025' },
-  ]
+  // The four datasets rendered in the timeline view (legend order)
+  const TIMELINE_KEYS = ['memoires', 'pfe', 'pfe_france', 'p45', 'theses'] as const
 
   const MONTHS_FR = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
 
   let {
     records,
+    hiddenDatasets,
     onselect,
   }: {
     records: TimelineRecord[]
+    hiddenDatasets: Set<string>
     onselect: (items: SearchItem[], label?: string) => void
   } = $props()
 
@@ -39,12 +39,16 @@
   )
 
   // Axis spans from the start of the earliest year to the end of the latest
+  // (accounting for span end dates, which may extend beyond the last start date)
   const minDate = $derived(
     sortedRecords.length > 0 ? Math.floor(sortedRecords[0].dateValue) : 2000
   )
-  const maxDate = $derived(
-    sortedRecords.length > 0 ? Math.floor(sortedRecords[sortedRecords.length - 1].dateValue) + 1 : 2025
-  )
+  const maxDate = $derived.by(() => {
+    if (sortedRecords.length === 0) return 2025
+    let max = sortedRecords[sortedRecords.length - 1].dateValue
+    for (const r of sortedRecords) if (r.endDateValue !== undefined) max = Math.max(max, r.endDateValue)
+    return Math.floor(max) + 1
+  })
 
   const svgWidth = $derived(Math.max(0, containerWidth - 2 * PADDING))
 
@@ -53,49 +57,65 @@
   }
 
   /**
-   * Global beeswarm: processes records in x order, placing each dot at the
-   * lowest y (closest to axis) that avoids collision with already-placed dots.
-   * Candidate y levels are 0 and tangency points from nearby dots, so the
-   * packing is exact rather than grid-quantised.
+   * Global beeswarm: processes records in x order, placing each item at the
+   * lowest y (closest to axis) that avoids collision with already-placed items.
+   * Span records (with endDateValue) render as horizontal pills; their full
+   * width is used for collision detection so later dots don't land inside them.
+   * Candidate y levels are 0 and tangency points from nearby items.
    */
-  const dotPositions = $derived.by(() => {
+  const placedItems = $derived.by(() => {
     if (svgWidth <= 0 || sortedRecords.length === 0) return []
 
-    const placed: Array<{ x: number; y: number; rec: TimelineRecord }> = []
+    const placed: Array<{ x: number; x2: number | undefined; y: number; rec: TimelineRecord }> = []
 
     for (const rec of sortedRecords) {
       const x = dateToX(rec.dateValue)
-      const nearby = placed.filter(p => Math.abs(p.x - x) < D)
+      const x2 = rec.endDateValue !== undefined ? dateToX(rec.endDateValue) : undefined
+
+      // A placed span [p.x, p.x2] is "nearby" if the new item's start x falls
+      // within the span's horizontal extent (plus D buffer). A placed point is
+      // nearby if it's within D of the new item's start x.
+      const nearby = placed.filter(p =>
+        p.x2 !== undefined
+          ? x >= p.x - D && x <= p.x2 + D
+          : Math.abs(p.x - x) < D
+      )
 
       if (nearby.length === 0) {
-        placed.push({ x, y: 0, rec })
+        placed.push({ x, x2, y: 0, rec })
         continue
       }
 
-      // Candidate y values: axis (0) and levels where a new dot would sit
-      // tangent on top of each nearby dot
+      // Candidate y values: axis (0) and tangency points above each nearby item.
+      // For a placed span, the effective horizontal distance from x to the span
+      // is 0 when x is inside [p.x, p.x2], and the gap to the nearest end otherwise.
       const yLevels = new Set<number>([0])
       for (const p of nearby) {
-        const dx = x - p.x, dx2 = dx * dx
-        if (dx2 < D2) yLevels.add(p.y + Math.sqrt(D2 - dx2))
+        const dx = p.x2 !== undefined
+          ? Math.max(0, p.x - x, x - p.x2)
+          : Math.abs(x - p.x)
+        if (dx < D) yLevels.add(p.y + Math.sqrt(D2 - dx * dx))
       }
 
       const bestY = [...yLevels]
         .filter(y => y >= 0)
         .sort((a, b) => a - b)
         .find(y => nearby.every(p => {
-          const dx = x - p.x, dy = y - p.y
+          const dx = p.x2 !== undefined
+            ? Math.max(0, p.x - x, x - p.x2)
+            : Math.abs(x - p.x)
+          const dy = y - p.y
           return dx * dx + dy * dy >= D2 - 0.001
         }))
         ?? nearby.length * D
 
-      placed.push({ x, y: bestY, rec })
+      placed.push({ x, x2, y: bestY, rec })
     }
 
     return placed
   })
 
-  const maxDotY = $derived(dotPositions.reduce((m, p) => Math.max(m, p.y), 0))
+  const maxDotY = $derived(placedItems.reduce((m, p) => Math.max(m, p.y), 0))
   const dotAreaHeight = $derived(maxDotY + DOT)
   const axisY = $derived(dotAreaHeight + AXIS_GAP)
   const svgHeight = $derived(axisY + MONTH_GAP + MONTH_HEIGHT + YEAR_GAP + YEAR_HEIGHT + 4)
@@ -117,12 +137,16 @@
   const showMonths = $derived(pixPerMonth >= 6)
 
   function dateLabel(rec: TimelineRecord): string {
-    if (rec.month) return `${MONTHS_FR[rec.month - 1]} ${rec.year}`
-    return String(rec.year)
+    const startLabel = rec.month ? `${MONTHS_FR[rec.month - 1]} ${rec.year}` : String(rec.year)
+    if (rec.endDateValue !== undefined) {
+      const endLabel = rec.endMonth ? `${MONTHS_FR[rec.endMonth - 1]} ${rec.endYear}` : String(rec.endYear)
+      return `${startLabel} → ${endLabel}`
+    }
+    return startLabel
   }
 
   function datasetLabel(key: string): string {
-    return DATASETS.find(d => d.key === key)?.label ?? key
+    return DATASET_LABELS[key as keyof typeof DATASET_LABELS] ?? key
   }
 
   let tooltip: { x: number; y: number; rec: TimelineRecord } | null = $state(null)
@@ -162,6 +186,18 @@
   :global(.dark) .dot-pfe_france { fill: rgb(251 146 60 / 0.65); }
   :global(.dark) .dot-pfe_france:hover { fill: rgb(251 146 60 / 1); }
 
+  /* P45 — green */
+  .dot-p45 { fill: rgb(22 163 74 / 0.6); cursor: pointer; transition: fill 100ms; }
+  .dot-p45:hover { fill: rgb(22 163 74 / 0.95); }
+  :global(.dark) .dot-p45 { fill: rgb(74 222 128 / 0.65); }
+  :global(.dark) .dot-p45:hover { fill: rgb(74 222 128 / 1); }
+
+  /* Thèses — purple */
+  .dot-theses { fill: rgb(147 51 234 / 0.6); cursor: pointer; transition: fill 100ms; }
+  .dot-theses:hover { fill: rgb(147 51 234 / 0.95); }
+  :global(.dark) .dot-theses { fill: rgb(192 132 252 / 0.65); }
+  :global(.dark) .dot-theses:hover { fill: rgb(192 132 252 / 1); }
+
   .axis-line { stroke: rgb(0 0 0 / 0.15); }
   :global(.dark) .axis-line { stroke: rgb(255 255 255 / 0.15); }
 
@@ -183,11 +219,15 @@
   :global(.dark) .legend-pfe        { background: rgb(96 165 250 / 0.65); }
   .legend-pfe_france { background: rgb(249 115 22 / 0.6); }
   :global(.dark) .legend-pfe_france { background: rgb(251 146 60 / 0.65); }
+  .legend-p45        { background: rgb(22 163 74 / 0.6); }
+  :global(.dark) .legend-p45        { background: rgb(74 222 128 / 0.65); }
+  .legend-theses     { background: rgb(147 51 234 / 0.6); }
+  :global(.dark) .legend-theses     { background: rgb(192 132 252 / 0.65); }
 </style>
 
 <div class="absolute inset-0 overflow-auto" bind:clientWidth={containerWidth}>
   <div class="min-w-full min-h-full flex items-center justify-center py-12">
-    {#if dotPositions.length > 0 && svgWidth > 0}
+    {#if placedItems.length > 0 && svgWidth > 0}
       <svg
         width={svgWidth}
         height={svgHeight}
@@ -225,23 +265,26 @@
           >{year}</text>
         {/each}
 
-        <!-- Dots -->
-        {#each dotPositions as { x, y, rec }}
-          <rect
-            class="dot-{rec.dataset}"
-            x={x - DOT / 2}
-            y={rectY(y)}
-            width={DOT}
-            height={DOT}
-            rx={DOT / 2}
-            aria-label={rec.label}
-            role="button"
-            tabindex="-1"
-            onmouseenter={(e) => showTooltip(e, rec)}
-            onmousemove={(e) => showTooltip(e, rec)}
-            onmouseleave={hideTooltip}
-            onclick={() => handleClick(rec)}
-          />
+        <!-- Dots and spans. Spans (with x2) render as pills; dots render as circles.
+             Axis and beeswarm use all records so toggling datasets never moves the layout. -->
+        {#each placedItems as { x, x2, y, rec }}
+          {#if !hiddenDatasets.has(rec.dataset)}
+            <rect
+              class="dot-{rec.dataset}"
+              x={x - DOT / 2}
+              y={rectY(y)}
+              width={x2 !== undefined ? x2 - x + DOT : DOT}
+              height={DOT}
+              rx={DOT / 2}
+              aria-label={rec.label}
+              role="button"
+              tabindex="-1"
+              onmouseenter={(e) => showTooltip(e, rec)}
+              onmousemove={(e) => showTooltip(e, rec)}
+              onmouseleave={hideTooltip}
+              onclick={() => handleClick(rec)}
+            />
+          {/if}
         {/each}
       </svg>
 
@@ -250,12 +293,12 @@
     {/if}
   </div>
 
-  {#if dotPositions.length > 0}
+  {#if placedItems.length > 0}
     <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400">
-      {#each DATASETS as ds}
+      {#each TIMELINE_KEYS as key}
         <div class="flex items-center gap-1.5">
-          <span class="legend-{ds.key} block shrink-0 w-2 h-2 rounded-full"></span>
-          <span>{ds.label}</span>
+          <span class="legend-{key} block shrink-0 w-2 h-2 rounded-full"></span>
+          <span>{DATASET_LABELS[key]}</span>
         </div>
       {/each}
     </div>

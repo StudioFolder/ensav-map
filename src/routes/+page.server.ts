@@ -9,8 +9,9 @@ import {
   fetchTheses,
 } from '$lib/data/api'
 import type { PageServerLoad } from './$types'
-import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup, ContinentRecord, PersonGroup, TimelineRecord, Memoire, Pfe, PfeFrance } from '$lib/data/types'
+import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup, ContinentRecord, PersonGroup, TimelineRecord, Memoire, Pfe, P45, PfeFrance, These } from '$lib/data/types'
 import type { SearchItem, Dataset } from '$lib/search/index'
+import { getDataset, type DatasetKey } from '$lib/config/datasets'
 import geoPointsCsv from '../../static/data/geo_points.csv?raw'
 import geoAreasCsv from '../../static/data/geo_areas.csv?raw'
 
@@ -38,29 +39,15 @@ function loadGeoPoints(): Omit<GeoPoint, 'titles'>[] {
   })
 }
 
-const DATASET_LOCATION_FIELDS: Record<string, string[]> = {
-  memoires:  ['City 1', 'City 2', 'City 3', 'City 4', 'Institution', 'Institution (full name)'],
-  pfe:       ['City 1', 'City 2', 'City 3', 'City 4', 'Institution', 'Institution (full name)'],
-  p45:       ['City 1', 'City 2', 'City 3', 'City 4', 'Institution'],
-  pfe_france: ['City'],
-  theses:    ['City 1', 'City 2', 'City 3', 'City 4', 'Institution'],
-}
-
-const DATASET_PERSON_FIELD: Record<string, string> = {
-  memoires:   'Student 1',
-  pfe:        'Student 1',
-  p45:        'Supervisor 1',
-  pfe_france: 'Student 1',
-  theses:     'Student 1',
-}
 
 function buildTitleMap(
   datasets: Array<{ rows: Record<string, unknown>[]; key: string }>
 ): Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>> {
   const map = new Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>>()
   for (const { rows, key } of datasets) {
-    const fields = DATASET_LOCATION_FIELDS[key] ?? []
-    const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
+    const dsConfig = getDataset(key as DatasetKey)
+    const fields = dsConfig.locationFields ?? []
+    const personField = dsConfig.personField ?? 'Student 1'
     for (const row of rows) {
       const title = String(row['Title'] ?? '')
       if (!title) continue
@@ -93,13 +80,6 @@ function parseGeoAreas(): {
   return { countries, continents }
 }
 
-const DATASET_COUNTRY_FIELDS: Record<string, string[]> = {
-  memoires:   ['Country 1', 'Country 2', 'Country 3', 'Country 4'],
-  pfe:        ['Country 1', 'Country 2', 'Country 3', 'Country 4'],
-  p45:        ['Country 1', 'Country 2', 'Country 3', 'Country 4'],
-  pfe_france: [],
-  theses:     ['Country 1', 'Country 2', 'Country 3', 'Country 4'],
-}
 
 function buildCountryZones(
   datasets: Array<{ rows: Record<string, unknown>[]; key: string }>,
@@ -109,9 +89,10 @@ function buildCountryZones(
   const byCountry = new Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>>()
 
   for (const { rows, key } of datasets) {
-    const locationFields = DATASET_LOCATION_FIELDS[key] ?? []
-    const countryFields = DATASET_COUNTRY_FIELDS[key] ?? []
-    const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
+    const dsConfig = getDataset(key as DatasetKey)
+    const locationFields = dsConfig.locationFields ?? []
+    const countryFields = dsConfig.countryFields ?? []
+    const personField = dsConfig.personField ?? 'Student 1'
 
     for (const row of rows) {
       const title = String(row['Title'] ?? '')
@@ -219,8 +200,9 @@ function buildContinentGroups(
   //   (c) the explicit Continent field, parsed with the "/" separator →
   //       contributes the continent with no country (lands in "Unknown")
   for (const { rows, key } of allDatasets) {
-    const personField = DATASET_PERSON_FIELD[key] ?? 'Student 1'
-    const countryFields = DATASET_COUNTRY_FIELDS[key] ?? []
+    const dsConfig = getDataset(key as DatasetKey)
+    const personField = dsConfig.personField ?? 'Student 1'
+    const countryFields = dsConfig.countryFields ?? []
     rows.forEach((row, index) => {
       const rowKey = `${key}|${row['Id'] ?? `idx${index}`}`
       // continent (FR) → set of country FR names attributable to that continent
@@ -384,8 +366,9 @@ function computeRecordStats(
   }
 
   for (const { rows, key } of allDatasets) {
-    const locationFields = DATASET_LOCATION_FIELDS[key] ?? []
-    const countryFields = DATASET_COUNTRY_FIELDS[key] ?? []
+    const dsConfig = getDataset(key as DatasetKey)
+    const locationFields = dsConfig.locationFields ?? []
+    const countryFields = dsConfig.countryFields ?? []
     for (const row of rows) {
       const title = String(row['Title'] ?? '')
       const recordKey = `${key}|${title}`
@@ -414,24 +397,23 @@ function computeRecordStats(
   return { visualised, noGeo, otherMissing, total: visualised + noGeo + otherMissing, noGeoItems, otherMissingItems }
 }
 
-const STUDENT_FIELDS = ['Student 1', 'Student 2', 'Student 3']
-const SUPERVISOR_FIELDS = ['Supervisor 1', 'Supervisor 2', 'Supervisor 3']
 
 function buildPersonGroups(
   allDatasets: Array<{ rows: Record<string, unknown>[]; key: string }>
 ): PersonGroup[] {
   const byName = new Map<string, PersonGroup['records']>()
   for (const { rows, key } of allDatasets) {
+    const dsConfig = getDataset(key as DatasetKey)
     for (const row of rows) {
       const title = String(row['Title'] ?? '')
       if (!title) continue
       // Collect names with their role; a name appearing in both keeps first role found
       const toAdd = new Map<string, 'student' | 'supervisor'>()
-      for (const field of STUDENT_FIELDS) {
+      for (const field of dsConfig.studentFields ?? []) {
         const v = row[field]
         if (typeof v === 'string' && v.trim() && !toAdd.has(v.trim())) toAdd.set(v.trim(), 'student')
       }
-      for (const field of SUPERVISOR_FIELDS) {
+      for (const field of dsConfig.supervisorFields ?? []) {
         const v = row[field]
         if (typeof v === 'string' && v.trim() && !toAdd.has(v.trim())) toAdd.set(v.trim(), 'supervisor')
       }
@@ -493,7 +475,7 @@ function parseDateValue(raw: string | null | undefined): { year: number; month?:
   return y !== null ? { year: y, dateValue: y + 0.5 } : null
 }
 
-function buildTimelineRecords(memoires: Memoire[], pfeFrance: PfeFrance[], pfe: Pfe[]): {
+function buildTimelineRecords(memoires: Memoire[], pfeFrance: PfeFrance[], pfe: Pfe[], p45: P45[], theses: These[]): {
   records: TimelineRecord[]
   missing: SearchItem[]
 } {
@@ -519,15 +501,67 @@ function buildTimelineRecords(memoires: Memoire[], pfeFrance: PfeFrance[], pfe: 
       missing.push({ id: `pfe_france|timeline|${row['Id']}`, dataset: 'pfe_france' as Dataset, label: title || '—', searchableText: '', record: row as unknown as Record<string, unknown> })
     }
   }
-  // PFE: month-precise positioning via start_date
+  // PFE: month-precise positioning via Start date; End date produces a span record
   for (const row of pfe) {
     const title = String(row['Title'] ?? '')
     const person = String(row['Student 1'] ?? '')
     const parsed = parseDateValue(row['Start date'])
     if (parsed !== null) {
-      records.push({ dateValue: parsed.dateValue, year: parsed.year, month: parsed.month, label: title || '—', dataset: 'pfe', person, record: row as unknown as Record<string, unknown> })
+      const endParsed = parseDateValue(row['End date'])
+      records.push({
+        dateValue: parsed.dateValue,
+        year: parsed.year,
+        month: parsed.month,
+        ...(endParsed !== null ? { endDateValue: endParsed.dateValue, endYear: endParsed.year, endMonth: endParsed.month } : {}),
+        label: title || '—',
+        dataset: 'pfe',
+        person,
+        record: row as unknown as Record<string, unknown>,
+      })
     } else {
       missing.push({ id: `pfe|timeline|${row['Id']}`, dataset: 'pfe' as Dataset, label: title || '—', searchableText: '', record: row as unknown as Record<string, unknown> })
+    }
+  }
+  // P45: same span logic as PFE — Start date + optional End date
+  for (const row of p45) {
+    const title = String(row['Title'] ?? '')
+    const person = String(row['Supervisor 1'] ?? '')
+    const parsed = parseDateValue(row['Start date'])
+    if (parsed !== null) {
+      const endParsed = parseDateValue(row['End date'])
+      records.push({
+        dateValue: parsed.dateValue,
+        year: parsed.year,
+        month: parsed.month,
+        ...(endParsed !== null ? { endDateValue: endParsed.dateValue, endYear: endParsed.year, endMonth: endParsed.month } : {}),
+        label: title || '—',
+        dataset: 'p45',
+        person,
+        record: row as unknown as Record<string, unknown>,
+      })
+    } else {
+      missing.push({ id: `p45|timeline|${row['Id']}`, dataset: 'p45' as Dataset, label: title || '—', searchableText: '', record: row as unknown as Record<string, unknown> })
+    }
+  }
+  // Theses: same span logic — Start date + optional End date
+  for (const row of theses) {
+    const title = String(row['Title'] ?? '')
+    const person = String(row['Student 1'] ?? '')
+    const parsed = parseDateValue(row['Start date'])
+    if (parsed !== null) {
+      const endParsed = parseDateValue(row['End date'])
+      records.push({
+        dateValue: parsed.dateValue,
+        year: parsed.year,
+        month: parsed.month,
+        ...(endParsed !== null ? { endDateValue: endParsed.dateValue, endYear: endParsed.year, endMonth: endParsed.month } : {}),
+        label: title || '—',
+        dataset: 'theses',
+        person,
+        record: row as unknown as Record<string, unknown>,
+      })
+    } else {
+      missing.push({ id: `theses|timeline|${row['Id']}`, dataset: 'theses' as Dataset, label: title || '—', searchableText: '', record: row as unknown as Record<string, unknown> })
     }
   }
   records.sort((a, b) => a.dateValue - b.dateValue)
@@ -583,7 +617,7 @@ export const load: PageServerLoad = async () => {
 
     const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
     const personGroups = buildPersonGroups(allDatasets)
-    const { records: timelineRecords, missing: timelineMissing } = buildTimelineRecords(memoires, pfeFrance, pfe)
+    const { records: timelineRecords, missing: timelineMissing } = buildTimelineRecords(memoires, pfeFrance, pfe, p45, theses)
 
     return { datasets, sourceError: false, globePoints, geoPoints, countryZones, continentGroups, continentMissing, continentUniqueShown, recordStats, personGroups, timelineRecords, timelineMissing }
   } catch {

@@ -16,16 +16,6 @@
     clearFocusTrigger?: number
   } = $props()
 
-  const DATASET_LABELS: Record<string, string> = {
-    partenariats_mobilites: 'Partenariats — Mobilités',
-    partenariats_hors_mobilites: 'Partenariats — Hors mobilités',
-    pfe: 'PFE',
-    pfe_france: 'PFE France 2025',
-    memoires: 'Mémoires',
-    p45: 'P45',
-    theses: 'Thèses',
-  }
-
   const COLORS = theme === 'dark'
     ? {
         globeOcean: '#484848',

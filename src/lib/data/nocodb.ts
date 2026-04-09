@@ -1,15 +1,7 @@
+export { TABLE_IDS } from '$lib/config/datasets'
+
 const PROJECT_ID = 'pnsjzr9v75ibh5v'
 const BASE_URL = 'https://nocodb.studiofolder.synology.me'
-
-export const TABLE_IDS = {
-  memoires: 'mt6j703j50c0jii',
-  pfe: 'myxjt6b6thw1w6h',
-  p45: 'm9uq4llif897juk',
-  partenariats_mobilites: 'mfwhde177w9pngp',
-  partenariats_hors_mobilites: 'mij6x105uwomp41',
-  pfe_france: 'm7tfs4aum2ohwo8',
-  theses: 'msh87e3y3cw8lf9',
-}
 
 async function nocoFetch(tableId: string, params: Record<string, string> = {}) {
   const query = new URLSearchParams(params).toString()

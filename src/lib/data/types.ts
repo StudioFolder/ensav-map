@@ -155,6 +155,7 @@ export interface Pfe {
   'Student 2': string | null
   'Student 3': string | null
   'Start date': string | null
+  'End date': string | null
 }
 
 export interface P45 {
@@ -163,6 +164,8 @@ export interface P45 {
   'Supervisor 1': string | null
   'Supervisor 2': string | null
   'Supervisor 3': string | null
+  'Start date': string | null
+  'End date': string | null
 }
 
 export interface PfeFrance {
@@ -180,6 +183,8 @@ export interface These {
   'Student 1': string | null
   'Student 2': string | null
   'Student 3': string | null
+  'Start date': string | null
+  'End date': string | null
 }
 
 export interface Partenariat {
@@ -268,9 +273,12 @@ export interface PersonGroup {
 }
 
 export interface TimelineRecord {
-  dateValue: number   // fractional year for x positioning, e.g. 2019.75 = Oct 2019
-  year: number        // integer year for display
-  month?: number      // 1–12, only present when the source has month precision
+  dateValue: number      // fractional year for x positioning, e.g. 2019.75 = Oct 2019
+  year: number           // integer year for display
+  month?: number         // 1–12, only present when the source has month precision
+  endDateValue?: number  // present only for span records (e.g. PFE with both Start and End date)
+  endYear?: number
+  endMonth?: number
   label: string
   dataset: string
   person: string

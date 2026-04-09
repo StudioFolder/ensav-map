@@ -1,18 +1,8 @@
 <script lang="ts">
   import type { ContinentGroup, ContinentRecord } from '$lib/data/types'
+  import { DATASET_LABELS } from '$lib/config/datasets'
 
   let { continentGroups }: { continentGroups: ContinentGroup[] } = $props()
-
-  // Mirrors the label map in +page.svelte / Globe — kept in sync manually
-  const DATASET_LABELS: Record<string, string> = {
-    partenariats_mobilites: 'Partenariats — Mobilités',
-    partenariats_hors_mobilites: 'Partenariats — Hors mobilités',
-    pfe: 'PFE',
-    pfe_france: 'PFE France 2025',
-    memoires: 'Mémoires',
-    p45: 'P45',
-    theses: 'Thèses',
-  }
 
   // Layout constants — must stay in sync with the Tailwind classes used for
   // dots below. 11 dots × 8px + 10 gaps × 4px = 128px = w-32, so each row
@@ -265,7 +255,7 @@
       style="left: {tooltip.x + 14}px; top: {tooltip.y - 10}px"
     >
       <div class="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">
-        {DATASET_LABELS[tooltip.rec.dataset] ?? tooltip.rec.dataset}
+        {DATASET_LABELS[tooltip.rec.dataset as keyof typeof DATASET_LABELS] ?? tooltip.rec.dataset}
       </div>
       <div class="font-semibold leading-snug">{tooltip.rec.label}</div>
       {#if secondary}
