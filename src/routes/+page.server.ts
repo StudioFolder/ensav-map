@@ -9,7 +9,7 @@ import {
   fetchTheses,
 } from '$lib/data/api'
 import type { PageServerLoad } from './$types'
-import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup, ContinentRecord } from '$lib/data/types'
+import type { Partenariat, GlobePoint, GeoPoint, CountryZone, ContinentGroup, ContinentRecord, PersonGroup } from '$lib/data/types'
 import type { SearchItem, Dataset } from '$lib/search/index'
 import geoPointsCsv from '../../static/data/geo_points.csv?raw'
 import geoAreasCsv from '../../static/data/geo_areas.csv?raw'
@@ -414,6 +414,42 @@ function computeRecordStats(
   return { visualised, noGeo, otherMissing, total: visualised + noGeo + otherMissing, noGeoItems, otherMissingItems }
 }
 
+const STUDENT_FIELDS = ['Student 1', 'Student 2', 'Student 3']
+const SUPERVISOR_FIELDS = ['Supervisor 1', 'Supervisor 2', 'Supervisor 3']
+
+function buildPersonGroups(
+  allDatasets: Array<{ rows: Record<string, unknown>[]; key: string }>
+): PersonGroup[] {
+  const byName = new Map<string, PersonGroup['records']>()
+  for (const { rows, key } of allDatasets) {
+    for (const row of rows) {
+      const title = String(row['Title'] ?? '')
+      if (!title) continue
+      // Collect names with their role; a name appearing in both keeps first role found
+      const toAdd = new Map<string, 'student' | 'supervisor'>()
+      for (const field of STUDENT_FIELDS) {
+        const v = row[field]
+        if (typeof v === 'string' && v.trim() && !toAdd.has(v.trim())) toAdd.set(v.trim(), 'student')
+      }
+      for (const field of SUPERVISOR_FIELDS) {
+        const v = row[field]
+        if (typeof v === 'string' && v.trim() && !toAdd.has(v.trim())) toAdd.set(v.trim(), 'supervisor')
+      }
+      for (const [name, role] of toAdd) {
+        if (!byName.has(name)) byName.set(name, [])
+        byName.get(name)!.push({ title, dataset: key, role, record: row })
+      }
+    }
+  }
+  return [...byName.entries()]
+    .map(([name, records]) => ({
+      name,
+      roles: new Set(records.map((r) => r.role)) as Set<'student' | 'supervisor'>,
+      records,
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'fr'))
+}
+
 function parseGlobePoints(rows: Partenariat[], type: GlobePoint['type']): GlobePoint[] {
   return rows.flatMap((row) => {
     const raw = row['Geographic coordinates']
@@ -483,8 +519,9 @@ export const load: PageServerLoad = async () => {
       buildContinentGroups(allDatasets, allPartenariats, geoPoints, geoAreas, continentEN)
 
     const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
+    const personGroups = buildPersonGroups(allDatasets)
 
-    return { datasets, sourceError: false, globePoints, geoPoints, countryZones, continentGroups, continentMissing, continentUniqueShown, recordStats }
+    return { datasets, sourceError: false, globePoints, geoPoints, countryZones, continentGroups, continentMissing, continentUniqueShown, recordStats, personGroups }
   } catch {
     return {
       datasets: [],
@@ -496,6 +533,7 @@ export const load: PageServerLoad = async () => {
       continentMissing: [],
       continentUniqueShown: 0,
       recordStats: { visualised: 0, noGeo: 0, otherMissing: 0, total: 0, noGeoItems: [], otherMissingItems: [] },
+      personGroups: [],
     }
   }
 }

@@ -254,6 +254,17 @@ export interface ContinentGroup {
   travauxRecords: ContinentRecord[]
 }
 
+export interface PersonGroup {
+  name: string
+  roles: Set<'student' | 'supervisor'>
+  records: Array<{
+    title: string
+    dataset: string
+    role: 'student' | 'supervisor'
+    record: Record<string, unknown>
+  }>
+}
+
 export interface Memoire {
   Id: number
   Type: string
