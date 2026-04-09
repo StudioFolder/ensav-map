@@ -272,7 +272,7 @@
             <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visibleTimelineRecords.length + visibleTimelineMissing.length}></span>
           </div>
           <div class="flex justify-between gap-6">
-            <span class="text-black/40 dark:text-white/40">Total (NocoDB)</span>
+            <span class="text-black/40 dark:text-white/40">Total travaux (NocoDB)</span>
             <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={timelineNocoDB}></span>
           </div>
         {:else if projectionType === 'continents'}
