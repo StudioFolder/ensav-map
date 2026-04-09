@@ -154,6 +154,7 @@ export interface Pfe {
   'Student 1': string | null
   'Student 2': string | null
   'Student 3': string | null
+  'Start date': string | null
 }
 
 export interface P45 {
@@ -170,6 +171,7 @@ export interface PfeFrance {
   'Student 1': string | null
   'Student 2': string | null
   'Student 3': string | null
+  'Publication year': string | null
 }
 
 export interface These {
@@ -263,6 +265,16 @@ export interface PersonGroup {
     role: 'student' | 'supervisor'
     record: Record<string, unknown>
   }>
+}
+
+export interface TimelineRecord {
+  dateValue: number   // fractional year for x positioning, e.g. 2019.75 = Oct 2019
+  year: number        // integer year for display
+  month?: number      // 1–12, only present when the source has month precision
+  label: string
+  dataset: string
+  person: string
+  record: Record<string, unknown>
 }
 
 export interface Memoire {

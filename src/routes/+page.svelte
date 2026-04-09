@@ -6,6 +6,7 @@
   import Globe from '$lib/components/Globe.svelte'
   import ContinentView from '$lib/components/ContinentView.svelte'
   import PeopleView from '$lib/components/PeopleView.svelte'
+  import TimelineView from '$lib/components/TimelineView.svelte'
 
   let { data }: { data: PageData } = $props()
 
@@ -50,7 +51,7 @@
       : 'light'
   )
 
-  let projectionType = $state<'orthographic' | 'naturalEarth' | 'continents' | 'people'>('orthographic')
+  let projectionType = $state<'orthographic' | 'naturalEarth' | 'continents' | 'people' | 'timeline'>('orthographic')
 
   let hiddenDatasets = $state(new Set<string>())
 
@@ -94,6 +95,21 @@
     data.personGroups
       .map(p => ({ ...p, records: p.records.filter(r => !hiddenDatasets.has(r.dataset)) }))
       .filter(p => p.records.length > 0)
+  )
+
+  // Timeline view — visible records (memoires only for now)
+  const visibleTimelineRecords = $derived(
+    data.timelineRecords.filter(r => !hiddenDatasets.has(r.dataset))
+  )
+  const visibleTimelineMissing = $derived(
+    data.timelineMissing.filter(r => !hiddenDatasets.has(r.dataset))
+  )
+  const timelineNocoDB = $derived(
+    !data.sourceError ? (
+      (data.datasets.find(d => d.key === 'memoires')?.count ?? 0) +
+      (data.datasets.find(d => d.key === 'pfe_france')?.count ?? 0) +
+      (data.datasets.find(d => d.key === 'pfe')?.count ?? 0)
+    ) : 0
   )
 
   // Continent view — visible totals
@@ -229,11 +245,13 @@
 <div class="flex h-screen overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- Globe — fills remaining horizontal space -->
-  <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#e5e5e5] dark:bg-[#3a3a3a]' : projectionType === 'people' ? 'bg-gray-50 dark:bg-gray-900' : 'bg-gray-200 dark:bg-gray-950'}">
+  <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#e5e5e5] dark:bg-[#3a3a3a]' : projectionType === 'people' || projectionType === 'timeline' ? 'bg-gray-50 dark:bg-gray-900' : 'bg-gray-200 dark:bg-gray-950'}">
     {#if projectionType === 'continents'}
       <ContinentView continentGroups={visibleContinentGroups} />
     {:else if projectionType === 'people'}
       <PeopleView personGroups={visiblePersonGroups} onselect={openItems} />
+    {:else if projectionType === 'timeline'}
+      <TimelineView records={visibleTimelineRecords} onselect={openItems} />
     {:else}
       {#key `${projectionType}-${theme}-${[...hiddenDatasets].sort().join(',')}`}
         <Globe points={visibleGlobePoints} geoPoints={visibleGeoPoints} countryZones={visibleCountryZones} {projectionType} {theme} onselect={openItems} onfocuschange={(v) => { globeFocused = v }} clearFocusTrigger={globeClearTrigger} />
@@ -254,7 +272,28 @@
     {:else if !data.sourceError && projectionType !== 'people'}
       {@const s = data.recordStats}
       <div class="absolute top-3 right-3 z-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
-        {#if projectionType === 'continents'}
+        {#if projectionType === 'timeline'}
+          <div class="flex justify-between gap-6">
+            <span class="text-black/40 dark:text-white/40">Shown</span>
+            <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visibleTimelineRecords.length}></span>
+          </div>
+          <button
+            type="button"
+            onclick={() => openItems(visibleTimelineMissing, 'No publication year')}
+            class="flex justify-between gap-6 w-full text-left group"
+          >
+            <span class="text-black/40 dark:text-white/40 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors">No year</span>
+            <span class="text-black/70 dark:text-white/70 group-hover:text-black/90 dark:group-hover:text-white/90 transition-colors" use:scramble={visibleTimelineMissing.length}></span>
+          </button>
+          <div class="flex justify-between gap-6 border-t border-black/10 dark:border-white/10 pt-1.5">
+            <span class="text-black/40 dark:text-white/40">Total</span>
+            <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visibleTimelineRecords.length + visibleTimelineMissing.length}></span>
+          </div>
+          <div class="flex justify-between gap-6">
+            <span class="text-black/40 dark:text-white/40">Total (NocoDB)</span>
+            <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={timelineNocoDB}></span>
+          </div>
+        {:else if projectionType === 'continents'}
           <div class="flex justify-between gap-6">
             <span class="text-black/40 dark:text-white/40">Shown</span>
             <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visibleTotalDots}></span>
@@ -336,6 +375,12 @@
         onclick={() => { projectionType = 'people' }}
         class="px-2.5 py-1 rounded transition-colors {projectionType === 'people' ? 'text-black/80 dark:text-white/80 font-medium' : 'text-black/30 dark:text-white/30 hover:text-black/50 dark:hover:text-white/50'}"
       >People</button>
+      <span class="text-black/20 dark:text-white/20">/</span>
+      <button
+        type="button"
+        onclick={() => { projectionType = 'timeline' }}
+        class="px-2.5 py-1 rounded transition-colors {projectionType === 'timeline' ? 'text-black/80 dark:text-white/80 font-medium' : 'text-black/30 dark:text-white/30 hover:text-black/50 dark:hover:text-white/50'}"
+      >Timeline</button>
     </div>
 
     {#if projectionType === 'people' && !data.sourceError}
