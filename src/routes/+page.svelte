@@ -205,6 +205,13 @@
     selectedGroupLabel = undefined
   }
 
+  let globeFocused = $state(false)
+  let globeClearTrigger = $state(0)
+
+  function clearGlobeFocus() {
+    globeClearTrigger += 1
+  }
+
   function onWindowKeydown(e: KeyboardEvent) {
     if (e.key === 'Escape') closeItem()
   }
@@ -229,11 +236,22 @@
       <PeopleView personGroups={visiblePersonGroups} onselect={openItems} />
     {:else}
       {#key `${projectionType}-${theme}-${[...hiddenDatasets].sort().join(',')}`}
-        <Globe points={visibleGlobePoints} geoPoints={visibleGeoPoints} countryZones={visibleCountryZones} {projectionType} {theme} onselect={openItems} />
+        <Globe points={visibleGlobePoints} geoPoints={visibleGeoPoints} countryZones={visibleCountryZones} {projectionType} {theme} onselect={openItems} onfocuschange={(v) => { globeFocused = v }} clearFocusTrigger={globeClearTrigger} />
       {/key}
     {/if}
 
-    {#if !data.sourceError && projectionType !== 'people'}
+    {#if globeFocused && (projectionType === 'orthographic' || projectionType === 'naturalEarth')}
+      <button
+        type="button"
+        onclick={clearGlobeFocus}
+        class="absolute top-3 right-3 z-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors flex items-center gap-1.5"
+      >
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+        Deselect
+      </button>
+    {:else if !data.sourceError && projectionType !== 'people'}
       {@const s = data.recordStats}
       <div class="absolute top-3 right-3 z-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
         {#if projectionType === 'continents'}
@@ -345,7 +363,7 @@
             <div>
               {#if selectedItems.length > 1 && selectedGroupLabel}
                 <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedGroupLabel}</h2>
-                <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{selectedItems.length} projects</p>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{selectedItems.length} records</p>
               {:else}
                 <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">
                   {DATASET_LABELS[selectedItems[0].dataset] ?? selectedItems[0].dataset}

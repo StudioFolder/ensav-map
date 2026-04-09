@@ -17,27 +17,111 @@
     onselect: (items: SearchItem[], groupLabel?: string) => void
   } = $props()
 
+  // Returns the last word of a name, used as the sort key (surname)
+  function surname(name: string): string {
+    const parts = name.trim().split(/\s+/)
+    return parts[parts.length - 1]
+  }
+
   const letterSections = $derived.by(() => {
+    const sorted = [...personGroups].sort((a, b) =>
+      surname(a.name).localeCompare(surname(b.name), 'fr', { sensitivity: 'base' })
+    )
     const map = new Map<string, PersonGroup[]>()
-    for (const p of personGroups) {
-      const letter = p.name.charAt(0).toUpperCase()
+    for (const p of sorted) {
+      const letter = surname(p.name).charAt(0).toUpperCase()
       if (!map.has(letter)) map.set(letter, [])
       map.get(letter)!.push(p)
     }
     return [...map.entries()].sort(([a], [b]) => a.localeCompare(b, 'fr'))
   })
 
-  function openPerson(person: PersonGroup) {
-    onselect(
-      person.records.map((r, i) => ({
-        id: `person-${person.name}-${i}`,
-        dataset: r.dataset as Dataset,
-        label: r.title,
-        searchableText: '',
-        record: r.record,
-      })),
-      person.name
-    )
+  let selectedPerson = $state<string | null>(null)
+  let lines = $state<Array<{x1: number; y1: number; x2: number; y2: number; stroke: string}>>([])
+
+  const rolesMap = $derived(new Map(personGroups.map(p => [p.name, p.roles])))
+  let wrapperEl = $state<HTMLElement | null>(null)
+
+  // Build a graph: person name → Set of names who share at least one record with them
+  const connectionMap = $derived.by(() => {
+    const byRecord = new Map<string, string[]>()
+    for (const person of personGroups) {
+      for (const r of person.records) {
+        const key = `${r.dataset}|${String(r.record['Id'] ?? r.title)}`
+        if (!byRecord.has(key)) byRecord.set(key, [])
+        byRecord.get(key)!.push(person.name)
+      }
+    }
+    const graph = new Map<string, Set<string>>()
+    for (const names of byRecord.values()) {
+      if (names.length < 2) continue
+      for (const n of names) {
+        if (!graph.has(n)) graph.set(n, new Set())
+        for (const m of names) {
+          if (m !== n) graph.get(n)!.add(m)
+        }
+      }
+    }
+    return graph
+  })
+
+  function selectPerson(e: MouseEvent, name: string) {
+    e.stopPropagation()
+    selectedPerson = selectedPerson === name ? null : name
+  }
+
+  $effect(() => {
+    if (!selectedPerson || !wrapperEl) { lines = []; return }
+
+    const fromEl = wrapperEl.querySelector<HTMLElement>(`[data-person-icon="${CSS.escape(selectedPerson)}"]`)
+    if (!fromEl) { lines = []; return }
+
+    const connected = connectionMap.get(selectedPerson) ?? new Set()
+    const wRect = wrapperEl.getBoundingClientRect()
+
+    function center(el: HTMLElement) {
+      const r = el.getBoundingClientRect()
+      return {
+        x: r.left + r.width / 2 - wRect.left,
+        y: r.top + r.height / 2 - wRect.top,
+      }
+    }
+
+    const from = center(fromEl)
+    const newLines: typeof lines = []
+    const R = 12 // px gap around each icon
+
+    for (const name of connected) {
+      const toEl = wrapperEl.querySelector<HTMLElement>(`[data-person-icon="${CSS.escape(name)}"]`)
+      if (!toEl) continue
+      const to = center(toEl)
+      const dx = to.x - from.x
+      const dy = to.y - from.y
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      if (dist === 0) continue
+      const nx = dx / dist
+      const ny = dy / dist
+      const roles = rolesMap.get(name)
+      const stroke = roles?.has('student') ? '#60a5fa' : '#fbbf24'
+      newLines.push({
+        x1: from.x + nx * R, y1: from.y + ny * R,
+        x2: to.x - nx * R,   y2: to.y - ny * R,
+        stroke,
+      })
+    }
+    lines = newLines
+  })
+
+  function personClass(name: string): string {
+    if (!selectedPerson) return ''
+    const connected = connectionMap.get(selectedPerson) ?? new Set()
+    if (name === selectedPerson || connected.has(name)) return ''
+    return 'opacity-15 pointer-events-none'
+  }
+
+  function nameHoverClass(roles: Set<'student' | 'supervisor'>): string {
+    if (roles.has('student')) return 'group-hover:text-blue-400 dark:group-hover:text-blue-500'
+    return 'group-hover:text-amber-400 dark:group-hover:text-amber-500'
   }
 
   function openRecord(r: PersonGroup['records'][number], idx: number, personName: string) {
@@ -51,59 +135,84 @@
   }
 </script>
 
-<div class="absolute inset-0 overflow-auto">
-  <div class="px-8 pt-20 pb-8" style="columns: 240px; column-gap: 1.5rem;">
-    {#each letterSections as [letter, persons]}
-      <div class="break-inside-avoid mb-1 mt-4 first:mt-0">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 pb-1 mb-2 border-b border-gray-200 dark:border-gray-800">
-          {letter}
-        </div>
-      </div>
-      {#each persons as person}
-        <div class="break-inside-avoid mb-3">
-          <button
-            type="button"
-            onclick={() => openPerson(person)}
-            class="text-left w-full group flex items-center gap-1.5"
-          >
-            <!-- Role icon -->
-            {#if person.roles.has('student') && person.roles.has('supervisor')}
-              <!-- Both roles: show both icons -->
-              <svg class="w-3 h-3 shrink-0 text-blue-400 dark:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
-              </svg>
-              <svg class="w-3 h-3 shrink-0 text-amber-400 dark:text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 1-4 4v14a3 3 0 0 0 3-3h7z"/>
-              </svg>
-            {:else if person.roles.has('supervisor')}
-              <!-- Supervisor: open book -->
-              <svg class="w-3 h-3 shrink-0 text-amber-400 dark:text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 1-4 4v14a3 3 0 0 0 3-3h7z"/>
-              </svg>
-            {:else}
-              <!-- Student: graduation cap -->
-              <svg class="w-3 h-3 shrink-0 text-blue-400 dark:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
-              </svg>
-            {/if}
-            <div class="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors leading-snug">
-              {person.name}
-            </div>
-          </button>
-          <div class="mt-0.5 space-y-0.5 pl-[18px]">
-            {#each person.records as r, i}
-              <button
-                type="button"
-                onclick={() => openRecord(r, i, person.name)}
-                class="cursor-pointer text-left w-full text-xs text-gray-400 dark:text-gray-500 leading-tight line-clamp-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-              >
-                <span class="text-gray-300 dark:text-gray-600">{DATASET_LABELS[r.dataset] ?? r.dataset}</span>
-                {' · '}{r.title}
-              </button>
-            {/each}
+<div
+  class="absolute inset-0 overflow-auto"
+  onclick={() => { selectedPerson = null }}
+>
+  <!-- relative wrapper stretches to match content; SVG is anchored here -->
+  <div class="relative" bind:this={wrapperEl}>
+
+    <!-- SVG lines overlay — covers full content area, pointer-events-none -->
+    {#if lines.length > 0}
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" aria-hidden="true">
+        {#each lines as line}
+          <line
+            x1={line.x1} y1={line.y1}
+            x2={line.x2} y2={line.y2}
+            stroke={line.stroke}
+            stroke-width="1"
+            opacity="0.5"
+          />
+        {/each}
+      </svg>
+    {/if}
+
+    <div class="px-8 pt-20 pb-8" style="columns: 240px; column-gap: 1.5rem;">
+      {#each letterSections as [letter, persons]}
+        <div class="break-inside-avoid mb-1 mt-4 first:mt-0">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 pb-1 mb-2 border-b border-gray-200 dark:border-gray-800">
+            {letter}
           </div>
         </div>
+        {#each persons as person}
+          <div class="break-inside-avoid mb-3 group transition-opacity duration-200 {personClass(person.name)}">
+            <button
+              type="button"
+              onclick={(e) => selectPerson(e, person.name)}
+              class="text-left w-full flex items-center gap-1.5"
+            >
+              <!-- Role icon — anchor for SVG lines -->
+              <span data-person-icon={person.name} class="flex items-center shrink-0">
+                {#if person.roles.has('student') && person.roles.has('supervisor')}
+                  <!-- Both roles: show both icons -->
+                  <svg class="w-3 h-3 text-blue-400 dark:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                  <svg class="w-3 h-3 text-amber-400 dark:text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 1-4 4v14a3 3 0 0 0 3-3h7z"/>
+                  </svg>
+                {:else if person.roles.has('supervisor')}
+                  <!-- Supervisor: open book -->
+                  <svg class="w-3 h-3 text-amber-400 dark:text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 1-4 4v14a3 3 0 0 0 3-3h7z"/>
+                  </svg>
+                {:else}
+                  <!-- Student: graduation cap -->
+                  <svg class="w-3 h-3 text-blue-400 dark:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                {/if}
+              </span>
+              <div class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-200 leading-snug {nameHoverClass(person.roles)}">
+                {person.name}
+              </div>
+            </button>
+            <div class="mt-0.5 space-y-0.5 pl-[18px]">
+              {#each person.records as r, i}
+                <button
+                  type="button"
+                  onclick={() => openRecord(r, i, person.name)}
+                  class="cursor-pointer text-left w-full text-xs text-gray-400 dark:text-gray-500 leading-tight line-clamp-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                >
+                  <span class="text-gray-300 dark:text-gray-600">{DATASET_LABELS[r.dataset] ?? r.dataset}</span>
+                  {' · '}{r.title}
+                </button>
+              {/each}
+            </div>
+          </div>
+        {/each}
       {/each}
-    {/each}
+    </div>
+
   </div>
 </div>

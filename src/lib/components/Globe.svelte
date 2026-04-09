@@ -1,25 +1,31 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, untrack } from 'svelte'
   import * as d3 from 'd3'
   import * as topojson from 'topojson-client'
   import type { GlobePoint, GeoPoint, CountryZone } from '$lib/data/types'
   import type { SearchItem } from '$lib/search/index'
 
-  let { points, geoPoints, countryZones, projectionType, theme, onselect }: {
+  let { points, geoPoints, countryZones, projectionType, theme, onselect, onfocuschange, clearFocusTrigger = 0 }: {
     points: GlobePoint[]
     geoPoints: GeoPoint[]
     countryZones: CountryZone[]
     projectionType: 'orthographic' | 'naturalEarth'
     theme: 'dark' | 'light'
     onselect: (items: SearchItem[], groupLabel?: string) => void
+    onfocuschange?: (hasFocus: boolean) => void
+    clearFocusTrigger?: number
   } = $props()
 
-  // Canvas palette — kept in sync with the app theme. The parent component
-  // re-mounts this component when `theme` changes (via {#key}), so reading it
-  // once here is enough; no reactivity needed inside onMount.
-  // Two ocean shades: the globe (orthographic) uses a slightly lighter tone
-  // so the sphere stands out against the canvas background, while the flat
-  // map keeps the darker/deeper tone that already matches the wrapper.
+  const DATASET_LABELS: Record<string, string> = {
+    partenariats_mobilites: 'Partenariats — Mobilités',
+    partenariats_hors_mobilites: 'Partenariats — Hors mobilités',
+    pfe: 'PFE',
+    pfe_france: 'PFE France 2025',
+    memoires: 'Mémoires',
+    p45: 'P45',
+    theses: 'Thèses',
+  }
+
   const COLORS = theme === 'dark'
     ? {
         globeOcean: '#484848',
@@ -34,8 +40,13 @@
         hoveredZoneStroke: 'rgba(255,255,255,0.65)',
         connectedZoneFill: 'rgba(255,255,255,0.10)',
         connectedZoneStroke: 'rgba(255,255,255,0.45)',
+        focusedZoneFill: 'rgba(255,255,255,0.22)',
+        focusedZoneStroke: 'rgba(255,255,255,0.80)',
+        connectedFocusedZoneFill: 'rgba(255,255,255,0.12)',
+        connectedFocusedZoneStroke: 'rgba(255,255,255,0.50)',
         baseArc: 'rgba(255,255,255,0.07)',
         hoveredArc: 'rgba(255,255,255,0.75)',
+        focusedArc: 'rgba(255,255,255,0.45)',
       }
     : {
         globeOcean: '#f2f2f2',
@@ -50,11 +61,76 @@
         hoveredZoneStroke: 'rgba(0,0,0,0.7)',
         connectedZoneFill: 'rgba(0,0,0,0.10)',
         connectedZoneStroke: 'rgba(0,0,0,0.45)',
+        focusedZoneFill: 'rgba(0,0,0,0.22)',
+        focusedZoneStroke: 'rgba(0,0,0,0.85)',
+        connectedFocusedZoneFill: 'rgba(0,0,0,0.10)',
+        connectedFocusedZoneStroke: 'rgba(0,0,0,0.50)',
         baseArc: 'rgba(0,0,0,0.10)',
         hoveredArc: 'rgba(0,0,0,0.75)',
+        focusedArc: 'rgba(0,0,0,0.45)',
       }
 
+  // Arc type — defined outside onMount so it can be referenced in FocusedState
+  type ArcDatum = { from: [number, number]; to: [number, number]; key: string; key2?: string }
+
+  type FocusKind = 'country' | 'geo' | 'partenariat'
+
+  // Precomputed at click time — drives both D3 rendering and the Svelte bottom panel
+  interface FocusedState {
+    key: string
+    kind: FocusKind
+    label: string
+    sublabel?: string
+    count: number                      // total records to display
+    // Data to pass to onselect when the "Open" button is clicked
+    selectItems: SearchItem[]
+    selectLabel?: string
+    // Sets of what should remain visible (precomputed so render fns are fast)
+    visibleGeoCoordStrs: Set<string>   // coordKey strings of visible geo city dots
+    visibleCountryIsos: Set<string>    // ISO numerics of visible country zones
+    visibleCountryNames: Set<string>   // FR + EN names for partenariat / geoPoint country matching
+    arcData: ArcDatum[]               // arcs to render while focused
+  }
+
   let svgEl: SVGSVGElement
+  let rootEl: HTMLDivElement
+  let focused = $state<FocusedState | null>(null)
+  let renderAll: (() => void) | null = null
+
+  // Notify parent when focus state changes
+  $effect(() => {
+    onfocuschange?.(focused !== null)
+  })
+
+  // Allow parent to clear focus (e.g. via a close button outside the canvas)
+  $effect(() => {
+    if (clearFocusTrigger > 0) {
+      untrack(() => { focused = null; renderAll?.() })
+    }
+  })
+
+  // Keyboard + outside-click handlers — set up once, no reactive re-subscriptions
+  $effect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') untrack(() => { if (focused) { focused = null; renderAll?.() } })
+    }
+    function onDocumentClick(e: MouseEvent) {
+      untrack(() => {
+        if (!focused) return
+        if (rootEl && !rootEl.contains(e.target as Node)) {
+          focused = null
+          renderAll?.()
+        }
+      })
+    }
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('click', onDocumentClick)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('click', onDocumentClick)
+    }
+  })
+
   type TooltipData =
     | { kind: 'globe'; x: number; y: number; point: GlobePoint }
     | { kind: 'geo'; x: number; y: number; point: GeoPoint }
@@ -63,14 +139,11 @@
 
   const SIZE = 600
   const RADIUS = 288
-
-  // Natural Earth uses a wider viewport to match the projection's ~2:1 aspect ratio
   const viewW = projectionType === 'naturalEarth' ? SIZE * 2 : SIZE
   const viewH = SIZE
 
   const trianglePath = d3.symbol().type(d3.symbolTriangle).size(10)()!
 
-  // Institutions are represented by partenariat triangles — exclude them from the circle layer
   const cityPoints = geoPoints.filter((p) => p.type !== 'institution')
 
   const maxCount = Math.max(1, ...cityPoints.map((p) => p.titles.length))
@@ -104,56 +177,45 @@
     const pathGen = d3.geoPath().projection(projection)
     const svg = d3.select(svgEl)
 
-    // Background
+    // Background (ocean / map rect) — clicking clears focus
     if (projectionType === 'naturalEarth') {
-      svg.append('rect').attr('x', 0).attr('y', 0).attr('width', viewW).attr('height', viewH).attr('fill', COLORS.mapOcean)
+      svg.append('rect').attr('x', 0).attr('y', 0).attr('width', viewW).attr('height', viewH)
+        .attr('fill', COLORS.mapOcean)
+        .on('click', () => { if (focused) { focused = null; _renderAll() } })
     } else {
-      svg
-        .append('circle')
-        .attr('class', 'ocean')
-        .attr('cx', SIZE / 2)
-        .attr('cy', SIZE / 2)
-        .attr('r', RADIUS)
+      svg.append('circle').attr('class', 'ocean')
+        .attr('cx', SIZE / 2).attr('cy', SIZE / 2).attr('r', RADIUS)
         .attr('fill', COLORS.globeOcean)
+        .on('click', () => { if (focused) { focused = null; _renderAll() } })
     }
 
-    // Land
-    svg
-      .append('path')
-      .attr('class', 'land')
+    // Land — clicking clears focus
+    svg.append('path').attr('class', 'land')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .datum(land as any)
-      .attr('fill', COLORS.land)
-      .attr('stroke', 'none')
+      .attr('fill', COLORS.land).attr('stroke', 'none')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .attr('d', pathGen as any)
+      .on('click', () => { if (focused) { focused = null; _renderAll() } })
 
-    // Country zone fills — above land, below arcs and markers
     const countryGroup = svg.append('g').attr('class', 'country-zones')
-    // Arc group sits between land and data points so arcs appear behind markers
     const arcGroup = svg.append('g').attr('class', 'arcs')
-    // Travaux circles rendered below partenariat triangles
     const geoGroup = svg.append('g').attr('class', 'geo-points')
     const pointsGroup = svg.append('g').attr('class', 'points')
 
-    // Build lookup: isoNumeric → CountryZone
+    // Lookup: isoNumeric → CountryZone
     const countryZonesMap = new Map<string, CountryZone>()
-    for (const zone of countryZones) {
-      countryZonesMap.set(zone.isoNumeric, zone)
-    }
+    for (const zone of countryZones) countryZonesMap.set(zone.isoNumeric, zone)
 
-    // Name → [lon, lat] lookup for resolving city fields to coordinates
+    // Name → [lon, lat] for arc lookups
     const coordsByName = new Map<string, [number, number]>()
-    for (const p of geoPoints) {
-      coordsByName.set(p.name, [p.lon, p.lat])
-    }
+    for (const p of geoPoints) coordsByName.set(p.name, [p.lon, p.lat])
 
-    // Compute all arcs upfront — one arc per city-to-city connection across all records
-    type ArcDatum = { from: [number, number]; to: [number, number]; key: string; key2?: string }
+    // City-to-city arcs. Key = "geo:lat,lon" of FROM city.
     const allArcs: ArcDatum[] = []
     for (const d of cityPoints) {
       const from: [number, number] = [d.lon, d.lat]
-      const key = `${d.lat},${d.lon}`
+      const key = `geo:${d.lat},${d.lon}`
       const seen = new Set<string>()
       for (const t of d.titles) {
         for (const field of ['City 1', 'City 2', 'City 3', 'City 4']) {
@@ -167,17 +229,16 @@
       }
     }
 
-    // Compute centroids for country zone features
+    // Country centroids for zoom target
     const countryCentroids = new Map<string, [number, number]>()
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     for (const feature of (countriesFeature as any).features) {
       const id = feature.id !== undefined ? String(feature.id) : undefined
-      if (id && countryZonesMap.has(id)) {
+      if (id && countryZonesMap.has(id))
         countryCentroids.set(id, d3.geoCentroid(feature) as [number, number])
-      }
     }
 
-    // Build country-to-country arcs for records that span multiple countries
+    // Country-to-country arcs (multi-country records)
     const titleToIsos = new Map<string, string[]>()
     for (const zone of countryZones) {
       for (const t of zone.titles) {
@@ -206,22 +267,134 @@
       }
     }
 
-    // Country zones — filled country shapes for country-only records
+    // ---------------------------------------------------------------------------
+    // Focus helpers — precompute visibility at click time
+    // ---------------------------------------------------------------------------
+
+    function buildGeoFocus(d: GeoPoint): Pick<FocusedState, 'visibleGeoCoordStrs' | 'visibleCountryIsos' | 'visibleCountryNames' | 'arcData'> {
+      const myCoordStr = coordKey(d.lat, d.lon)
+      const visibleGeoCoordStrs = new Set([myCoordStr])
+      const focusedArcs: ArcDatum[] = []
+      for (const arc of allArcs) {
+        if (!arc.key.startsWith('geo:')) continue
+        const fromStr = coordKey(arc.from[1], arc.from[0])
+        const toStr   = coordKey(arc.to[1],   arc.to[0])
+        if (fromStr === myCoordStr) { visibleGeoCoordStrs.add(toStr);   focusedArcs.push(arc) }
+        else if (toStr === myCoordStr) { visibleGeoCoordStrs.add(fromStr); focusedArcs.push(arc) }
+      }
+      return { visibleGeoCoordStrs, visibleCountryIsos: new Set(), visibleCountryNames: new Set(), arcData: focusedArcs }
+    }
+
+    function buildCountryFocus(zone: CountryZone): Pick<FocusedState, 'visibleGeoCoordStrs' | 'visibleCountryIsos' | 'visibleCountryNames' | 'arcData'> {
+      const visibleIsos = new Set([zone.isoNumeric, ...(countryConnections.get(zone.isoNumeric) ?? [])])
+
+      // Build a set of all country names (FR + EN) for the visible ISO set
+      // — used to match GeoPoint.country and GlobePoint.country (string fields whose language is unknown)
+      const visibleCountryNames = new Set<string>()
+      for (const iso of visibleIsos) {
+        const z = countryZonesMap.get(iso)
+        if (z) { visibleCountryNames.add(z.nameFR); visibleCountryNames.add(z.nameEN) }
+      }
+
+      // City dots in visible countries (focused + directly connected)
+      const visibleGeoCoordStrs = new Set<string>()
+      for (const p of cityPoints) {
+        if (visibleCountryNames.has(p.country))
+          visibleGeoCoordStrs.add(coordKey(p.lat, p.lon))
+      }
+
+      // City dots in the focused country only — used to enforce first-level arc constraint
+      const focusedCountryNames = new Set([zone.nameFR, zone.nameEN])
+      const focusedCountryGeoCoordStrs = new Set<string>()
+      for (const p of cityPoints) {
+        if (focusedCountryNames.has(p.country))
+          focusedCountryGeoCoordStrs.add(coordKey(p.lat, p.lon))
+      }
+
+      // Arcs — first-level only:
+      // • geo arcs: both endpoints visible AND at least one in the focused country
+      // • country arcs: the focused country must be one of the two endpoints
+      const focusedArcs = allArcs.filter((arc) => {
+        if (arc.key.startsWith('geo:')) {
+          const fromStr = coordKey(arc.from[1], arc.from[0])
+          const toStr   = coordKey(arc.to[1],   arc.to[0])
+          return visibleGeoCoordStrs.has(fromStr) &&
+                 visibleGeoCoordStrs.has(toStr) &&
+                 (focusedCountryGeoCoordStrs.has(fromStr) || focusedCountryGeoCoordStrs.has(toStr))
+        }
+        if (arc.key.startsWith('country:')) {
+          const iso1 = arc.key.replace('country:', '')
+          const iso2 = arc.key2?.replace('country:', '') ?? ''
+          return iso1 === zone.isoNumeric || iso2 === zone.isoNumeric
+        }
+        return false
+      })
+
+      return { visibleGeoCoordStrs, visibleCountryIsos: visibleIsos, visibleCountryNames, arcData: focusedArcs }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Animate globe rotation to centre on [lon, lat]
+    // ---------------------------------------------------------------------------
+
+    function animateToPoint(lon: number, lat: number) {
+      if (projectionType !== 'orthographic') { _renderAll(); return }
+      const currentRotate = projection.rotate() as [number, number, number]
+      const targetRotate: [number, number, number] = [-lon, -lat, currentRotate[2]]
+      d3.transition()
+        .duration(750)
+        .ease(d3.easeCubicInOut)
+        .tween('rotate', () => {
+          const r = d3.interpolate(currentRotate, targetRotate)
+          return (t: number) => {
+            projection.rotate(r(t))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            svg.select('.land').attr('d', pathGen as any)
+            svg.select('.ocean').attr('r', projection.scale())
+            renderCountryZones()
+            renderGeoPoints()
+            renderPoints()
+            renderArcs()
+          }
+        })
+    }
+
+    // ---------------------------------------------------------------------------
+    // Hover state (disabled while focused)
+    // ---------------------------------------------------------------------------
+
+    let hoveredKey: string | null = null
+    let hoveredIso: string | null = null
+
+    // ---------------------------------------------------------------------------
+    // Render: country zones
+    // ---------------------------------------------------------------------------
+
     function renderCountryZones() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const filteredFeatures = (countriesFeature as any).features.filter(
+      const allZoneFeatures = (countriesFeature as any).features.filter(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (f: any) => f.id !== undefined && countryZonesMap.has(String(f.id))
       )
 
+      // When focused on a country, restrict to the visible ISO set
+      const features = focused?.kind === 'country'
+        ? allZoneFeatures.filter((f: any) => focused!.visibleCountryIsos.has(String(f.id)))
+        : focused
+          ? []  // geo / partenariat focus → hide all country zones
+          : allZoneFeatures
+
       countryGroup
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .selectAll<SVGPathElement, any>('path')
-        .data(filteredFeatures, (d: any) => d.id)
+        .data(features, (d: any) => d.id)
         .join('path')
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('fill', (d: any) => {
           const id = String(d.id)
+          if (focused?.kind === 'country') {
+            return focused.key === `country:${id}` ? COLORS.focusedZoneFill : COLORS.connectedFocusedZoneFill
+          }
           if (id === hoveredIso) return COLORS.hoveredZoneFill
           if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return COLORS.connectedZoneFill
           return COLORS.baseZoneFill
@@ -229,6 +402,9 @@
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('stroke', (d: any) => {
           const id = String(d.id)
+          if (focused?.kind === 'country') {
+            return focused.key === `country:${id}` ? COLORS.focusedZoneStroke : COLORS.connectedFocusedZoneStroke
+          }
           if (id === hoveredIso) return COLORS.hoveredZoneStroke
           if (hoveredIso && countryConnections.get(hoveredIso)?.has(id)) return COLORS.connectedZoneStroke
           return COLORS.baseZoneStroke
@@ -242,57 +418,69 @@
           const zone = countryZonesMap.get(String(d.id))
           if (!zone) return
           tooltip = { kind: 'country', x: event.clientX, y: event.clientY, zone }
-          const newKey = `country:${zone.isoNumeric}`
-          if (hoveredKey !== newKey) {
-            hoveredKey = newKey
-            hoveredIso = String(d.id)
-            renderCountryZones()
-            renderArcs()
+          if (!focused) {
+            const newKey = `country:${zone.isoNumeric}`
+            if (hoveredKey !== newKey) {
+              hoveredKey = newKey; hoveredIso = String(d.id)
+              renderCountryZones(); renderArcs()
+            }
           }
         })
         .on('mouseout', () => {
           tooltip = null
-          hoveredKey = null
-          hoveredIso = null
-          renderCountryZones()
-          renderArcs()
+          if (!focused) {
+            hoveredKey = null; hoveredIso = null
+            renderCountryZones(); renderArcs()
+          }
         })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .on('click', (_event: MouseEvent, d: any) => {
+        .on('click', (event: MouseEvent, d: any) => {
+          event.stopPropagation()
           const zone = countryZonesMap.get(String(d.id))
           if (!zone || !zone.titles.length) return
-          onselect(
-            zone.titles.map((t, i) => ({
+          tooltip = null; hoveredKey = null; hoveredIso = null
+          focused = {
+            key: `country:${zone.isoNumeric}`,
+            kind: 'country',
+            label: zone.nameFR,
+            sublabel: zone.nameEN !== zone.nameFR ? zone.nameEN : undefined,
+            count: zone.titles.length,
+            selectItems: zone.titles.map((t, i) => ({
               id: `country-${zone.isoNumeric}-${i}`,
               dataset: t.dataset as import('$lib/search/index').Dataset,
-              label: t.title,
-              searchableText: '',
-              record: t.record,
+              label: t.title, searchableText: '', record: t.record,
             })),
-            zone.nameFR
-          )
+            selectLabel: zone.nameFR,
+            ...buildCountryFocus(zone),
+          }
+          const centroid = countryCentroids.get(zone.isoNumeric)
+          if (centroid) animateToPoint(centroid[0], centroid[1])
+          else _renderAll()
         })
     }
 
-    // Which geo_point/country is currently hovered — arcs become brighter, country fill appears
-    let hoveredKey: string | null = null
-    let hoveredIso: string | null = null
+    // ---------------------------------------------------------------------------
+    // Render: arcs
+    // ---------------------------------------------------------------------------
 
     function renderArcs() {
+      const arcsData = focused ? focused.arcData : allArcs
       arcGroup
         .selectAll<SVGPathElement, ArcDatum>('path')
-        .data(allArcs)
+        .data(arcsData)
         .join('path')
         .attr('fill', 'none')
-        .attr('stroke', (d) => (d.key === hoveredKey || d.key2 === hoveredKey) ? COLORS.hoveredArc : COLORS.baseArc)
-        .attr('stroke-width', (d) => (d.key === hoveredKey || d.key2 === hoveredKey) ? 1 : 0.5)
+        .attr('stroke', (d) => {
+          if (focused) return COLORS.focusedArc
+          return (d.key === hoveredKey || d.key2 === hoveredKey) ? COLORS.hoveredArc : COLORS.baseArc
+        })
+        .attr('stroke-width', (d) => {
+          if (focused) return 0.7
+          return (d.key === hoveredKey || d.key2 === hoveredKey) ? 1 : 0.5
+        })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .attr('d', ({ from, to }) => {
           if (!isVisible(from[0], from[1])) return ''
-          // If the longitude difference exceeds 180° the shorter great circle crosses
-          // the antimeridian and gets split. Use the full lonDiff to travel the "long
-          // way" instead — linearly interpolating through N points so geoPath draws a
-          // smooth continuous curve that never touches ±180°.
           const lonDiff = to[0] - from[0]
           let coords: [number, number][]
           if (Math.abs(lonDiff) > 180 && projectionType === 'naturalEarth') {
@@ -315,37 +503,60 @@
       return d3.geoDistance([lon, lat], center) <= Math.PI / 2
     }
 
-    // Travaux — proportional circles
+    // ---------------------------------------------------------------------------
+    // Render: travaux city dots
+    // ---------------------------------------------------------------------------
+
     function renderGeoPoints() {
+      let visibleCityPoints: GeoPoint[]
+      if (!focused) {
+        visibleCityPoints = cityPoints
+      } else if (focused.kind === 'geo') {
+        visibleCityPoints = cityPoints.filter(
+          (p) => focused!.visibleGeoCoordStrs.has(coordKey(p.lat, p.lon))
+        )
+      } else if (focused.kind === 'country') {
+        visibleCityPoints = cityPoints.filter(
+          (p) => focused!.visibleGeoCoordStrs.has(coordKey(p.lat, p.lon))
+        )
+      } else {
+        visibleCityPoints = []  // partenariat focused
+      }
+
       const groups = geoGroup
         .selectAll<SVGGElement, GeoPoint>('g')
-        .data(cityPoints, (d) => `${d.lat},${d.lon}`)
+        .data(visibleCityPoints, (d) => `${d.lat},${d.lon}`)
         .join(
           (enter) => {
             const g = enter.append('g')
               .attr('cursor', 'pointer')
               .on('mousemove', (event: MouseEvent, d) => {
                 tooltip = { kind: 'geo', x: event.clientX, y: event.clientY, point: d }
-                hoveredKey = `${d.lat},${d.lon}`
-                renderArcs()
+                if (!focused) { hoveredKey = `geo:${d.lat},${d.lon}`; renderArcs() }
               })
               .on('mouseout', () => {
                 tooltip = null
-                hoveredKey = null
-                renderArcs()
+                if (!focused) { hoveredKey = null; renderArcs() }
               })
-              .on('click', (_event: MouseEvent, d) => {
+              .on('click', (event: MouseEvent, d) => {
+                event.stopPropagation()
                 if (!d.titles.length) return
-                onselect(
-                  d.titles.map((t, i) => ({
+                tooltip = null; hoveredKey = null
+                focused = {
+                  key: `geo:${d.lat},${d.lon}`,
+                  kind: 'geo',
+                  label: d.name,
+                  sublabel: d.country || undefined,
+                  count: d.titles.length,
+                  selectItems: d.titles.map((t, i) => ({
                     id: `geo-${d.lat}-${d.lon}-${i}`,
                     dataset: t.dataset as import('$lib/search/index').Dataset,
-                    label: t.title,
-                    searchableText: '',
-                    record: t.record,
+                    label: t.title, searchableText: '', record: t.record,
                   })),
-                  d.titles.length > 1 ? d.name : undefined
-                )
+                  selectLabel: d.titles.length > 1 ? d.name : undefined,
+                  ...buildGeoFocus(d),
+                }
+                animateToPoint(d.lon, d.lat)
               })
             g.append('circle').attr('class', 'hit').attr('fill', 'transparent').attr('stroke', 'none')
             g.append('circle').attr('class', 'visual')
@@ -373,11 +584,26 @@
         })
     }
 
-    // Partenariats — triangles
+    // ---------------------------------------------------------------------------
+    // Render: partenariat triangles
+    // ---------------------------------------------------------------------------
+
     function renderPoints() {
+      let visiblePoints: GlobePoint[]
+      if (!focused) {
+        visiblePoints = points
+      } else if (focused.kind === 'partenariat') {
+        visiblePoints = points.filter((p) => `partenariat:${coordKey(p.lat, p.lon)}` === focused!.key)
+      } else if (focused.kind === 'country') {
+        // Show partenariats in the focused / connected countries
+        visiblePoints = points.filter((p) => focused!.visibleCountryNames.has(p.country))
+      } else {
+        visiblePoints = []  // geo focused
+      }
+
       const groups = pointsGroup
         .selectAll<SVGGElement, GlobePoint>('g')
-        .data(points, (d) => `${d.type}:${d.lat},${d.lon}`)
+        .data(visiblePoints, (d) => `${d.type}:${d.lat},${d.lon}`)
         .join(
           (enter) => {
             const g = enter.append('g')
@@ -386,14 +612,24 @@
                 tooltip = { kind: 'globe', x: event.clientX, y: event.clientY, point: d }
               })
               .on('mouseout', () => { tooltip = null })
-              .on('click', (_event: MouseEvent, d) => {
-                onselect([{
-                  id: `partenariat-${d.lat}-${d.lon}`,
-                  dataset: (d.type === 'mobilites' ? 'partenariats_mobilites' : 'partenariats_hors_mobilites') as import('$lib/search/index').Dataset,
+              .on('click', (event: MouseEvent, d) => {
+                event.stopPropagation()
+                tooltip = null
+                const dataset = (d.type === 'mobilites' ? 'partenariats_mobilites' : 'partenariats_hors_mobilites') as import('$lib/search/index').Dataset
+                focused = {
+                  key: `partenariat:${coordKey(d.lat, d.lon)}`,
+                  kind: 'partenariat',
                   label: d.institution,
-                  searchableText: '',
-                  record: d.record,
-                }])
+                  sublabel: [d.city, d.country].filter(Boolean).join(', ') || undefined,
+                  count: 1,
+                  selectItems: [{ id: `partenariat-${d.lat}-${d.lon}`, dataset, label: d.institution, searchableText: '', record: d.record }],
+                  selectLabel: undefined,
+                  visibleGeoCoordStrs: new Set(),
+                  visibleCountryIsos: new Set(),
+                  visibleCountryNames: new Set(),
+                  arcData: [],
+                }
+                animateToPoint(d.lon, d.lat)
               })
             g.append('circle').attr('r', 4).attr('fill', 'transparent').attr('stroke', 'none')
             g.append('path').attr('d', trianglePath)
@@ -415,13 +651,26 @@
         })
     }
 
+    function _renderAll() {
+      renderCountryZones()
+      renderGeoPoints()
+      renderPoints()
+      renderArcs()
+    }
+
+    renderAll = _renderAll
+
+    // Clicking anywhere on the SVG that isn't a named element (e.g. the gray
+    // area around the sphere in orthographic mode) clears focus. Marker click
+    // handlers call stopPropagation so they never reach here.
+    svg.on('click', () => { if (focused) { focused = null; _renderAll() } })
+
     renderCountryZones()
     renderGeoPoints()
     renderPoints()
     renderArcs()
 
     if (projectionType === 'orthographic') {
-      // Scroll to zoom
       svgEl.addEventListener('wheel', (event) => {
         event.preventDefault()
         const current = projection.scale()
@@ -430,24 +679,17 @@
         svg.select('.ocean').attr('r', next)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         svg.select('.land').attr('d', pathGen as any)
-        renderCountryZones()
-        renderGeoPoints()
-        renderPoints()
-        renderArcs()
+        _renderAll()
       }, { passive: false })
 
-      // Drag to rotate
       let dragStart: [number, number] = [0, 0]
       let dragOriginRotate: [number, number, number] = [0, 0, 0]
-
       svg.call(
         (d3.drag() as d3.DragBehavior<SVGSVGElement, unknown, unknown>)
           .on('start', (event) => {
             dragStart = [event.x, event.y]
             dragOriginRotate = [...projection.rotate()] as [number, number, number]
-            tooltip = null
-            hoveredKey = null
-            hoveredIso = null
+            tooltip = null; hoveredKey = null; hoveredIso = null
           })
           .on('drag', (event) => {
             tooltip = null
@@ -460,17 +702,14 @@
             ])
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             svg.select('.land').attr('d', pathGen as any)
-            renderCountryZones()
-            renderGeoPoints()
-            renderPoints()
-            renderArcs()
+            _renderAll()
           })
       )
     }
   })
 </script>
 
-<div class="relative w-full h-full select-none">
+<div bind:this={rootEl} class="relative w-full h-full select-none">
   <svg
     bind:this={svgEl}
     viewBox="0 0 {viewW} {viewH}"
@@ -478,26 +717,47 @@
     class="w-full h-full {projectionType === 'orthographic' ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}"
   ></svg>
 
+  <!-- Bottom focus panel -->
+  {#if focused}
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-sm px-4">
+      <div class="bg-white/95 dark:bg-gray-900/95 border border-black/10 dark:border-white/10 rounded-xl shadow-xl backdrop-blur-sm">
+        <div class="flex items-center gap-3 px-4 py-3">
+          <!-- Name + count -->
+          <div class="min-w-0 flex-1">
+            <div class="font-semibold text-sm text-gray-900 dark:text-white leading-snug truncate">{focused.label}</div>
+            {#if focused.sublabel}
+              <div class="text-xs text-gray-500 dark:text-gray-400 truncate">{focused.sublabel}</div>
+            {/if}
+            <div class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{focused.count} record{focused.count !== 1 ? 's' : ''}</div>
+          </div>
+          <!-- Open button -->
+          <button
+            type="button"
+            onclick={() => onselect(focused!.selectItems, focused!.selectLabel)}
+            class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:opacity-80 transition-opacity"
+          >
+            Open
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
+
+  <!-- Tooltip (hidden while focused) -->
   {#if tooltip}
     <div
       class="fixed z-50 pointer-events-none bg-white/95 text-gray-900 dark:bg-gray-900/95 dark:text-white text-xs rounded-lg px-3 py-2 shadow-xl max-w-56 border border-black/10 dark:border-white/10"
       style="left: {tooltip.x + 14}px; top: {tooltip.y - 10}px"
     >
       {#if tooltip.kind === 'globe'}
-        <div class="font-semibold leading-snug mb-1">
-          {tooltip.point.institution || 'Unknown institution'}
-        </div>
+        <div class="font-semibold leading-snug mb-1">{tooltip.point.institution || 'Unknown institution'}</div>
         {#if tooltip.point.city || tooltip.point.country}
-          <div class="text-gray-700 dark:text-gray-300">
-            {[tooltip.point.city, tooltip.point.country].filter(Boolean).join(', ')}
-          </div>
+          <div class="text-gray-700 dark:text-gray-300">{[tooltip.point.city, tooltip.point.country].filter(Boolean).join(', ')}</div>
         {/if}
         {#if tooltip.point.programme}
           <div class="text-gray-500 dark:text-gray-400 mt-0.5">{tooltip.point.programme}</div>
         {/if}
-        <div class="text-gray-500 dark:text-gray-400 mt-0.5">
-          {tooltip.point.type === 'mobilites' ? 'Mobilités' : 'Hors mobilités'}
-        </div>
+        <div class="text-gray-500 dark:text-gray-400 mt-0.5">{tooltip.point.type === 'mobilites' ? 'Mobilités' : 'Hors mobilités'}</div>
       {:else if tooltip.kind === 'geo'}
         <div class="font-semibold leading-snug">{tooltip.point.name}</div>
         {#if tooltip.point.country}
