@@ -4,7 +4,7 @@
   import { DATASET_LABELS } from '$lib/config/datasets'
 
   // The four datasets rendered in the timeline view (legend order)
-  const TIMELINE_KEYS = ['memoires', 'pfe', 'pfe_france', 'p45', 'theses'] as const
+  const TIMELINE_KEYS = ['p45', 'pfe', 'memoires', 'pfe_france', 'theses'] as const
 
   const MONTHS_FR = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
 
@@ -21,14 +21,13 @@
   const DOT = 8
   const D = 9            // minimum center-to-center distance
   const D2 = D * D
-  const PADDING = 80     // horizontal padding each side
+  const PADDING = 40     // horizontal padding each side
   const AXIS_GAP = 14      // gap between blob base and axis line
   const TICK_SIZE = 4      // height of year boundary ticks below the axis
   const MONTH_GAP = 4      // gap between axis and month initials
   const MONTH_HEIGHT = 9   // height of month initial text
   const YEAR_GAP = 4       // gap between month row and year label
   const YEAR_HEIGHT = 10   // height of year label text
-
   const MONTH_INITIALS = ['J','F','M','A','M','J','J','A','S','O','N','D']
 
   let containerWidth = $state(0)
@@ -57,43 +56,40 @@
   }
 
   /**
-   * Global beeswarm: processes records in x order, placing each item at the
-   * lowest y (closest to axis) that avoids collision with already-placed items.
-   * Span records (with endDateValue) render as horizontal pills; their full
-   * width is used for collision detection so later dots don't land inside them.
-   * Candidate y levels are 0 and tangency points from nearby items.
+   * Tetris beeswarm: records are processed dataset by dataset in TIMELINE_KEYS order,
+   * sorted by dateValue within each dataset. Earlier datasets claim the lowest y
+   * positions first; later datasets fill the remaining gaps and stack on top.
+   * This gives a gravity effect where each dataset's items settle as low as possible
+   * given what is already placed beneath them.
    */
   const placedItems = $derived.by(() => {
     if (svgWidth <= 0 || sortedRecords.length === 0) return []
 
+    // Process in dataset order, then by dateValue within each dataset
+    const ordered = TIMELINE_KEYS.flatMap(key =>
+      sortedRecords.filter(r => r.dataset === key)
+    )
+
     const placed: Array<{ x: number; x2: number | undefined; y: number; rec: TimelineRecord }> = []
 
-    for (const rec of sortedRecords) {
+    for (const rec of ordered) {
       const x = dateToX(rec.dateValue)
       const x2 = rec.endDateValue !== undefined ? dateToX(rec.endDateValue) : undefined
 
-      // A placed span [p.x, p.x2] is "nearby" if the new item's start x falls
-      // within the span's horizontal extent (plus D buffer). A placed point is
-      // nearby if it's within D of the new item's start x.
-      const nearby = placed.filter(p =>
-        p.x2 !== undefined
-          ? x >= p.x - D && x <= p.x2 + D
-          : Math.abs(p.x - x) < D
-      )
+      // Minimum horizontal distance between two items' full extents (0 when they overlap)
+      const hdx = (p: { x: number; x2: number | undefined }) =>
+        Math.max(0, x - (p.x2 ?? p.x), p.x - (x2 ?? x))
+
+      const nearby = placed.filter(p => hdx(p) < D)
 
       if (nearby.length === 0) {
         placed.push({ x, x2, y: 0, rec })
         continue
       }
 
-      // Candidate y values: axis (0) and tangency points above each nearby item.
-      // For a placed span, the effective horizontal distance from x to the span
-      // is 0 when x is inside [p.x, p.x2], and the gap to the nearest end otherwise.
       const yLevels = new Set<number>([0])
       for (const p of nearby) {
-        const dx = p.x2 !== undefined
-          ? Math.max(0, p.x - x, x - p.x2)
-          : Math.abs(x - p.x)
+        const dx = hdx(p)
         if (dx < D) yLevels.add(p.y + Math.sqrt(D2 - dx * dx))
       }
 
@@ -101,9 +97,7 @@
         .filter(y => y >= 0)
         .sort((a, b) => a - b)
         .find(y => nearby.every(p => {
-          const dx = p.x2 !== undefined
-            ? Math.max(0, p.x - x, x - p.x2)
-            : Math.abs(x - p.x)
+          const dx = hdx(p)
           const dy = y - p.y
           return dx * dx + dy * dy >= D2 - 0.001
         }))
@@ -226,6 +220,19 @@
 </style>
 
 <div class="absolute inset-0 overflow-auto" bind:clientWidth={containerWidth}>
+
+  {#if placedItems.length > 0}
+    <!-- Legend — top-centered, aligned with the mode switcher and counter -->
+    <div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+      {#each TIMELINE_KEYS as key}
+        <div class="flex items-center gap-1.5">
+          <span class="legend-{key} block shrink-0 w-2 h-2 rounded-full"></span>
+          <span>{DATASET_LABELS[key]}</span>
+        </div>
+      {/each}
+    </div>
+  {/if}
+
   <div class="min-w-full min-h-full flex items-center justify-center py-12">
     {#if placedItems.length > 0 && svgWidth > 0}
       <svg
@@ -292,17 +299,6 @@
       <p class="text-sm text-gray-400 dark:text-gray-500">No records with a date.</p>
     {/if}
   </div>
-
-  {#if placedItems.length > 0}
-    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400">
-      {#each TIMELINE_KEYS as key}
-        <div class="flex items-center gap-1.5">
-          <span class="legend-{key} block shrink-0 w-2 h-2 rounded-full"></span>
-          <span>{DATASET_LABELS[key]}</span>
-        </div>
-      {/each}
-    </div>
-  {/if}
 
   {#if tooltip}
     <div
