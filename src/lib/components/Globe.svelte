@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount, untrack } from 'svelte'
   import * as d3 from 'd3'
-  import * as topojson from 'topojson-client'
   import type { GlobePoint, GeoPoint, CountryZone } from '$lib/data/types'
+  import { loadWorldAtlas } from '$lib/data/worldAtlas'
   import type { SearchItem } from '$lib/search/index'
 
   let { points, geoPoints, countryZones, projectionType, theme, onselect, onfocuschange, clearFocusTrigger = 0 }: {
@@ -146,13 +146,7 @@
   const OFFSET = 5
 
   onMount(async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const world: any = await fetch(
-      'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
-    ).then((r) => r.json())
-
-    const land = topojson.feature(world, world.objects.land)
-    const countriesFeature = topojson.feature(world, world.objects.countries)
+    const { land, countries: countriesFeature } = await loadWorldAtlas()
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const projection: any = projectionType === 'naturalEarth'

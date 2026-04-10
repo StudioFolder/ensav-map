@@ -1,0 +1,2822 @@
+[
+  {
+    "city": "Cologne",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 50.933913,
+    "lon": 6.988513,
+    "name": "Technische Hochschule Köln",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Darmstadt",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 49.86148,
+    "lon": 8.6876,
+    "name": "Technische Universität Darmstadt",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Erfurt",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 50.9725,
+    "lon": 11.041111,
+    "name": "Fachhochschule Erfurt",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Karlsruhe",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 49.009389,
+    "lon": 8.411611,
+    "name": "Karlsruhe Institute of Technology",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Mayence",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 50,
+    "lon": 8.2615,
+    "name": "Hochschule Mainz",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Munich",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 48.1491,
+    "lon": 11.568,
+    "name": "Technische Universität München",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Münster",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 51.969,
+    "lon": 7.6004,
+    "name": "Fachhochschule Münster",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Oldenbourg",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 53.139722,
+    "lon": 8.209722,
+    "name": "Jade Hochschule Wilhelmshaven/Oldenburg/Elsfleth",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Buenos Aires",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -34.5425,
+    "lon": -58.4469,
+    "name": "Facultad de Arquitectura, Diseño y Urbanismo - Universidad de Buenos Aires",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Córdoba",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -31.4396,
+    "lon": -64.1897,
+    "name": "Facultad de Arquitectura, Urbanismo y Diseño - Universidad Nacional de Córdoba",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Vienne",
+    "continent": "Europe",
+    "country": "Autriche",
+    "lat": 48.198956,
+    "lon": 16.369892,
+    "name": "Technische Universität Wien",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Anvers",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 51.22316,
+    "lon": 4.4083,
+    "name": "University of Antwerp",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bruxelles",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.82775,
+    "lon": 4.43275,
+    "name": "Université Libre de Bruxelles",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Liège",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.643801,
+    "lon": 5.586467,
+    "name": "Université de Liège",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Louvain",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.8756,
+    "lon": 4.7071,
+    "name": "Katholieke Universiteit Leuven",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Mons",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.449757,
+    "lon": 3.951727,
+    "name": "Arts² - École Supérieure des Arts",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -22.8612,
+    "lon": -43.2217,
+    "name": "Faculdade de Arquitetura e Urbanismo - Universidade Federal do Rio de Janeiro",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -22.9791,
+    "lon": -43.2328,
+    "name": "Pontifícia Universidade Católica do Rio de Janeiro",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "São Paulo",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -23.5475,
+    "lon": -46.6519,
+    "name": "Universidade Presbiteriana Mackenzie",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Santiago",
+    "continent": "Amérique du Sud",
+    "country": "Chili",
+    "lat": -33.444,
+    "lon": -70.6544,
+    "name": "Universidad Diego Portales",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Santiago",
+    "continent": "Amérique du Sud",
+    "country": "Chili",
+    "lat": -33.4516,
+    "lon": -70.6826,
+    "name": "Universidad de Santiago de Chile",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Shanghai",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 31.2899,
+    "lon": 121.5012,
+    "name": "College of Architecture and Urban Planning - Tongji University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bogotá",
+    "continent": "Amérique du Sud",
+    "country": "Colombie",
+    "lat": 4.6361,
+    "lon": -74.083,
+    "name": "Universidad Nacional de Colombia",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Séoul",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.4842,
+    "lon": 127.0069,
+    "name": "Korea National University of Arts",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Séoul",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.4592,
+    "lon": 126.9527,
+    "name": "Seoul National University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Barcelone",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 41.395473,
+    "lon": 2.155563,
+    "name": "Escuela Técnica Superior de Arquitectura de Barcelona - Universitat Politècnica de Catalunya",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Madrid",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 40.453611,
+    "lon": -3.729167,
+    "name": "Escuela Técnica Superior de Arquitectura de Madrid - Universidad Politécnica de Madrid",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Valladolid",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 41.65518,
+    "lon": -4.7237,
+    "name": "Escuela Técnica Superior de Arquitectura de Valladolid - Universidad de Valladolid",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Tallinn",
+    "continent": "Europe",
+    "country": "Estonie",
+    "lat": 59.442222,
+    "lon": 24.744444,
+    "name": "Eesti Kunstiakadeemia",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.8364,
+    "lon": 2.3714,
+    "name": "Fondation Maison des Sciences de l'Homme",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Athènes",
+    "continent": "Europe",
+    "country": "Grèce",
+    "lat": 37.987864,
+    "lon": 23.731614,
+    "name": "National Technical University of Athens",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Jérusalem",
+    "continent": "Asie",
+    "country": "Israël",
+    "lat": 31.792,
+    "lon": 35.2436,
+    "name": "Bezalel Academy of Arts and Design",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Catane",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 37.5246,
+    "lon": 15.0738,
+    "name": "Università degli Studi di Catania",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Gênes",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 44.40473,
+    "lon": 8.93123,
+    "name": "Università degli Studi di Genova",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Milan",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.475833,
+    "lon": 9.2275,
+    "name": "Politecnico di Milano",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Naples",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 40.852222,
+    "lon": 14.3096,
+    "name": "Università degli Studi di Napoli Federico II",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Palerme",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 38.1095,
+    "lon": 13.3602,
+    "name": "Università degli Studi di Palermo",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Rome",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 41.90122,
+    "lon": 12.512667,
+    "name": "Sapienza Università di Roma",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Rome",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 41.877633,
+    "lon": 12.472716,
+    "name": "Università Roma Tre",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Venise",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.4373,
+    "lon": 12.318,
+    "name": "Università Iuav di Venezia",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Kyoto",
+    "continent": "Asie",
+    "country": "Japon",
+    "lat": 35.0493,
+    "lon": 135.782,
+    "name": "Kyoto Institute of Technology",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Beyrouth",
+    "continent": "Asie",
+    "country": "Liban",
+    "lat": 33.8772,
+    "lon": 35.528,
+    "name": "Académie Libanaise des Beaux-Arts",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Vilnius",
+    "continent": "Europe",
+    "country": "Lituanie",
+    "lat": 54.6865,
+    "lon": 25.2735,
+    "name": "Vilnius Gediminas Technical University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Casablanca",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "name": "École d'Architecture de Casablanca",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Fès",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 34.0333,
+    "lon": -5,
+    "name": "École Nationale d'Architecture de Fès",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Rabat",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.954,
+    "lon": -6.871,
+    "name": "Université Internationale de Rabat",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Mexico City",
+    "continent": "Amérique du Nord",
+    "country": "Mexique",
+    "lat": 19.3262,
+    "lon": -99.1839,
+    "name": "Universidad Nacional Autónoma de México",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Delft",
+    "continent": "Europe",
+    "country": "Pays-Bas",
+    "lat": 52.0056,
+    "lon": 4.378,
+    "name": "Delft University of Technology",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Eindhoven",
+    "continent": "Europe",
+    "country": "Pays-Bas",
+    "lat": 51.447643,
+    "lon": 5.48624,
+    "name": "Technische Universiteit Eindhoven",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Cracovie",
+    "continent": "Europe",
+    "country": "Pologne",
+    "lat": 50.062,
+    "lon": 19.9188,
+    "name": "Cracow University of Technology",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Porto",
+    "continent": "Europe",
+    "country": "Portugal",
+    "lat": 41.150083,
+    "lon": -8.63618,
+    "name": "Faculdade de Arquitectura da Universidade do Porto",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bucarest",
+    "continent": "Europe",
+    "country": "Roumanie",
+    "lat": 44.438,
+    "lon": 26.1007,
+    "name": "Ion Mincu University of Architecture and Urban Planning",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Glasgow",
+    "continent": "Europe",
+    "country": "Royaume-Uni",
+    "lat": 55.8733,
+    "lon": -4.2653,
+    "name": "Glasgow School of Art",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Brno",
+    "continent": "Europe",
+    "country": "République tchèque",
+    "lat": 49.1929,
+    "lon": 16.627,
+    "name": "Vysoké učení technické v Brně - Fakulta architektury",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Prague",
+    "continent": "Europe",
+    "country": "République tchèque",
+    "lat": 50.104947,
+    "lon": 14.389705,
+    "name": "Czech Technical University in Prague",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Prague",
+    "continent": "Europe",
+    "country": "République tchèque",
+    "lat": 50.104947,
+    "lon": 14.389705,
+    "name": "České vysoké učení technické v Praze - Faculty of Civil Engineering",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bratislava",
+    "continent": "Europe",
+    "country": "Slovaquie",
+    "lat": 48.1486,
+    "lon": 17.1077,
+    "name": "Slovak University of Technology in Bratislava - Faculty of Architecture and Design",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bratislava",
+    "continent": "Europe",
+    "country": "Slovaquie",
+    "lat": 48.1532,
+    "lon": 17.1095,
+    "name": "Slovak University of Technology in Bratislava - Faculty of Civil Engineering",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Ljubljana",
+    "continent": "Europe",
+    "country": "Slovénie",
+    "lat": 46.04556,
+    "lon": 14.50389,
+    "name": "Univerza v Ljubljani - Fakulteta za arhitekturo",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Genève",
+    "continent": "Europe",
+    "country": "Suisse",
+    "lat": 46.209,
+    "lon": 6.153,
+    "name": "Haute École du Paysage, d'Ingénierie et d'Architecture de Genève",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Lausanne",
+    "continent": "Europe",
+    "country": "Suisse",
+    "lat": 46.51834,
+    "lon": 6.56522,
+    "name": "École Polytechnique Fédérale de Lausanne",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Bangkok",
+    "continent": "Asie",
+    "country": "Thaïlande",
+    "lat": 13.7373,
+    "lon": 100.5292,
+    "name": "Chulalongkorn University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Tunis",
+    "continent": "Afrique",
+    "country": "Tunisie",
+    "lat": 36.873333,
+    "lon": 10.338369,
+    "name": "École Nationale d'Architecture et d'Urbanisme de Tunis",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Istanbul",
+    "continent": "Asie",
+    "country": "Turquie",
+    "lat": 41.054,
+    "lon": 28.979,
+    "name": "Istanbul Bilgi University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Istanbul",
+    "continent": "Asie",
+    "country": "Turquie",
+    "lat": 41.041111,
+    "lon": 28.989306,
+    "name": "Istanbul Technical University",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Le Caire",
+    "continent": "Afrique",
+    "country": "Égypte",
+    "lat": 30.075808,
+    "lon": 31.281116,
+    "name": "Ain Shams University - Faculty of Engineering",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Chicago (Illinois)",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 41.8341,
+    "lon": -87.6237,
+    "name": "Illinois Institute of Technology - College of Architecture",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "Houston (Texas)",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 29.723,
+    "lon": -95.3433,
+    "name": "Gerald D. Hines College of Architecture and Design - University of Houston",
+    "province": "",
+    "type": "institution"
+  },
+  {
+    "city": "",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.77646618137102,
+    "lon": -0.6224193571478066,
+    "name": "Abbaye Belle-Étoile",
+    "province": "Orne",
+    "type": "landmark"
+  },
+  {
+    "city": "",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 47.57884509135004,
+    "lon": -2.8869494003138207,
+    "name": "Golfe du Morbihan",
+    "province": "Morbihan",
+    "type": "landmark"
+  },
+  {
+    "city": "",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 42.98731032859008,
+    "lon": -0.42543696029838474,
+    "name": "Pyrénées, Vallée d'Ossau",
+    "province": "Pyrénées-Atlantiques",
+    "type": "landmark"
+  },
+  {
+    "city": "Bayonne",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.4931906029431,
+    "lon": -1.476006611329212,
+    "name": "Adour",
+    "province": "Pyrénées-Atlantiques",
+    "type": "landmark"
+  },
+  {
+    "city": "Briançon",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 44.94799075369036,
+    "lon": 5.234021338261578,
+    "name": "Briançonnais",
+    "province": "Hautes-Alpes",
+    "type": "landmark"
+  },
+  {
+    "city": "Buoux",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.83166198192985,
+    "lon": 5.3792259273242555,
+    "name": "Massif du Luberon",
+    "province": "Vaucluse",
+    "type": "landmark"
+  },
+  {
+    "city": "Graufthal",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.819855982409734,
+    "lon": 7.280516081425146,
+    "name": "Massif des Vosges",
+    "province": "Bas-Rhin",
+    "type": "landmark"
+  },
+  {
+    "city": "Laprugne",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 45.98625087863512,
+    "lon": 3.742570447246227,
+    "name": "Bourbonnais",
+    "province": "Allier",
+    "type": "landmark"
+  },
+  {
+    "city": "Meudon",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.80018060806149,
+    "lon": 2.2364492214657883,
+    "name": "Grande soufflerie de Meudon",
+    "province": "Hauts-de-Seine",
+    "type": "landmark"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.8994249371671,
+    "lon": 2.332514402548799,
+    "name": "Hôpital Bichat",
+    "province": "Paris",
+    "type": "landmark"
+  },
+  {
+    "city": "Pierrelaye, Méry-sur-Oise, Saint-Ouen-l'Aumône",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 49.04517555519664,
+    "lon": 2.1560104800442867,
+    "name": "Ferme de la Haute-Borne",
+    "province": "Val-d'Oise",
+    "type": "landmark"
+  },
+  {
+    "city": "Puteaux",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.89123505645646,
+    "lon": 2.237204036571013,
+    "name": "La Grande Arche",
+    "province": "Hauts-de-Seine",
+    "type": "landmark"
+  },
+  {
+    "city": "Saclay",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.739953867800004,
+    "lon": 2.1696675865294295,
+    "name": "Plateau de Saclay",
+    "province": "Essonne",
+    "type": "landmark"
+  },
+  {
+    "city": "Saint-Julien-des-Chazes",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 45.04702751167066,
+    "lon": 3.583968963630428,
+    "name": "Haut-Allier",
+    "province": "Haute-Loire",
+    "type": "landmark"
+  },
+  {
+    "city": "Saint-Malo",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.66758428070542,
+    "lon": -1.9860781459455814,
+    "name": "Site des Nielles",
+    "province": "Ille-et-Vilaine",
+    "type": "landmark"
+  },
+  {
+    "city": "Marseille",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.23763307751101,
+    "lon": 5.4282205927872,
+    "name": "Quartier Luminy, Marseille",
+    "province": "Bouches-du-Rhône",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.86466637170572,
+    "lon": 2.376795326280864,
+    "name": "11e arrondissement, Paris",
+    "province": "Paris",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.844472904747036,
+    "lon": 2.2771716015291217,
+    "name": "15e arrondissement, Paris",
+    "province": "Paris",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.86223295796568,
+    "lon": 2.345604808944753,
+    "name": "1er arrondissement, Quartier des Halles, Paris",
+    "province": "Paris",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.824730183150734,
+    "lon": 2.365054371404512,
+    "name": "Quartier des Olympiades, Paris",
+    "province": "Paris",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Puteaux",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.89185795321053,
+    "lon": 2.2405358114967657,
+    "name": "La Défense, Puteaux",
+    "province": "Hauts-de-Seine",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Roubaix",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 50.69794420781379,
+    "lon": 3.1675357258352523,
+    "name": "Quartier de l'Alma-Gare, Roubaix",
+    "province": "Nord",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Rueil-Malmaison",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.88396626796223,
+    "lon": 2.171677238289188,
+    "name": "Les Martinets, Rueil-Malmaison",
+    "province": "Hauts-de-Seine",
+    "type": "neighbourhood"
+  },
+  {
+    "city": "Kaboul",
+    "continent": "Asie",
+    "country": "Afghanistan",
+    "lat": 34.5269503,
+    "lon": 69.1850584,
+    "name": "Kaboul",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Umgeni",
+    "continent": "Afrique",
+    "country": "Afrique du Sud",
+    "lat": -30.4813701,
+    "lon": 30.4924606,
+    "name": "Umgeni",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Shkodra",
+    "continent": "Europe",
+    "country": "Albanie",
+    "lat": 42.0681371,
+    "lon": 19.5121437,
+    "name": "Shkodra",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Alger",
+    "continent": "Afrique",
+    "country": "Algérie",
+    "lat": 36.7729333,
+    "lon": 3.0588445,
+    "name": "Alger",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Azrou",
+    "continent": "Afrique",
+    "country": "Algérie",
+    "lat": 25.5520246,
+    "lon": 6.8663263,
+    "name": "Azrou",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bab Boudir",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 34.069856,
+    "lon": -4.120396,
+    "name": "Bab Boudir",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dellys",
+    "continent": "Afrique",
+    "country": "Algérie",
+    "lat": 36.9140699,
+    "lon": 3.9129556,
+    "name": "Dellys",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tipaza",
+    "continent": "Afrique",
+    "country": "Algérie",
+    "lat": 36.527157,
+    "lon": 2.1672012,
+    "name": "Tipaza",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Berlin",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 52.5173885,
+    "lon": 13.3951309,
+    "name": "Berlin",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Berlin Ouest",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 53.8920204,
+    "lon": 11.4648493,
+    "name": "Berlin Ouest",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dachau",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 48.2592477,
+    "lon": 11.4354419,
+    "name": "Dachau",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dresde",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 51.0493286,
+    "lon": 13.7381437,
+    "name": "Dresde",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Luckenwalde",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 52.0902045,
+    "lon": 13.1741882,
+    "name": "Luckenwalde",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Mannheim",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 49.4892913,
+    "lon": 8.4673098,
+    "name": "Mannheim",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Munich",
+    "continent": "Europe",
+    "country": "Allemagne",
+    "lat": 48.1491,
+    "lon": 11.568,
+    "name": "Munich",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Al-Ula",
+    "continent": "Asie",
+    "country": "Arabie Saoudite",
+    "lat": 26.5588965,
+    "lon": 37.9596519,
+    "name": "Al-Ula",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Buenos Aires",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -34.5425,
+    "lon": -58.4469,
+    "name": "Buenos Aires",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Cordoba",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -31.4166867,
+    "lon": -64.1834193,
+    "name": "Cordoba",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Epecuen",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -34.7197826,
+    "lon": -58.4483896,
+    "name": "Epecuen",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tigre",
+    "continent": "Amérique du Sud",
+    "country": "Argentine",
+    "lat": -34.4235341,
+    "lon": -58.5817628,
+    "name": "Tigre",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Erevan",
+    "continent": "Asie",
+    "country": "Arménie",
+    "lat": 40.1777112,
+    "lon": 44.5126233,
+    "name": "Erevan",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Uluru",
+    "continent": "Océanie",
+    "country": "Australie",
+    "lat": -25.344857,
+    "lon": 131.0325171,
+    "name": "Uluru",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Vienne",
+    "continent": "Europe",
+    "country": "Autriche",
+    "lat": 48.198956,
+    "lon": 16.369892,
+    "name": "Vienne",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Anvers",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 51.22316,
+    "lon": 4.4083,
+    "name": "Anvers",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Auvelais",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.4470193,
+    "lon": 4.6354624,
+    "name": "Auvelais",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bruxelles",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.82775,
+    "lon": 4.43275,
+    "name": "Bruxelles",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Charleroi",
+    "continent": "Europe",
+    "country": "Belgique",
+    "lat": 50.4116233,
+    "lon": 4.444528,
+    "name": "Charleroi",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Brasilia",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -15.7939869,
+    "lon": -47.8828,
+    "name": "Brasilia",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -22.8612,
+    "lon": -43.2217,
+    "name": "Rio de Janeiro",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "São Paulo",
+    "continent": "Amérique du Sud",
+    "country": "Brésil",
+    "lat": -23.5475,
+    "lon": -46.6519,
+    "name": "São Paulo",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Calarasi",
+    "continent": "Europe",
+    "country": "Bulgarie",
+    "lat": 44.3151875,
+    "lon": 27.1390156,
+    "name": "Calarasi",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Sofia",
+    "continent": "Europe",
+    "country": "Bulgarie",
+    "lat": 42.6977028,
+    "lon": 23.3217359,
+    "name": "Sofia",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Varna",
+    "continent": "Europe",
+    "country": "Bulgarie",
+    "lat": 43.2073873,
+    "lon": 27.9166653,
+    "name": "Varna",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Ouagadougou",
+    "continent": "Afrique",
+    "country": "Burkina Faso",
+    "lat": 12.3681873,
+    "lon": -1.5270944,
+    "name": "Ouagadougou",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bohicon",
+    "continent": "Afrique",
+    "country": "Bénin",
+    "lat": 7.1816331,
+    "lon": 2.0695683,
+    "name": "Bohicon",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Phnom Penh",
+    "continent": "Asie",
+    "country": "Cambodge",
+    "lat": 11.5730391,
+    "lon": 104.857807,
+    "name": "Phnom Penh",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Douala",
+    "continent": "Afrique",
+    "country": "Cameroun",
+    "lat": 4.0429389,
+    "lon": 9.7062018,
+    "name": "Douala",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Edea",
+    "continent": "Afrique",
+    "country": "Cameroun",
+    "lat": 3.7990131,
+    "lon": 10.1265567,
+    "name": "Edea",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Yaoundé",
+    "continent": "Afrique",
+    "country": "Cameroun",
+    "lat": 3.8689867,
+    "lon": 11.5213344,
+    "name": "Yaoundé",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Mashteuiatsh",
+    "continent": "Amérique du Nord",
+    "country": "Canada",
+    "lat": 48.5759083,
+    "lon": -72.2287743,
+    "name": "Mashteuiatsh",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Montréal",
+    "continent": "Amérique du Nord",
+    "country": "Canada",
+    "lat": 45.5031824,
+    "lon": -73.5698065,
+    "name": "Montréal",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Wetomaci",
+    "continent": "Amérique du Nord",
+    "country": "Canada",
+    "lat": 47.9024882,
+    "lon": -73.785114,
+    "name": "Wetomaci",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Santiago",
+    "continent": "Afrique",
+    "country": "Cap-Vert",
+    "lat": 15.1200758,
+    "lon": -23.6348181,
+    "name": "Santiago",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Malleco",
+    "continent": "Amérique du Sud",
+    "country": "Chili",
+    "lat": -37.7960595,
+    "lon": -72.6516866,
+    "name": "Malleco",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dalian",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 38.9130495,
+    "lon": 121.6098013,
+    "name": "Dalian",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Hong-Kong",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 22.3492155,
+    "lon": 114.1857978,
+    "name": "Hong-Kong",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Shanghai",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 31.2899,
+    "lon": 121.5012,
+    "name": "Shanghai",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Shenzhen",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 22.5445741,
+    "lon": 114.0545429,
+    "name": "Shenzhen",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Wuhan",
+    "continent": "Asie",
+    "country": "Chine",
+    "lat": 30.578891,
+    "lon": 114.2921197,
+    "name": "Wuhan",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Nicosie",
+    "continent": "Europe",
+    "country": "Chypre",
+    "lat": 35.1746503,
+    "lon": 33.3638783,
+    "name": "Nicosie",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Anyang",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.3938528,
+    "lon": 126.9570605,
+    "name": "Anyang",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Panmunjeon",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.9422324,
+    "lon": 126.6804794,
+    "name": "Panmunjeon",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Songdo",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.4299382,
+    "lon": 126.6547155,
+    "name": "Songdo",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Séoul",
+    "continent": "Asie",
+    "country": "Corée du Sud",
+    "lat": 37.4842,
+    "lon": 127.0069,
+    "name": "Séoul",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Abidjan",
+    "continent": "Afrique",
+    "country": "Côte d'Ivoire",
+    "lat": 5.320357,
+    "lon": -4.016107,
+    "name": "Abidjan",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Copenhague",
+    "continent": "Europe",
+    "country": "Danemark",
+    "lat": 55.6867243,
+    "lon": 12.5700724,
+    "name": "Copenhague",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Gribskov",
+    "continent": "Europe",
+    "country": "Danemark",
+    "lat": 56.0429851,
+    "lon": 12.3288121,
+    "name": "Gribskov",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Barcelone",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 41.395473,
+    "lon": 2.155563,
+    "name": "Barcelone",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Madrid",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 40.453611,
+    "lon": -3.729167,
+    "name": "Madrid",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tenerife",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 28.2935785,
+    "lon": -16.6214471,
+    "name": "Tenerife",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Valladolid",
+    "continent": "Europe",
+    "country": "Espagne",
+    "lat": 41.65518,
+    "lon": -4.7237,
+    "name": "Valladolid",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Helsinki",
+    "continent": "Europe",
+    "country": "Finlande",
+    "lat": 60.1666204,
+    "lon": 24.9435408,
+    "name": "Helsinki",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Ableiges",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 49.09090140082123,
+    "lon": 1.9811649207949293,
+    "name": "Ableiges",
+    "province": "Val-d'Oise",
+    "type": "city"
+  },
+  {
+    "city": "Alfortville",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.787288127649944,
+    "lon": 2.4259738087044953,
+    "name": "Alfortville",
+    "province": "Val-de-Marne",
+    "type": "city"
+  },
+  {
+    "city": "Auch",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.64625777828602,
+    "lon": 0.5919668969702374,
+    "name": "Auch",
+    "province": "Gers",
+    "type": "city"
+  },
+  {
+    "city": "Calais",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 50.95034230226558,
+    "lon": 1.8830714965819104,
+    "name": "Calais",
+    "province": "Pas-de-Calais",
+    "type": "city"
+  },
+  {
+    "city": "Callen, Moustey, Marcheprime",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 44.693793400583075,
+    "lon": -0.8541551028760338,
+    "name": "Callen, Moustey, Marcheprime",
+    "province": "Gironde",
+    "type": "city"
+  },
+  {
+    "city": "Cergy-Pontoise",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 49.03426545237055,
+    "lon": 2.08118557713494,
+    "name": "Cergy-Pontoise",
+    "province": "Val-d'Oise",
+    "type": "city"
+  },
+  {
+    "city": "Chamonix-Mont-Blanc",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 45.8879183657783,
+    "lon": 6.859817286954289,
+    "name": "Chamonix-Mont-Blanc",
+    "province": "Haute-Savoie",
+    "type": "city"
+  },
+  {
+    "city": "Chantonnay",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 46.70665886426707,
+    "lon": -1.0294655026160913,
+    "name": "Chantonnay",
+    "province": "Vendée",
+    "type": "city"
+  },
+  {
+    "city": "Corbeil-Essonnes",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.61012322551248,
+    "lon": 2.4748775234468847,
+    "name": "Corbeil-Essonnes",
+    "province": "Essonne",
+    "type": "city"
+  },
+  {
+    "city": "Deville",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 49.879906614782676,
+    "lon": 4.705614145248929,
+    "name": "Deville",
+    "province": "Ardennes",
+    "type": "city"
+  },
+  {
+    "city": "Dreux",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.74538818610734,
+    "lon": 1.362638892344954,
+    "name": "Dreux",
+    "province": "Eure-et-Loir",
+    "type": "city"
+  },
+  {
+    "city": "Fleurance",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.849201533570735,
+    "lon": 0.6632578578375543,
+    "name": "Fleurance",
+    "province": "Gers",
+    "type": "city"
+  },
+  {
+    "city": "Fumel",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 44.48690100377322,
+    "lon": 0.9562543200983407,
+    "name": "Fumel",
+    "province": "Lot-et-Garonne",
+    "type": "city"
+  },
+  {
+    "city": "Gallargues-le-Montueux",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.721513192503224,
+    "lon": 4.173341257237034,
+    "name": "Gallargues-le-Montueux",
+    "province": "Gard",
+    "type": "city"
+  },
+  {
+    "city": "Genillé",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 47.16464120297483,
+    "lon": 1.132876870579013,
+    "name": "Genillé",
+    "province": "Indre-et-Loire",
+    "type": "city"
+  },
+  {
+    "city": "Jarnac",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 45.68474651920947,
+    "lon": -0.16993284967337818,
+    "name": "Jarnac",
+    "province": "Charente",
+    "type": "city"
+  },
+  {
+    "city": "Joinville",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.4429086056635,
+    "lon": 5.137555659784835,
+    "name": "Joinville",
+    "province": "Haute-Marne",
+    "type": "city"
+  },
+  {
+    "city": "Magnac-Laval",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 46.214469792914684,
+    "lon": 1.1661614141663206,
+    "name": "Magnac-Laval",
+    "province": "Haute-Vienne",
+    "type": "city"
+  },
+  {
+    "city": "Maripasoula",
+    "continent": "Amérique du Sud",
+    "country": "France",
+    "lat": 3.6420269,
+    "lon": -54.0299468,
+    "name": "Maripasoula",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Marseille",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.29593928060475,
+    "lon": 5.373691538311485,
+    "name": "Marseille",
+    "province": "Bouches-du-Rhône",
+    "type": "city"
+  },
+  {
+    "city": "Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.79488633947698,
+    "lon": 2.033185103534181,
+    "name": "Montigny-le-Bretonneux, Saint-Quentin-en-Yvelines",
+    "province": "Yvelines",
+    "type": "city"
+  },
+  {
+    "city": "Nay",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 43.17657515437649,
+    "lon": -0.2623384170590637,
+    "name": "Nay",
+    "province": "Pyrénées-Atlantiques",
+    "type": "city"
+  },
+  {
+    "city": "Neuville-sous-Montreuil",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 50.473478281903965,
+    "lon": 1.774992526820831,
+    "name": "Neuville-sous-Montreuil",
+    "province": "Pas-de-Calais",
+    "type": "city"
+  },
+  {
+    "city": "Paris",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.861653462592045,
+    "lon": 2.3407796271707255,
+    "name": "Paris",
+    "province": "Paris",
+    "type": "city"
+  },
+  {
+    "city": "Pointe-à-Pitre",
+    "continent": "Amérique du Nord",
+    "country": "France",
+    "lat": 16.2408636,
+    "lon": -61.5334077,
+    "name": "Pointe-à-Pitre",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Puteaux, Courbevoie",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.88911002913607,
+    "lon": 2.253450623624353,
+    "name": "Puteaux, Courbevoie",
+    "province": "Hauts-de-Seine",
+    "type": "city"
+  },
+  {
+    "city": "Rambouillet",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.68028551216234,
+    "lon": 1.8130540332549552,
+    "name": "Rambouillet",
+    "province": "Yvelines",
+    "type": "city"
+  },
+  {
+    "city": "Rennes",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.11642474434265,
+    "lon": -1.6775140737066234,
+    "name": "Rennes",
+    "province": "Ille-et-Vilaine",
+    "type": "city"
+  },
+  {
+    "city": "Roubaix",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 50.68337222928733,
+    "lon": 3.195923399057051,
+    "name": "Roubaix",
+    "province": "Nord",
+    "type": "city"
+  },
+  {
+    "city": "Rouen",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 49.43664289482642,
+    "lon": 1.120745548092146,
+    "name": "Rouen",
+    "province": "Seine-Maritime",
+    "type": "city"
+  },
+  {
+    "city": "Saint-Malo",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.65335846409817,
+    "lon": -2.0123118491196066,
+    "name": "Saint-Malo",
+    "province": "Ille-et-Vilaine",
+    "type": "city"
+  },
+  {
+    "city": "Tréguennec",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 47.87478872622139,
+    "lon": -4.352597618430918,
+    "name": "Tréguennec",
+    "province": "Finistère",
+    "type": "city"
+  },
+  {
+    "city": "Versailles",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.8035403,
+    "lon": 2.1266886,
+    "name": "Versailles",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Vitry-sur-Seine",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.793733865488925,
+    "lon": 2.383251366076514,
+    "name": "Vitry-sur-Seine",
+    "province": "Val-de-Marne",
+    "type": "city"
+  },
+  {
+    "city": "Épinal",
+    "continent": "Europe",
+    "country": "France",
+    "lat": 48.17407775797531,
+    "lon": 6.450644833979116,
+    "name": "Épinal",
+    "province": "Vosges",
+    "type": "city"
+  },
+  {
+    "city": "Athènes",
+    "continent": "Europe",
+    "country": "Grèce",
+    "lat": 37.987864,
+    "lon": 23.731614,
+    "name": "Athènes",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Le Pirée",
+    "continent": "Europe",
+    "country": "Grèce",
+    "lat": 37.9431594,
+    "lon": 23.6470593,
+    "name": "Le Pirée",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Conakry",
+    "continent": "Afrique",
+    "country": "Guinée",
+    "lat": 9.5170602,
+    "lon": -13.6998434,
+    "name": "Conakry",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Auroville",
+    "continent": "Asie",
+    "country": "Inde",
+    "lat": 12.0073927,
+    "lon": 79.8099471,
+    "name": "Auroville",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Manali",
+    "continent": "Asie",
+    "country": "Inde",
+    "lat": 32.2454608,
+    "lon": 77.1872926,
+    "name": "Manali",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Pondichéry",
+    "continent": "Asie",
+    "country": "Inde",
+    "lat": 10.9156489,
+    "lon": 79.8069488,
+    "name": "Pondichéry",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Jakarta",
+    "continent": "Asie",
+    "country": "Indonésie",
+    "lat": -6.1754049,
+    "lon": 106.827168,
+    "name": "Jakarta",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bandar-e Anzali",
+    "continent": "Asie",
+    "country": "Iran",
+    "lat": 37.4716356,
+    "lon": 49.4685904,
+    "name": "Bandar-e Anzali",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Téhéran",
+    "continent": "Asie",
+    "country": "Iran",
+    "lat": 35.6892523,
+    "lon": 51.3896004,
+    "name": "Téhéran",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Alviano",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 42.5882078,
+    "lon": 12.2959357,
+    "name": "Alviano",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Consonno",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.7842766,
+    "lon": 9.3935149,
+    "name": "Consonno",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Gênes",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 44.40473,
+    "lon": 8.93123,
+    "name": "Gênes",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Lampedusa",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 35.5111342,
+    "lon": 12.5962914,
+    "name": "Lampedusa",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Milan",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.475833,
+    "lon": 9.2275,
+    "name": "Milan",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Naples",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 40.852222,
+    "lon": 14.3096,
+    "name": "Naples",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Padoue",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.4077172,
+    "lon": 11.8734455,
+    "name": "Padoue",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Palerme",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 38.1095,
+    "lon": 13.3602,
+    "name": "Palerme",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Rome",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 41.90122,
+    "lon": 12.512667,
+    "name": "Rome",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Senerchia",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 40.740263,
+    "lon": 15.20315,
+    "name": "Senerchia",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Troina",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 37.7852205,
+    "lon": 14.6004464,
+    "name": "Troina",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Udine",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 46.0634632,
+    "lon": 13.2358377,
+    "name": "Udine",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Venise",
+    "continent": "Europe",
+    "country": "Italie",
+    "lat": 45.4373,
+    "lon": 12.318,
+    "name": "Venise",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Kyoto",
+    "continent": "Asie",
+    "country": "Japon",
+    "lat": 35.0493,
+    "lon": 135.782,
+    "name": "Kyoto",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Noto",
+    "continent": "Asie",
+    "country": "Japon",
+    "lat": 37.3104029,
+    "lon": 137.1477258,
+    "name": "Noto",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Osaka",
+    "continent": "Asie",
+    "country": "Japon",
+    "lat": 34.6937569,
+    "lon": 135.5014539,
+    "name": "Osaka",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tokyo",
+    "continent": "Asie",
+    "country": "Japon",
+    "lat": 35.6768601,
+    "lon": 139.7638947,
+    "name": "Tokyo",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bcharré",
+    "continent": "Asie",
+    "country": "Liban",
+    "lat": 34.2507231,
+    "lon": 36.0099915,
+    "name": "Bcharré",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Beyrouth",
+    "continent": "Asie",
+    "country": "Liban",
+    "lat": 33.8772,
+    "lon": 35.528,
+    "name": "Beyrouth",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Antananarivo",
+    "continent": "Afrique",
+    "country": "Madagascar",
+    "lat": -18.9100122,
+    "lon": 47.5255809,
+    "name": "Antananarivo",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tananarive",
+    "continent": "Afrique",
+    "country": "Madagascar",
+    "lat": -18.9100122,
+    "lon": 47.5255809,
+    "name": "Tananarive",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Azrou",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 35.1572487,
+    "lon": -3.768611,
+    "name": "Azrou",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bou Iblane",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.9958638,
+    "lon": -6.8438127,
+    "name": "Bou Iblane",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Casablanca",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "name": "Casablanca",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dar Bouazza",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.5215831,
+    "lon": -7.8164369,
+    "name": "Dar Bouazza",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Goulmina",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 31.692627,
+    "lon": -4.953262,
+    "name": "Goulmina",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Marrakech",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 31.6258257,
+    "lon": -7.9891608,
+    "name": "Marrakech",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Oualidia",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 32.7314358,
+    "lon": -9.0340271,
+    "name": "Oualidia",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Ourgane",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 30.907999,
+    "lon": -7.5409869,
+    "name": "Ourgane",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Ourika",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 31.3780274,
+    "lon": -7.8048323,
+    "name": "Ourika",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Rabat",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 33.954,
+    "lon": -6.871,
+    "name": "Rabat",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Rissani",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 31.2618886,
+    "lon": -3.9593135,
+    "name": "Rissani",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tanger",
+    "continent": "Afrique",
+    "country": "Maroc",
+    "lat": 35.7696302,
+    "lon": -5.8033522,
+    "name": "Tanger",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Mexico City",
+    "continent": "Amérique du Nord",
+    "country": "Mexique",
+    "lat": 19.3207722,
+    "lon": -99.1514678,
+    "name": "Mexico City",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Arlit",
+    "continent": "Afrique",
+    "country": "Niger",
+    "lat": 18.739079,
+    "lon": 7.393331,
+    "name": "Arlit",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Lagos",
+    "continent": "Afrique",
+    "country": "Nigeria",
+    "lat": 6.4550575,
+    "lon": 3.3941795,
+    "name": "Lagos",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Svalbard",
+    "continent": "Europe",
+    "country": "Norvège",
+    "lat": 78.7198519,
+    "lon": 20.3493328,
+    "name": "Svalbard",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Kagbeni",
+    "continent": "Asie",
+    "country": "Népal",
+    "lat": 28.8377595,
+    "lon": 83.7843101,
+    "name": "Kagbeni",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tachkent",
+    "continent": "Asie",
+    "country": "Ouzbékistan",
+    "lat": 41.3123363,
+    "lon": 69.2787079,
+    "name": "Tachkent",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Amsterdam",
+    "continent": "Europe",
+    "country": "Pays-Bas",
+    "lat": 52.3730796,
+    "lon": 4.8924534,
+    "name": "Amsterdam",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Rotterdam",
+    "continent": "Europe",
+    "country": "Pays-Bas",
+    "lat": 51.9244424,
+    "lon": 4.47775,
+    "name": "Rotterdam",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Manille",
+    "continent": "Asie",
+    "country": "Philippines",
+    "lat": 14.5904492,
+    "lon": 120.9803621,
+    "name": "Manille",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Varsovie",
+    "continent": "Europe",
+    "country": "Pologne",
+    "lat": 52.2333742,
+    "lon": 21.0711489,
+    "name": "Varsovie",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Leça da Palmeira",
+    "continent": "Europe",
+    "country": "Portugal",
+    "lat": 41.1938981,
+    "lon": -8.6977387,
+    "name": "Leça da Palmeira",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Lisbonne",
+    "continent": "Europe",
+    "country": "Portugal",
+    "lat": 38.7077507,
+    "lon": -9.1365919,
+    "name": "Lisbonne",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Porto",
+    "continent": "Europe",
+    "country": "Portugal",
+    "lat": 41.150083,
+    "lon": -8.63618,
+    "name": "Porto",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Callao",
+    "continent": "Amérique du Sud",
+    "country": "Pérou",
+    "lat": -11.9496688,
+    "lon": -77.1288139,
+    "name": "Callao",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Lima",
+    "continent": "Amérique du Sud",
+    "country": "Pérou",
+    "lat": -12.0459808,
+    "lon": -77.0305912,
+    "name": "Lima",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Trujillo",
+    "continent": "Amérique du Sud",
+    "country": "Pérou",
+    "lat": -8.1116778,
+    "lon": -79.0287742,
+    "name": "Trujillo",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Giurgiu",
+    "continent": "Europe",
+    "country": "Roumanie",
+    "lat": 43.8961275,
+    "lon": 25.9656448,
+    "name": "Giurgiu",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Glasgow",
+    "continent": "Europe",
+    "country": "Royaume-Uni",
+    "lat": 55.8733,
+    "lon": -4.2653,
+    "name": "Glasgow",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Londres",
+    "continent": "Europe",
+    "country": "Royaume-Uni",
+    "lat": 51.5074456,
+    "lon": -0.1277653,
+    "name": "Londres",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Pointe-Noire",
+    "continent": "Afrique",
+    "country": "République du Congo",
+    "lat": -4.7975373,
+    "lon": 11.8503297,
+    "name": "Pointe-Noire",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Belgrade",
+    "continent": "Europe",
+    "country": "Serbie",
+    "lat": 44.8153318,
+    "lon": 20.4456588,
+    "name": "Belgrade",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Singapour",
+    "continent": "Asie",
+    "country": "Singapour",
+    "lat": 1.2899175,
+    "lon": 103.8519072,
+    "name": "Singapour",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Nuwara Eliya",
+    "continent": "Asie",
+    "country": "Sri Lanka",
+    "lat": 7.012402,
+    "lon": 80.7571612,
+    "name": "Nuwara Eliya",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bâle",
+    "continent": "Europe",
+    "country": "Suisse",
+    "lat": 47.5581077,
+    "lon": 7.5878261,
+    "name": "Bâle",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Fribourg",
+    "continent": "Europe",
+    "country": "Suisse",
+    "lat": 46.6789116,
+    "lon": 7.1027113,
+    "name": "Fribourg",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Genève",
+    "continent": "Europe",
+    "country": "Suisse",
+    "lat": 46.209,
+    "lon": 6.153,
+    "name": "Genève",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Homs",
+    "continent": "Asie",
+    "country": "Syrie",
+    "lat": 34.7333334,
+    "lon": 36.7166667,
+    "name": "Homs",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bargny",
+    "continent": "Afrique",
+    "country": "Sénégal",
+    "lat": 14.693829,
+    "lon": -17.229741,
+    "name": "Bargny",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dakar",
+    "continent": "Afrique",
+    "country": "Sénégal",
+    "lat": 14.693425,
+    "lon": -17.447938,
+    "name": "Dakar",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Maka Diama",
+    "continent": "Afrique",
+    "country": "Sénégal",
+    "lat": 16.2158289,
+    "lon": -16.3816183,
+    "name": "Maka Diama",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Palmarin",
+    "continent": "Afrique",
+    "country": "Sénégal",
+    "lat": 14.013102,
+    "lon": -16.764462,
+    "name": "Palmarin",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "N'djamena",
+    "continent": "Afrique",
+    "country": "Tchad",
+    "lat": 12.1191543,
+    "lon": 15.0502758,
+    "name": "N'djamena",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Bangkok",
+    "continent": "Asie",
+    "country": "Thaïlande",
+    "lat": 13.7373,
+    "lon": 100.5292,
+    "name": "Bangkok",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Carthage",
+    "continent": "Afrique",
+    "country": "Tunisie",
+    "lat": 36.8548083,
+    "lon": 10.3309924,
+    "name": "Carthage",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Djerba",
+    "continent": "Afrique",
+    "country": "Tunisie",
+    "lat": 33.7735976,
+    "lon": 10.8861888,
+    "name": "Djerba",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Tunis",
+    "continent": "Afrique",
+    "country": "Tunisie",
+    "lat": 36.873333,
+    "lon": 10.338369,
+    "name": "Tunis",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Istanbul",
+    "continent": "Asie",
+    "country": "Turquie",
+    "lat": 41.054,
+    "lon": 28.979,
+    "name": "Istanbul",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Mugla",
+    "continent": "Asie",
+    "country": "Turquie",
+    "lat": 37.1642053,
+    "lon": 28.2624288,
+    "name": "Mugla",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Hanoi",
+    "continent": "Asie",
+    "country": "Vietnam",
+    "lat": 21.0283334,
+    "lon": 105.854041,
+    "name": "Hanoi",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Ho Chi Minh-Ville",
+    "continent": "Asie",
+    "country": "Vietnam",
+    "lat": 10.7755254,
+    "lon": 106.7021047,
+    "name": "Ho Chi Minh-Ville",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Mang Thit",
+    "continent": "Asie",
+    "country": "Vietnam",
+    "lat": 10.1830409,
+    "lon": 106.0963124,
+    "name": "Mang Thit",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Le Caire",
+    "continent": "Afrique",
+    "country": "Égypte",
+    "lat": 30.075808,
+    "lon": 31.281116,
+    "name": "Le Caire",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Dubai",
+    "continent": "Asie",
+    "country": "Émirats arabes unis",
+    "lat": 25.0742823,
+    "lon": 55.1885387,
+    "name": "Dubai",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Chicago",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 41.8755616,
+    "lon": -87.6244212,
+    "name": "Chicago",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Fort Yukon",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 66.5647222,
+    "lon": -145.273888,
+    "name": "Fort Yukon",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Glendale",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 34.1469416,
+    "lon": -118.2478471,
+    "name": "Glendale",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Houston",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 29.7589382,
+    "lon": -95.3676974,
+    "name": "Houston",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Las Vegas",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 36.1674263,
+    "lon": -115.1484131,
+    "name": "Las Vegas",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Los Alamos",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 35.88137,
+    "lon": -106.298959,
+    "name": "Los Alamos",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Los Angeles",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 34.0536909,
+    "lon": -118.242766,
+    "name": "Los Angeles",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "Marfa",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 30.3117621,
+    "lon": -104.023146,
+    "name": "Marfa",
+    "province": "",
+    "type": "city"
+  },
+  {
+    "city": "New York",
+    "continent": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 40.7127281,
+    "lon": -74.0060152,
+    "name": "New York",
+    "province": "",
+    "type": "city"
+  }
+]

@@ -1,0 +1,434 @@
+{
+  "continents": {
+    "Afrique": "Africa",
+    "Amérique du Nord": "North America",
+    "Amérique du Sud": "South America",
+    "Antarctique": "Antarctica",
+    "Arctique": "Arctic",
+    "Asie": "Asia",
+    "Europe": "Europe",
+    "Océanie": "Oceania"
+  },
+  "countries": {
+    "Afghanistan": {
+      "isoNumeric": "004",
+      "nameEN": "Afghanistan",
+      "parentNameFR": "Asie"
+    },
+    "Afrique du Sud": {
+      "isoNumeric": "710",
+      "nameEN": "South Africa",
+      "parentNameFR": "Afrique"
+    },
+    "Albanie": {
+      "isoNumeric": "008",
+      "nameEN": "Albania",
+      "parentNameFR": "Europe"
+    },
+    "Algérie": {
+      "isoNumeric": "012",
+      "nameEN": "Algeria",
+      "parentNameFR": "Afrique"
+    },
+    "Allemagne": {
+      "isoNumeric": "276",
+      "nameEN": "Germany",
+      "parentNameFR": "Europe"
+    },
+    "Arabie Saoudite": {
+      "isoNumeric": "682",
+      "nameEN": "Saudi Arabia",
+      "parentNameFR": "Asie"
+    },
+    "Argentine": {
+      "isoNumeric": "032",
+      "nameEN": "Argentina",
+      "parentNameFR": "Amérique du Sud"
+    },
+    "Arménie": {
+      "isoNumeric": "051",
+      "nameEN": "Armenia",
+      "parentNameFR": "Asie"
+    },
+    "Australie": {
+      "isoNumeric": "036",
+      "nameEN": "Australia",
+      "parentNameFR": "Océanie"
+    },
+    "Autriche": {
+      "isoNumeric": "040",
+      "nameEN": "Austria",
+      "parentNameFR": "Europe"
+    },
+    "Belgique": {
+      "isoNumeric": "056",
+      "nameEN": "Belgium",
+      "parentNameFR": "Europe"
+    },
+    "Bénin": {
+      "isoNumeric": "204",
+      "nameEN": "Benin",
+      "parentNameFR": "Afrique"
+    },
+    "Brésil": {
+      "isoNumeric": "076",
+      "nameEN": "Brazil",
+      "parentNameFR": "Amérique du Sud"
+    },
+    "Bulgarie": {
+      "isoNumeric": "100",
+      "nameEN": "Bulgaria",
+      "parentNameFR": "Europe"
+    },
+    "Burkina Faso": {
+      "isoNumeric": "854",
+      "nameEN": "Burkina Faso",
+      "parentNameFR": "Afrique"
+    },
+    "Cambodge": {
+      "isoNumeric": "116",
+      "nameEN": "Cambodia",
+      "parentNameFR": "Asie"
+    },
+    "Cameroun": {
+      "isoNumeric": "120",
+      "nameEN": "Cameroon",
+      "parentNameFR": "Afrique"
+    },
+    "Canada": {
+      "isoNumeric": "124",
+      "nameEN": "Canada",
+      "parentNameFR": "Amérique du Nord"
+    },
+    "Cap-Vert": {
+      "isoNumeric": "132",
+      "nameEN": "Cape Verde",
+      "parentNameFR": "Afrique"
+    },
+    "Chili": {
+      "isoNumeric": "152",
+      "nameEN": "Chile",
+      "parentNameFR": "Amérique du Sud"
+    },
+    "Chine": {
+      "isoNumeric": "156",
+      "nameEN": "China",
+      "parentNameFR": "Asie"
+    },
+    "Chypre": {
+      "isoNumeric": "196",
+      "nameEN": "Cyprus",
+      "parentNameFR": "Europe"
+    },
+    "Colombie": {
+      "isoNumeric": "170",
+      "nameEN": "Colombia",
+      "parentNameFR": "Amérique du Sud"
+    },
+    "Corée du Sud": {
+      "isoNumeric": "410",
+      "nameEN": "South Korea",
+      "parentNameFR": "Asie"
+    },
+    "Côte d'Ivoire": {
+      "isoNumeric": "384",
+      "nameEN": "Ivory Coast",
+      "parentNameFR": "Afrique"
+    },
+    "Danemark": {
+      "isoNumeric": "208",
+      "nameEN": "Denmark",
+      "parentNameFR": "Europe"
+    },
+    "Égypte": {
+      "isoNumeric": "818",
+      "nameEN": "Egypt",
+      "parentNameFR": "Afrique"
+    },
+    "Émirats arabes unis": {
+      "isoNumeric": "784",
+      "nameEN": "United Arab Emirates",
+      "parentNameFR": "Asie"
+    },
+    "Espagne": {
+      "isoNumeric": "724",
+      "nameEN": "Spain",
+      "parentNameFR": "Europe"
+    },
+    "Estonie": {
+      "isoNumeric": "233",
+      "nameEN": "Estonia",
+      "parentNameFR": "Europe"
+    },
+    "États-Unis": {
+      "isoNumeric": "840",
+      "nameEN": "United States",
+      "parentNameFR": "Amérique du Nord"
+    },
+    "Finlande": {
+      "isoNumeric": "246",
+      "nameEN": "Finland",
+      "parentNameFR": "Europe"
+    },
+    "France": {
+      "isoNumeric": "250",
+      "nameEN": "France",
+      "parentNameFR": "Europe"
+    },
+    "Grèce": {
+      "isoNumeric": "300",
+      "nameEN": "Greece",
+      "parentNameFR": "Europe"
+    },
+    "Guinée": {
+      "isoNumeric": "324",
+      "nameEN": "Guinea",
+      "parentNameFR": "Afrique"
+    },
+    "Inde": {
+      "isoNumeric": "356",
+      "nameEN": "India",
+      "parentNameFR": "Asie"
+    },
+    "Indonésie": {
+      "isoNumeric": "360",
+      "nameEN": "Indonesia",
+      "parentNameFR": "Asie"
+    },
+    "Irak": {
+      "isoNumeric": "368",
+      "nameEN": "Iraq",
+      "parentNameFR": "Asie"
+    },
+    "Iran": {
+      "isoNumeric": "364",
+      "nameEN": "Iran",
+      "parentNameFR": "Asie"
+    },
+    "Israël": {
+      "isoNumeric": "376",
+      "nameEN": "Israel",
+      "parentNameFR": "Asie"
+    },
+    "Italie": {
+      "isoNumeric": "380",
+      "nameEN": "Italy",
+      "parentNameFR": "Europe"
+    },
+    "Japon": {
+      "isoNumeric": "392",
+      "nameEN": "Japan",
+      "parentNameFR": "Asie"
+    },
+    "Jordanie": {
+      "isoNumeric": "400",
+      "nameEN": "Jordan",
+      "parentNameFR": "Asie"
+    },
+    "Liban": {
+      "isoNumeric": "422",
+      "nameEN": "Lebanon",
+      "parentNameFR": "Asie"
+    },
+    "Lituanie": {
+      "isoNumeric": "440",
+      "nameEN": "Lithuania",
+      "parentNameFR": "Europe"
+    },
+    "Madagascar": {
+      "isoNumeric": "450",
+      "nameEN": "Madagascar",
+      "parentNameFR": "Afrique"
+    },
+    "Maroc": {
+      "isoNumeric": "504",
+      "nameEN": "Morocco",
+      "parentNameFR": "Afrique"
+    },
+    "Maurice": {
+      "isoNumeric": "480",
+      "nameEN": "Mauritius",
+      "parentNameFR": "Afrique"
+    },
+    "Mexique": {
+      "isoNumeric": "484",
+      "nameEN": "Mexico",
+      "parentNameFR": "Amérique du Nord"
+    },
+    "Népal": {
+      "isoNumeric": "524",
+      "nameEN": "Nepal",
+      "parentNameFR": "Asie"
+    },
+    "Niger": {
+      "isoNumeric": "562",
+      "nameEN": "Niger",
+      "parentNameFR": "Afrique"
+    },
+    "Nigeria": {
+      "isoNumeric": "566",
+      "nameEN": "Nigeria",
+      "parentNameFR": "Afrique"
+    },
+    "Norvège": {
+      "isoNumeric": "578",
+      "nameEN": "Norway",
+      "parentNameFR": "Europe"
+    },
+    "Ouzbékistan": {
+      "isoNumeric": "860",
+      "nameEN": "Uzbekistan",
+      "parentNameFR": "Asie"
+    },
+    "Palestine": {
+      "isoNumeric": "275",
+      "nameEN": "Palestine",
+      "parentNameFR": "Asie"
+    },
+    "Pays-Bas": {
+      "isoNumeric": "528",
+      "nameEN": "Netherlands",
+      "parentNameFR": "Europe"
+    },
+    "Pérou": {
+      "isoNumeric": "604",
+      "nameEN": "Peru",
+      "parentNameFR": "Amérique du Sud"
+    },
+    "Philippines": {
+      "isoNumeric": "608",
+      "nameEN": "Philippines",
+      "parentNameFR": "Asie"
+    },
+    "Pologne": {
+      "isoNumeric": "616",
+      "nameEN": "Poland",
+      "parentNameFR": "Europe"
+    },
+    "Portugal": {
+      "isoNumeric": "620",
+      "nameEN": "Portugal",
+      "parentNameFR": "Europe"
+    },
+    "République démocratique du Congo": {
+      "isoNumeric": "180",
+      "nameEN": "Democratic Republic of the Congo",
+      "parentNameFR": "Afrique"
+    },
+    "République du Congo": {
+      "isoNumeric": "178",
+      "nameEN": "Republic of the Congo",
+      "parentNameFR": "Afrique"
+    },
+    "République tchèque": {
+      "isoNumeric": "203",
+      "nameEN": "Czech Republic",
+      "parentNameFR": "Europe"
+    },
+    "Roumanie": {
+      "isoNumeric": "642",
+      "nameEN": "Romania",
+      "parentNameFR": "Europe"
+    },
+    "Royaume-Uni": {
+      "isoNumeric": "826",
+      "nameEN": "United Kingdom",
+      "parentNameFR": "Europe"
+    },
+    "Russie": {
+      "isoNumeric": "643",
+      "nameEN": "Russia",
+      "parentNameFR": "Europe"
+    },
+    "Sénégal": {
+      "isoNumeric": "686",
+      "nameEN": "Senegal",
+      "parentNameFR": "Afrique"
+    },
+    "Serbie": {
+      "isoNumeric": "688",
+      "nameEN": "Serbia",
+      "parentNameFR": "Europe"
+    },
+    "Singapour": {
+      "isoNumeric": "702",
+      "nameEN": "Singapore",
+      "parentNameFR": "Asie"
+    },
+    "Slovaquie": {
+      "isoNumeric": "703",
+      "nameEN": "Slovakia",
+      "parentNameFR": "Europe"
+    },
+    "Slovénie": {
+      "isoNumeric": "705",
+      "nameEN": "Slovenia",
+      "parentNameFR": "Europe"
+    },
+    "Soudan": {
+      "isoNumeric": "729",
+      "nameEN": "Sudan",
+      "parentNameFR": "Afrique"
+    },
+    "Sri Lanka": {
+      "isoNumeric": "144",
+      "nameEN": "Sri Lanka",
+      "parentNameFR": "Asie"
+    },
+    "Suède": {
+      "isoNumeric": "752",
+      "nameEN": "Sweden",
+      "parentNameFR": "Europe"
+    },
+    "Suisse": {
+      "isoNumeric": "756",
+      "nameEN": "Switzerland",
+      "parentNameFR": "Europe"
+    },
+    "Syrie": {
+      "isoNumeric": "760",
+      "nameEN": "Syria",
+      "parentNameFR": "Asie"
+    },
+    "Tanzanie": {
+      "isoNumeric": "834",
+      "nameEN": "Tanzania",
+      "parentNameFR": "Afrique"
+    },
+    "Tchad": {
+      "isoNumeric": "148",
+      "nameEN": "Chad",
+      "parentNameFR": "Afrique"
+    },
+    "Thaïlande": {
+      "isoNumeric": "764",
+      "nameEN": "Thailand",
+      "parentNameFR": "Asie"
+    },
+    "Tunisie": {
+      "isoNumeric": "788",
+      "nameEN": "Tunisia",
+      "parentNameFR": "Afrique"
+    },
+    "Turquie": {
+      "isoNumeric": "792",
+      "nameEN": "Turkey",
+      "parentNameFR": "Europe"
+    },
+    "Vietnam": {
+      "isoNumeric": "704",
+      "nameEN": "Vietnam",
+      "parentNameFR": "Asie"
+    },
+    "Yémen": {
+      "isoNumeric": "887",
+      "nameEN": "Yemen",
+      "parentNameFR": "Asie"
+    },
+    "Zambie": {
+      "isoNumeric": "894",
+      "nameEN": "Zambia",
+      "parentNameFR": "Afrique"
+    }
+  }
+}

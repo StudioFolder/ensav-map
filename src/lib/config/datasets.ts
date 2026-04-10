@@ -43,6 +43,14 @@ export interface DatasetConfig {
   studentFields?: string[]    // all student fields for buildPersonGroups
   supervisorFields?: string[] // all supervisor fields for buildPersonGroups
   yearField?: string          // date field used by buildTimelineRecords
+
+  /**
+   * Timeline ordering. When set, this dataset is rendered on the timeline view;
+   * lower numbers are processed first by the tetris beeswarm (earlier datasets
+   * settle at the bottom of the blob). When undefined, the dataset is excluded
+   * from the timeline (e.g. partenariats, which have no dates).
+   */
+  timelineOrder?: number
 }
 
 // ---------------------------------------------------------------------------
@@ -70,6 +78,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     studentFields: ['Student 1', 'Student 2', 'Student 3'],
     supervisorFields: ['Supervisor 1', 'Supervisor 2', 'Supervisor 3'],
     yearField: 'Publication year',
+    timelineOrder: 2,
   },
 
   pfe: {
@@ -92,6 +101,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     studentFields: ['Student 1', 'Student 2', 'Student 3'],
     supervisorFields: ['Supervisor 1', 'Supervisor 2', 'Supervisor 3'],
     // pfe uses 'Start date' (ISO YYYY-MM-DD) for month precision — not a simple year field
+    timelineOrder: 1,
   },
 
   p45: {
@@ -113,6 +123,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     personField: 'Supervisor 1',
     studentFields: ['Student 1', 'Student 2', 'Student 3'],
     supervisorFields: ['Supervisor 1', 'Supervisor 2', 'Supervisor 3'],
+    timelineOrder: 0,
   },
 
   pfe_france: {
@@ -134,6 +145,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     studentFields: ['Student 1', 'Student 2', 'Student 3'],
     supervisorFields: ['Supervisor 1', 'Supervisor 2', 'Supervisor 3'],
     yearField: 'Publication year',
+    timelineOrder: 3,
   },
 
   theses: {
@@ -155,6 +167,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     personField: 'Student 1',
     studentFields: ['Student 1', 'Student 2', 'Student 3'],
     supervisorFields: ['Supervisor 1', 'Supervisor 2', 'Supervisor 3'],
+    timelineOrder: 4,
   },
 
   partenariats_mobilites: {
@@ -197,6 +210,15 @@ export const DATASET_LABELS: Record<DatasetKey, string> = Object.fromEntries(
 export const TABLE_IDS: Record<DatasetKey, string> = Object.fromEntries(
   (Object.keys(DATASETS) as DatasetKey[]).map((k) => [k, DATASETS[k].tableId])
 ) as Record<DatasetKey, string>
+
+/**
+ * Dataset keys rendered on the timeline view, ordered by timelineOrder
+ * (lower = processed first by the tetris beeswarm = settles at the bottom).
+ * Derived from DATASETS so a single edit in the config propagates everywhere.
+ */
+export const TIMELINE_DATASET_KEYS: DatasetKey[] = (Object.keys(DATASETS) as DatasetKey[])
+  .filter(k => DATASETS[k].timelineOrder !== undefined)
+  .sort((a, b) => DATASETS[a].timelineOrder! - DATASETS[b].timelineOrder!)
 
 /** Look up a dataset config by key. Throws if key is not found (should never happen). */
 export function getDataset(key: DatasetKey): DatasetConfig {

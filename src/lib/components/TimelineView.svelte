@@ -1,10 +1,7 @@
 <script lang="ts">
   import type { TimelineRecord } from '$lib/data/types'
   import type { SearchItem, Dataset } from '$lib/search/index'
-  import { DATASET_LABELS } from '$lib/config/datasets'
-
-  // The four datasets rendered in the timeline view (legend order)
-  const TIMELINE_KEYS = ['p45', 'pfe', 'memoires', 'pfe_france', 'theses'] as const
+  import { DATASET_LABELS, TIMELINE_DATASET_KEYS } from '$lib/config/datasets'
 
   const MONTHS_FR = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
 
@@ -56,7 +53,7 @@
   }
 
   /**
-   * Tetris beeswarm: records are processed dataset by dataset in TIMELINE_KEYS order,
+   * Tetris beeswarm: records are processed dataset by dataset in TIMELINE_DATASET_KEYS order,
    * sorted by dateValue within each dataset. Earlier datasets claim the lowest y
    * positions first; later datasets fill the remaining gaps and stack on top.
    * This gives a gravity effect where each dataset's items settle as low as possible
@@ -66,7 +63,7 @@
     if (svgWidth <= 0 || sortedRecords.length === 0) return []
 
     // Process in dataset order, then by dateValue within each dataset
-    const ordered = TIMELINE_KEYS.flatMap(key =>
+    const ordered = TIMELINE_DATASET_KEYS.flatMap(key =>
       sortedRecords.filter(r => r.dataset === key)
     )
 
@@ -224,7 +221,7 @@
   {#if placedItems.length > 0}
     <!-- Legend — top-centered, aligned with the mode switcher and counter -->
     <div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
-      {#each TIMELINE_KEYS as key}
+      {#each TIMELINE_DATASET_KEYS as key}
         <div class="flex items-center gap-1.5">
           <span class="legend-{key} block shrink-0 w-2 h-2 rounded-full"></span>
           <span>{DATASET_LABELS[key]}</span>
