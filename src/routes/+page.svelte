@@ -214,7 +214,7 @@
 
 <svelte:window onkeydown={onWindowKeydown} />
 
-<div class="flex h-screen overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+<div class="flex h-screen overflow-hidden text-gray-800 dark:text-gray-200 {projectionType === 'naturalEarth' ? 'bg-[#e5e5e5] dark:bg-[#3a3a3a]' : projectionType === 'people' || projectionType === 'timeline' ? 'bg-gray-50 dark:bg-gray-900' : 'bg-gray-200 dark:bg-gray-950'}">
 
   <!-- Globe — fills remaining horizontal space -->
   <div class="relative flex-1 min-w-0 {projectionType === 'naturalEarth' ? 'bg-[#e5e5e5] dark:bg-[#3a3a3a]' : projectionType === 'people' || projectionType === 'timeline' ? 'bg-gray-50 dark:bg-gray-900' : 'bg-gray-200 dark:bg-gray-950'}">
@@ -378,8 +378,8 @@
 
   </div>
 
-  <!-- Sidebar — fixed width, scrollable -->
-  <aside class="w-80 shrink-0 flex flex-col overflow-y-auto border-l border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+  <!-- Sidebar — floating panel -->
+  <aside class="w-80 shrink-0 my-3 mr-3 flex flex-col overflow-y-auto rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
     <div class="flex-1 px-6 pt-3 pb-6">
 
       <div class="mb-10">

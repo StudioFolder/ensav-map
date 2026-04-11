@@ -31,6 +31,20 @@
   let lines = $state<Array<{x1: number; y1: number; x2: number; y2: number; stroke: string}>>([])
 
   const rolesMap = $derived(new Map(personGroups.map(p => [p.name, p.roles])))
+
+  const connectionCounts = $derived.by(() => {
+    const map = new Map<string, { blue: number; amber: number }>()
+    for (const [name, connected] of connectionMap) {
+      let blue = 0, amber = 0
+      for (const cName of connected) {
+        const roles = rolesMap.get(cName)
+        if (roles?.has('student')) blue++
+        else amber++
+      }
+      map.set(name, { blue, amber })
+    }
+    return map
+  })
   let wrapperEl = $state<HTMLElement | null>(null)
 
   // Build a graph: person name → Set of names who share at least one record with them
@@ -132,7 +146,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  class="absolute inset-0 overflow-auto"
+  class="absolute inset-0 overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
   onclick={() => { selectedPerson = null }}
 >
   <!-- relative wrapper stretches to match content; SVG is anchored here -->
@@ -165,10 +179,10 @@
             <button
               type="button"
               onclick={(e) => selectPerson(e, person.name)}
-              class="text-left w-full flex items-center gap-1.5"
+              class="text-left w-full flex items-baseline gap-1.5"
             >
               <!-- Role icon — anchor for SVG lines -->
-              <span data-person-icon={person.name} class="flex items-center shrink-0">
+              <span data-person-icon={person.name} class="flex items-center shrink-0 self-center">
                 {#if person.roles.has('student') && person.roles.has('supervisor')}
                   <!-- Both roles: show both icons -->
                   <svg class="w-3 h-3 text-blue-400 dark:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -192,6 +206,19 @@
               <div class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-200 leading-snug {nameHoverClass(person.roles)}">
                 {person.name}
               </div>
+              {#if (connectionCounts.get(person.name)?.blue ?? 0) > 0 || (connectionCounts.get(person.name)?.amber ?? 0) > 0}
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-baseline gap-0.5 text-[11px] tabular-nums ml-2">
+                  {#if (connectionCounts.get(person.name)?.blue ?? 0) > 0}
+                    <span class="text-blue-400 dark:text-blue-500">{connectionCounts.get(person.name)!.blue}</span>
+                  {/if}
+                  {#if (connectionCounts.get(person.name)?.blue ?? 0) > 0 && (connectionCounts.get(person.name)?.amber ?? 0) > 0}
+                    <span class="text-gray-300 dark:text-gray-600">·</span>
+                  {/if}
+                  {#if (connectionCounts.get(person.name)?.amber ?? 0) > 0}
+                    <span class="text-amber-400 dark:text-amber-500">{connectionCounts.get(person.name)!.amber}</span>
+                  {/if}
+                </span>
+              {/if}
             </button>
             <div class="mt-0.5 space-y-0.5 pl-[18px]">
               {#each person.records as r, i}

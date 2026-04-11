@@ -24,10 +24,10 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
   role="none"
-  class="absolute inset-0 z-50 flex items-center justify-center"
+  class="fixed inset-0 z-50 flex items-center justify-center pr-[20.75rem]"
   onclick={(e) => { if (e.target === e.currentTarget) onclose() }}
 >
-  <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+  <div class="fixed inset-0 bg-black/40 dark:bg-black/60"></div>
   <div class="relative z-10 w-full max-w-xl bg-white dark:bg-gray-900 rounded-xl shadow-xl max-h-[85%] flex flex-col mx-8">
     <div class="flex items-start justify-between px-6 pt-5 pb-4 border-b border-gray-100 dark:border-gray-800 shrink-0">
       <div>
