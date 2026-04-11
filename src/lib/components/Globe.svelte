@@ -16,7 +16,9 @@
     clearFocusTrigger?: number
   } = $props()
 
-  const COLORS = theme === 'dark'
+  // R11: Globe is re-keyed by +page.svelte whenever theme/projectionType/points change,
+  // so reading props in module-level consts is intentional — untrack() makes that explicit.
+  const COLORS = untrack(() => theme === 'dark'
     ? {
         globeOcean: '#484848',
         mapOcean: '#3a3a3a',
@@ -58,7 +60,7 @@
         baseArc: 'rgba(0,0,0,0.10)',
         hoveredArc: 'rgba(0,0,0,0.75)',
         focusedArc: 'rgba(0,0,0,0.45)',
-      }
+      })
 
   // Arc type — defined outside onMount so it can be referenced in FocusedState
   type ArcDatum = { from: [number, number]; to: [number, number]; key: string; key2?: string }
@@ -129,18 +131,18 @@
 
   const SIZE = 600
   const RADIUS = 288
-  const viewW = projectionType === 'naturalEarth' ? SIZE * 2 : SIZE
+  const viewW = untrack(() => projectionType === 'naturalEarth' ? SIZE * 2 : SIZE)
   const viewH = SIZE
 
   const trianglePath = d3.symbol().type(d3.symbolTriangle).size(10)()!
 
-  const cityPoints = geoPoints.filter((p) => p.type !== 'institution')
+  const cityPoints = untrack(() => geoPoints.filter((p) => p.type !== 'institution'))
 
   const maxCount = Math.max(1, ...cityPoints.map((p) => p.titles.length))
   const rScale = d3.scaleSqrt().domain([1, maxCount]).range([0.8, 6]).clamp(true)
 
   const coordKey = (lat: number, lon: number) => `${lat.toFixed(3)},${lon.toFixed(3)}`
-  const partenariatKeys = new Set(points.map((p) => coordKey(p.lat, p.lon)))
+  const partenariatKeys = new Set(untrack(() => points.map((p) => coordKey(p.lat, p.lon))))
   const geoKeys = new Set(cityPoints.map((p) => coordKey(p.lat, p.lon)))
   const overlaps = new Set([...partenariatKeys].filter((k) => geoKeys.has(k)))
   const OFFSET = 5

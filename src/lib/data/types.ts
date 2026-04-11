@@ -196,6 +196,8 @@ export interface Partenariat {
   City: string | null
   Country: string | null
   'Geographic coordinates': string | null
+  'Duration (months)': string | null
+  'Places Master ENSAV': string | null
 }
 
 export interface GeoPoint {

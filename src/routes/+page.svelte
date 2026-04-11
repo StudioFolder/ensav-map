@@ -1,8 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
-  import { initSearch, search, type SearchGroup, type SearchItem, type Dataset } from '$lib/search/index'
-  import { DATASET_KEYS, DATASET_LABELS, NOCODB_INTERNAL_FIELDS } from '$lib/config/datasets'
+  import { initSearch, search, type FieldGroup, type SearchItem, type Dataset } from '$lib/search/index'
+  import { DATASET_KEYS, DATASET_LABELS } from '$lib/config/datasets'
+  import RecordDetailModal from '$lib/components/RecordDetailModal.svelte'
+  import DatasetFilterCard from '$lib/components/DatasetFilterCard.svelte'
   import { scramble } from '$lib/actions/scramble'
   import Globe from '$lib/components/Globe.svelte'
   import ContinentView from '$lib/components/ContinentView.svelte'
@@ -12,12 +14,14 @@
   let { data }: { data: PageData } = $props()
 
 
-  const datasets = data.sourceError
-    ? DATASET_KEYS.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const }))
-    : DATASET_KEYS
-        .map((key) => data.datasets.find((d) => d.key === key))
-        .filter((d): d is (typeof data.datasets)[number] => d !== undefined)
-        .map((d) => ({ ...d, error: false as const }))
+  const datasets = $derived(
+    data.sourceError
+      ? DATASET_KEYS.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const }))
+      : DATASET_KEYS
+          .map((key) => data.datasets.find((d) => d.key === key))
+          .filter((d): d is (typeof data.datasets)[number] => d !== undefined)
+          .map((d) => ({ ...d, error: false as const }))
+  )
 
   const LAST_VISIT_KEY = 'ensav_last_visit'
   const THEME_KEY = 'ensav_theme'
@@ -142,7 +146,7 @@
 
   let query = $state('')
   let searchReady = $state(false)
-  let searchGroups: SearchGroup[] = $state([])
+  let searchGroups: FieldGroup[] = $state([])
   let debounceTimer: ReturnType<typeof setTimeout>
   let selectedItems: SearchItem[] = $state([])
   let selectedGroupLabel: string | undefined = $state(undefined)
@@ -179,16 +183,6 @@
     return new Date(lastUpdated) > lastVisit
   }
 
-  function timeAgo(dateStr: string): string {
-    const diff = Date.now() - new Date(dateStr).getTime()
-    const minutes = Math.floor(diff / 60000)
-    const hours = Math.floor(diff / 3600000)
-    const days = Math.floor(diff / 86400000)
-    if (minutes < 60) return `${minutes}m ago`
-    if (hours < 24) return `${hours}h ago`
-    return `${days}d ago`
-  }
-
   function openItem(item: SearchItem) {
     selectedItems = [item]
   }
@@ -215,11 +209,7 @@
   }
 
 
-  function recordEntries(record: Record<string, unknown>): [string, string][] {
-    return Object.entries(record)
-      .filter(([k, v]) => !NOCODB_INTERNAL_FIELDS.has(k) && !k.startsWith('nc_') && v != null && v !== '')
-      .map(([k, v]) => [k, String(v)])
-  }
+
 </script>
 
 <svelte:window onkeydown={onWindowKeydown} />
@@ -379,90 +369,55 @@
     {/if}
 
     {#if selectedItems.length > 0}
-      <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-      <div
-        class="absolute inset-0 z-50 flex items-center justify-center"
-        onclick={(e) => { if (e.target === e.currentTarget) closeItem() }}
-      >
-        <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
-        <div class="relative z-10 w-full max-w-xl bg-white dark:bg-gray-900 rounded-xl shadow-xl max-h-[85%] flex flex-col mx-8">
-          <div class="flex items-start justify-between px-6 pt-5 pb-4 border-b border-gray-100 dark:border-gray-800 shrink-0">
-            <div>
-              {#if selectedItems.length > 1 && selectedGroupLabel}
-                <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedGroupLabel}</h2>
-                <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{selectedItems.length} records</p>
-              {:else}
-                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">
-                  {DATASET_LABELS[selectedItems[0].dataset] ?? selectedItems[0].dataset}
-                </p>
-                <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">{selectedItems[0].label}</h2>
-              {/if}
-            </div>
-            <button
-              type="button"
-              onclick={closeItem}
-              class="ml-4 mt-0.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 shrink-0"
-              aria-label="Close"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-          </div>
-          <div class="overflow-y-auto">
-            {#each selectedItems as item, i}
-              {#if selectedItems.length > 1}
-                <div class="px-6 pt-4 pb-2 {i > 0 ? 'border-t border-gray-100 dark:border-gray-800' : ''}">
-                  <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">
-                    {DATASET_LABELS[item.dataset] ?? item.dataset}
-                  </p>
-                  <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">{item.label}</h3>
-                </div>
-              {/if}
-              <div class="px-6 {selectedItems.length > 1 ? 'pb-4' : 'py-4'}">
-                <dl class="space-y-2">
-                  {#each recordEntries(item.record) as [key, value]}
-                    <div class="grid grid-cols-[10rem_1fr] gap-3 text-sm">
-                      <dt class="text-gray-400 dark:text-gray-500 pt-0.5 truncate">{key}</dt>
-                      <dd class="text-gray-800 dark:text-gray-200 break-words">{value}</dd>
-                    </div>
-                  {/each}
-                </dl>
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
+      <RecordDetailModal
+        items={selectedItems}
+        groupLabel={selectedGroupLabel}
+        onclose={closeItem}
+      />
     {/if}
 
   </div>
 
   <!-- Sidebar — fixed width, scrollable -->
   <aside class="w-80 shrink-0 flex flex-col overflow-y-auto border-l border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-    <div class="flex-1 px-6 pt-10 pb-6">
+    <div class="flex-1 px-6 pt-3 pb-6">
 
-      <div class="mb-8">
-        <h1 class="text-2xl font-bold mb-2">ENSAV Interactive Map</h1>
-        <p class="text-sm text-gray-500 dark:text-gray-400">
+      <div class="mb-10">
+        <h1 class="text-lg font-semibold mb-1">ENSAV Interactive Map</h1>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
           Mapping partnerships, projects, research, and mobility at
           l'École Nationale Supérieure d'Architecture de Versailles.
         </p>
       </div>
 
-      <div class="mb-6">
+      <div class="mb-6 relative">
         <input
           type="search"
           placeholder={searchReady ? 'Search across all datasets…' : 'Loading…'}
           disabled={!searchReady}
           value={query}
           oninput={onInput}
-          class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:border-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:border-gray-500 disabled:opacity-50"
+          class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:border-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:border-gray-500 disabled:opacity-50 {query ? 'pr-9' : ''}"
         />
+        {#if query}
+          <button
+            type="button"
+            aria-label="Clear search"
+            onclick={() => { query = ''; searchGroups = []; clearTimeout(debounceTimer) }}
+            class="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors flex items-center justify-center"
+          >
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+              <path d="M1 1L7 7M7 1L1 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gray-500 dark:text-gray-300"/>
+            </svg>
+          </button>
+        {/if}
       </div>
 
       {#if query.trim() !== ''}
         <div class="mb-6">
-          {#if searchGroups.length === 0}
+          {#if query.trim().length < 2}
+            <p class="text-sm text-gray-400 dark:text-gray-500">Type at least 2 characters…</p>
+          {:else if searchGroups.length === 0}
             <p class="text-sm text-gray-400 dark:text-gray-500">No results for "{query}"</p>
           {:else}
             <div class="space-y-5">
@@ -470,20 +425,19 @@
                 <div>
                   <div class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1 px-1">{group.label}</div>
                   <div>
-                    {#each group.results as item}
+                    {#each group.results as result}
                       <button
                         type="button"
-                        onclick={() => openItem(item)}
-                        class="w-full text-left px-3 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-baseline gap-3 group"
+                        onclick={() => openItems(result.items, `${result.value} · ${group.label}`)}
+                        class="w-full text-left px-3 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-baseline justify-between gap-3"
                       >
-                        <span class="text-sm text-gray-800 dark:text-gray-200 truncate">{item.label}</span>
-                        {#if item.record['Student 1'] || item.record['Supervisor 1'] || item.record['City'] || item.record['City 1']}
-                          <span class="text-xs text-gray-400 dark:text-gray-500 truncate shrink-0">
-                            {[item.record['Student 1'], item.record['Supervisor 1'], item.record['City'] ?? item.record['City 1']].filter(Boolean).join(' · ')}
-                          </span>
-                        {/if}
+                        <span class="text-sm text-gray-800 dark:text-gray-200 truncate">{result.value}</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500 shrink-0">{result.count} {result.count === 1 ? 'record' : 'records'}</span>
                       </button>
                     {/each}
+                    {#if group.truncated > 0}
+                      <p class="px-3 py-1 text-xs text-gray-400 dark:text-gray-500">+{group.truncated} more</p>
+                    {/if}
                   </div>
                 </div>
               {/each}
@@ -493,48 +447,12 @@
       {:else}
         <div class="grid grid-cols-1 gap-3">
           {#each datasets as ds}
-            {#if ds.error}
-              <div class="p-4 bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-lg">
-                <div class="text-sm font-bold text-gray-800 dark:text-gray-200 mb-1">{ds.label}</div>
-                <div class="text-xs text-red-400 dark:text-red-500">Source not accessible</div>
-              </div>
-            {:else}
-              {@const isHidden = hiddenDatasets.has(ds.key)}
-              <div class="relative p-4 bg-white border border-gray-200 hover:border-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-500 rounded-lg transition-colors {isHidden ? 'opacity-50' : ''}">
-                <a href={ds.href} class="block pr-6">
-                  <div class="text-sm font-bold text-gray-800 dark:text-gray-200 mb-1">{ds.label}</div>
-                  <div class="text-xs text-gray-500 dark:text-gray-400">{ds.count} records</div>
-                  {#if ds.lastUpdated}
-                    <div class="text-xs text-gray-400 dark:text-gray-500 mt-1 flex items-center gap-1.5">
-                      {#if isUpdatedSince(ds.lastUpdated)}
-                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
-                      {/if}
-                      <span>updated {timeAgo(ds.lastUpdated)}</span>
-                    </div>
-                  {/if}
-                </a>
-                <button
-                  type="button"
-                  onclick={() => toggleDataset(ds.key)}
-                  class="absolute top-5 right-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                  aria-label="{isHidden ? 'Show' : 'Hide'} {ds.label} on map"
-                >
-                  {#if isHidden}
-                    <!-- eye-off -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                      <line x1="1" y1="1" x2="23" y2="23"/>
-                    </svg>
-                  {:else}
-                    <!-- eye -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  {/if}
-                </button>
-              </div>
-            {/if}
+            <DatasetFilterCard
+              {ds}
+              isHidden={hiddenDatasets.has(ds.key)}
+              isUpdated={isUpdatedSince(ds.error ? null : ds.lastUpdated)}
+              onToggle={() => toggleDataset(ds.key)}
+            />
           {/each}
         </div>
         {#if !data.sourceError}

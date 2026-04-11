@@ -287,6 +287,7 @@
               onmousemove={(e) => showTooltip(e, rec)}
               onmouseleave={hideTooltip}
               onclick={() => handleClick(rec)}
+              onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(rec) }}
             />
           {/if}
         {/each}

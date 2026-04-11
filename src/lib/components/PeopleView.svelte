@@ -126,6 +126,11 @@
   }
 </script>
 
+<!-- R11: this div is simultaneously the scroll container for the people grid and a click-outside-to-deselect
+     backdrop. Converting it to <button> would break overflow-auto scroll behaviour. Keyboard deselection
+     is handled by the Escape key in onWindowKeydown on the parent page. -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   class="absolute inset-0 overflow-auto"
   onclick={() => { selectedPerson = null }}
