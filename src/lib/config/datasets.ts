@@ -31,6 +31,7 @@ export interface DatasetConfig {
   label: string              // human-readable display name
   href: string               // route path, e.g. "/memoires"
   tableId: string            // NocoDB table ID
+  nocodbUrl: string          // direct link to this table in the NocoDB dashboard
   order: number              // sidebar + continent column display order
   kind: 'travaux' | 'partenariat'
   labelField: string         // which field is the record's display title
@@ -63,6 +64,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     label: 'Mémoires',
     href: '/memoires',
     tableId: 'mt6j703j50c0jii',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/mt6j703j50c0jii/vwz7jk5kr8xubi85/travaux_memoires_csv-full-table',
     order: 5,
     kind: 'travaux',
     labelField: 'Title',
@@ -86,6 +88,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     label: 'PFE',
     href: '/pfe',
     tableId: 'myxjt6b6thw1w6h',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/myxjt6b6thw1w6h/vwosjbmu2sel62ey/travaux_pfe_csv-full-table',
     order: 3,
     kind: 'travaux',
     labelField: 'Title',
@@ -109,6 +112,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     label: 'P45',
     href: '/p45',
     tableId: 'm9uq4llif897juk',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/m9uq4llif897juk/vwm9ot875ob94rch/travaux_p45_csv-full-table',
     order: 6,
     kind: 'travaux',
     labelField: 'Title',
@@ -131,6 +135,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     label: 'PFE France 2025',
     href: '/pfe-france',
     tableId: 'm7tfs4aum2ohwo8',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/m7tfs4aum2ohwo8/vwvbsp6kfqpo8l7q/travaux_pfe_france_2025_csv-full-table',
     order: 4,
     kind: 'travaux',
     labelField: 'Title',
@@ -153,6 +158,7 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
     label: 'Thèses',
     href: '/theses',
     tableId: 'msh87e3y3cw8lf9',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/msh87e3y3cw8lf9/vwn61yb9orc3i8xa/travaux_theses_csv-full-table',
     order: 7,
     kind: 'travaux',
     labelField: 'Title',
@@ -172,9 +178,10 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
 
   partenariats_mobilites: {
     key: 'partenariats_mobilites',
-    label: 'Partenariats — Mobilités',
+    label: 'Partenariats (Mobilités)',
     href: '/partenariats-mobilites',
     tableId: 'mfwhde177w9pngp',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/mfwhde177w9pngp/vwbooa8uw08q0nq0/partenariats_with-student-mobility-full-table',
     order: 1,
     kind: 'partenariat',
     labelField: 'Institution',
@@ -183,9 +190,10 @@ export const DATASETS: Record<DatasetKey, DatasetConfig> = {
 
   partenariats_hors_mobilites: {
     key: 'partenariats_hors_mobilites',
-    label: 'Partenariats — Hors mobilités',
+    label: 'Partenariats (Hors mobilités)',
     href: '/partenariats-hors-mobilites',
     tableId: 'mij6x105uwomp41',
+    nocodbUrl: 'https://nocodb.studiofolder.synology.me/wzxz1brh/pnsjzr9v75ibh5v/mij6x105uwomp41/vwvfjc58ahsgx3j9/partenariats_without-student-mobility-full-table',
     order: 2,
     kind: 'partenariat',
     labelField: 'Institution',

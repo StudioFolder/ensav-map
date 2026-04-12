@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
   import { initSearch, search, type FieldGroup, type SearchItem, type Dataset } from '$lib/search/index'
-  import { DATASET_KEYS, DATASET_LABELS } from '$lib/config/datasets'
+  import { DATASET_KEYS, DATASET_LABELS, DATASETS } from '$lib/config/datasets'
   import RecordDetailModal from '$lib/components/RecordDetailModal.svelte'
   import DatasetFilterCard from '$lib/components/DatasetFilterCard.svelte'
   import { scramble } from '$lib/actions/scramble'
@@ -16,12 +16,28 @@
 
   const datasets = $derived(
     data.sourceError
-      ? DATASET_KEYS.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const }))
+      ? DATASET_KEYS.map((key) => ({ key, label: DATASET_LABELS[key], error: true as const, kind: DATASETS[key].kind }))
       : DATASET_KEYS
           .map((key) => data.datasets.find((d) => d.key === key))
           .filter((d): d is (typeof data.datasets)[number] => d !== undefined)
-          .map((d) => ({ ...d, error: false as const }))
+          .map((d) => ({ ...d, error: false as const, nocodbUrl: DATASETS[d.key as keyof typeof DATASETS].nocodbUrl, kind: DATASETS[d.key as keyof typeof DATASETS].kind }))
   )
+
+  let openGroups = $state({ partenariats: false, travaux: false })
+
+  function isGroupAllHidden(keys: string[]): boolean {
+    return keys.every(k => hiddenDatasets.has(k))
+  }
+
+  function toggleGroup(keys: string[]) {
+    const next = new Set(hiddenDatasets)
+    if (keys.every(k => next.has(k))) {
+      keys.forEach(k => next.delete(k))
+    } else {
+      keys.forEach(k => next.add(k))
+    }
+    hiddenDatasets = next
+  }
 
   const LAST_VISIT_KEY = 'ensav_last_visit'
   const THEME_KEY = 'ensav_theme'
@@ -445,16 +461,101 @@
           {/if}
         </div>
       {:else}
-        <div class="grid grid-cols-1 gap-3">
-          {#each datasets as ds}
-            <DatasetFilterCard
-              {ds}
-              isHidden={hiddenDatasets.has(ds.key)}
-              isUpdated={isUpdatedSince(ds.error ? null : ds.lastUpdated)}
-              onToggle={() => toggleDataset(ds.key)}
-            />
-          {/each}
+        {@const partenariatDs = datasets.filter(d => d.kind === 'partenariat')}
+        {@const travauxDs = datasets.filter(d => d.kind === 'travaux')}
+
+        <!-- Partenariats group -->
+        <div class="mb-4">
+          <button
+            type="button"
+            onclick={() => { openGroups.partenariats = !openGroups.partenariats }}
+            class="w-full flex items-center justify-between mb-2 pr-3"
+          >
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-gray-400 transition-transform duration-200 shrink-0 {openGroups.partenariats ? '' : '-rotate-90'}">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+              <span class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Partenariats</span>
+            </div>
+            <span
+              role="button"
+              tabindex="0"
+              onclick={(e) => { e.stopPropagation(); toggleGroup(partenariatDs.map(d => d.key)) }}
+              onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); toggleGroup(partenariatDs.map(d => d.key)) } }}
+              class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              aria-label="{isGroupAllHidden(partenariatDs.map(d => d.key)) ? 'Show' : 'Hide'} all partenariats"
+            >
+              {#if isGroupAllHidden(partenariatDs.map(d => d.key))}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              {:else}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              {/if}
+            </span>
+          </button>
+          {#if openGroups.partenariats}
+            <div class="grid grid-cols-1 gap-3">
+              {#each partenariatDs as ds}
+                <DatasetFilterCard
+                  {ds}
+                  isHidden={hiddenDatasets.has(ds.key)}
+                  isUpdated={isUpdatedSince(ds.error ? null : ds.lastUpdated)}
+                  onToggle={() => toggleDataset(ds.key)}
+                />
+              {/each}
+            </div>
+          {/if}
         </div>
+
+        <!-- Travaux group -->
+        <div>
+          <button
+            type="button"
+            onclick={() => { openGroups.travaux = !openGroups.travaux }}
+            class="w-full flex items-center justify-between mb-2 pr-3"
+          >
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-gray-400 transition-transform duration-200 shrink-0 {openGroups.travaux ? '' : '-rotate-90'}">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+              <span class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Travaux</span>
+            </div>
+            <span
+              role="button"
+              tabindex="0"
+              onclick={(e) => { e.stopPropagation(); toggleGroup(travauxDs.map(d => d.key)) }}
+              onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); toggleGroup(travauxDs.map(d => d.key)) } }}
+              class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              aria-label="{isGroupAllHidden(travauxDs.map(d => d.key)) ? 'Show' : 'Hide'} all travaux"
+            >
+              {#if isGroupAllHidden(travauxDs.map(d => d.key))}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              {:else}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              {/if}
+            </span>
+          </button>
+          {#if openGroups.travaux}
+            <div class="grid grid-cols-1 gap-3">
+              {#each travauxDs as ds}
+                <DatasetFilterCard
+                  {ds}
+                  isHidden={hiddenDatasets.has(ds.key)}
+                  isUpdated={isUpdatedSince(ds.error ? null : ds.lastUpdated)}
+                  onToggle={() => toggleDataset(ds.key)}
+                />
+              {/each}
+            </div>
+          {/if}
+        </div>
+
         {#if !data.sourceError}
           {@const total = datasets.reduce((sum, ds) => sum + (('count' in ds) ? ds.count : 0), 0)}
           <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800 flex justify-between items-baseline">
