@@ -2,10 +2,12 @@
   import type { PersonGroup } from '$lib/data/types'
   import type { SearchItem, Dataset } from '$lib/search/index'
   import { DATASET_LABELS } from '$lib/config/datasets'
+  import NetworkView from './NetworkView.svelte'
 
-  let { personGroups, onselect }: {
+  let { personGroups, onselect, onvisiblechange }: {
     personGroups: PersonGroup[]
     onselect: (items: SearchItem[], groupLabel?: string) => void
+    onvisiblechange?: (people: number, works: number) => void
   } = $props()
 
   // Returns the last word of a name, used as the sort key (surname)
@@ -25,6 +27,15 @@
       map.get(letter)!.push(p)
     }
     return [...map.entries()].sort(([a], [b]) => a.localeCompare(b, 'fr'))
+  })
+
+  let peopleSubView = $state<'list' | 'network'>('list')
+
+  $effect(() => {
+    if (peopleSubView === 'list') {
+      const works = personGroups.reduce((n, p) => n + p.records.length, 0)
+      onvisiblechange?.(personGroups.length, works)
+    }
   })
 
   let selectedPerson = $state<string | null>(null)
@@ -140,6 +151,24 @@
   }
 </script>
 
+<!-- Toggle: List / Network -->
+<div class="absolute top-5 left-1/2 -translate-x-1/2 z-20 flex rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden text-[11px]">
+  <button
+    type="button"
+    onclick={() => { peopleSubView = 'list' }}
+    class="px-3 py-1 leading-none transition-colors {peopleSubView === 'list' ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}"
+  >List</button>
+  <button
+    type="button"
+    onclick={() => { peopleSubView = 'network' }}
+    class="px-3 py-1 leading-none transition-colors {peopleSubView === 'network' ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}"
+  >Network</button>
+</div>
+
+{#if peopleSubView === 'network'}
+  <NetworkView {personGroups} {onselect} {onvisiblechange} />
+{:else}
+
 <!-- R11: this div is simultaneously the scroll container for the people grid and a click-outside-to-deselect
      backdrop. Converting it to <button> would break overflow-auto scroll behaviour. Keyboard deselection
      is handled by the Escape key in onWindowKeydown on the parent page. -->
@@ -239,3 +268,5 @@
 
   </div>
 </div>
+
+{/if}

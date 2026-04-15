@@ -97,6 +97,8 @@
       .filter(p => p.records.length > 0)
   )
 
+  let peopleCountOverride = $state<{ people: number; works: number } | null>(null)
+
   // Timeline view — visible records (memoires only for now)
   const visibleTimelineRecords = $derived(
     data.timelineRecords.filter(r => !hiddenDatasets.has(r.dataset))
@@ -237,7 +239,11 @@
     {#if projectionType === 'continents'}
       <ContinentView continentGroups={visibleContinentGroups} />
     {:else if projectionType === 'people'}
-      <PeopleView personGroups={visiblePersonGroups} onselect={openItems} />
+      <PeopleView
+        personGroups={visiblePersonGroups}
+        onselect={openItems}
+        onvisiblechange={(p, w) => { peopleCountOverride = { people: p, works: w } }}
+      />
     {:else if projectionType === 'timeline'}
       <TimelineView records={data.timelineRecords} {hiddenDatasets} onselect={openItems} />
     {:else}
@@ -375,11 +381,11 @@
       <div class="absolute top-3 right-3 z-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2.5 text-xs tabular-nums space-y-1.5">
         <div class="flex justify-between gap-6">
           <span class="text-black/40 dark:text-white/40">People</span>
-          <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visiblePersonGroups.length}></span>
+          <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={peopleCountOverride?.people ?? visiblePersonGroups.length}></span>
         </div>
         <div class="flex justify-between gap-6">
           <span class="text-black/40 dark:text-white/40">Works</span>
-          <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={visiblePersonGroups.reduce((n, p) => n + p.records.length, 0)}></span>
+          <span class="text-black/70 dark:text-white/70 font-medium" use:scramble={peopleCountOverride?.works ?? visiblePersonGroups.reduce((n, p) => n + p.records.length, 0)}></span>
         </div>
       </div>
     {/if}
