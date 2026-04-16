@@ -553,7 +553,7 @@
             "Geographic coordinates": "50.449757, 3.951727",
             "Id": 14,
             "Info guides": null,
-            "Institution": "Arts2",
+            "Institution": "Arts²",
             "Institution (full name)": "Arts² - École Supérieure des Arts",
             "Language requirements": "Français",
             "Places Master Archi-Ingé": null,
@@ -562,7 +562,7 @@
             "Programme": "ERASMUS",
             "Programmes offered": null,
             "Type": "mobilités",
-            "UpdatedAt": null,
+            "UpdatedAt": "2026-04-11 22:16:51+00:00",
             "Website": null
           }
         },
@@ -7238,7 +7238,7 @@
           ],
           "dataset": "pfe",
           "label": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
-          "person": "Nicolas Parroneau",
+          "person": "Nicolas Paronneau",
           "record": {
             "ArchiRès link": null,
             "City 1": "Berlin",
@@ -7263,12 +7263,12 @@
             "Reference code": null,
             "Region": null,
             "Start date": "2021-02-01",
-            "Student 1": "Nicolas Parroneau",
+            "Student 1": "Nicolas Paronneau",
             "Student 2": null,
             "Student 3": null,
             "Title": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
             "Type": "PFE",
-            "UpdatedAt": null
+            "UpdatedAt": "2026-04-10 23:47:55+00:00"
           }
         },
         {
@@ -9103,8 +9103,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Ré-habiter l'île Berder : vers un tourisme plus responsable",
           "person": "Elodie Détré",
@@ -9135,8 +9139,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Les bouveries de la Haute-Borne, réhabiliter pour accompagner la future forêt de Maubuisson",
           "person": "Grégoire Truffaut",
@@ -9275,8 +9283,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Hypothèse d'une ruine",
           "person": "Carla Grama",
@@ -9415,8 +9427,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Habiter Ossau à travers les contes",
           "person": "Charlotte Vallon",
@@ -9483,8 +9499,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Territoires en déprise: les ressources du patrimoine religieux : Le cas de l'abbaye Belle-Etoile",
           "person": "Léa Andrieu",
@@ -9731,8 +9751,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Habiter le jardin productif. Comment construire la ville alternative en territoire agri-urbain",
           "person": "Eliette Emblanc",
@@ -9799,8 +9823,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Transition vers un nouvel usage: transformation de la grande soufflerie de Meudon",
           "person": "Paul Dussud",
@@ -9856,14 +9884,14 @@
             "Reference code": "E_PFE_03/2025/3552",
             "Region": "Occitanie",
             "Student 1": "Florence Lalande",
-            "Student 2": "Naya Singainy",
+            "Student 2": "Naya Singaïny",
             "Student 3": null,
             "Supervisor 1": "Emilie Gascon",
             "Supervisor 2": "Ingrid Taillandier",
             "Supervisor 3": null,
             "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
             "Type": "PFE (France)",
-            "UpdatedAt": null
+            "UpdatedAt": "2026-04-10 23:52:08+00:00"
           }
         },
         {
@@ -9903,8 +9931,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "\"Quand l'Adour déborde à Bayonne\"",
           "person": "Benoît Gentien",
@@ -10007,8 +10039,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "POLYTOPIA, habiter la verticalité autrement",
           "person": "Léa Rousselet",
@@ -10075,8 +10111,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "2025-2050-2100: les maisons pavillonnaires face aux risques climatiques",
           "person": "Prune Le Ridant",
@@ -10287,8 +10327,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Coexistences rurales-Habiter un village du Haut-Allier",
           "person": "Virgile Hameau",
@@ -10607,8 +10651,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Graufthal, Au fil de l'eau, Entre les rochers",
           "person": "Jacques Bloquere",
@@ -10639,8 +10687,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Passage technique : Guide des arpenteurs",
           "person": "Duncan Redmond",
@@ -10923,8 +10975,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "DALL-ÏTE-La ville sous la ville : Le quartier de la Défense, un patrimoine vertical",
           "person": "Tristan Giraud",
@@ -10955,8 +11011,12 @@
           }
         },
         {
-          "countriesEN": [],
-          "countriesFR": [],
+          "countriesEN": [
+            "France"
+          ],
+          "countriesFR": [
+            "France"
+          ],
           "dataset": "pfe_france",
           "label": "Du souvenir estival au montage d'une cohabitation rurale dans le Luberon, réhabilitation des anciennes colonies de vacances de la commune de Marseille à Buoux",
           "person": "Edgar Mouret",
@@ -15571,11 +15631,9 @@
       "travauxRecords": [
         {
           "countriesEN": [
-            "Algeria",
             "Morocco"
           ],
           "countriesFR": [
-            "Algérie",
             "Maroc"
           ],
           "dataset": "memoires",
@@ -16431,19 +16489,17 @@
         },
         {
           "countriesEN": [
-            "Algeria",
-            "Morocco"
+            "Algeria"
           ],
           "countriesFR": [
-            "Algérie",
-            "Maroc"
+            "Algérie"
           ],
           "dataset": "memoires",
           "label": "Le jour a le visage de la nuit",
           "person": "Nawel Chikh",
           "record": {
             "ArchiRès link": null,
-            "City 1": "Azrou",
+            "City 1": "Azrou-n-Tohor",
             "City 2": null,
             "City 3": null,
             "City 4": null,
@@ -16467,7 +16523,7 @@
             "Student 3": null,
             "Title": "Le jour a le visage de la nuit",
             "Type": null,
-            "UpdatedAt": null
+            "UpdatedAt": "2026-04-11 22:37:38+00:00"
           }
         },
         {
@@ -18509,7 +18565,7 @@
           "person": "Tinahy Meja Narindra Ramboasalama",
           "record": {
             "ArchiRès link": null,
-            "City 1": "Antananarivo",
+            "City 1": "Tananarive",
             "City 2": null,
             "City 3": null,
             "City 4": null,
@@ -18536,7 +18592,7 @@
             "Student 3": null,
             "Title": "Antananarivo, vivre dans les rizières",
             "Type": "PFE",
-            "UpdatedAt": null
+            "UpdatedAt": "2026-04-11 22:31:40+00:00"
           }
         },
         {
@@ -19555,7 +19611,7 @@
           ],
           "dataset": "memoires",
           "label": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
-          "person": "Eulalie Vide",
+          "person": "Eulalie Vidé",
           "record": {
             "ArchiRès link": null,
             "City 1": "Buenos Aires",
@@ -19577,12 +19633,12 @@
             "Publication year": "2023",
             "Reference code": null,
             "Region": null,
-            "Student 1": "Eulalie Vide",
+            "Student 1": "Eulalie Vidé",
             "Student 2": null,
             "Student 3": null,
             "Title": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
             "Type": null,
-            "UpdatedAt": null
+            "UpdatedAt": "2026-04-10 23:53:38+00:00"
           }
         },
         {

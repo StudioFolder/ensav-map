@@ -18,6 +18,7 @@ import { buildContinentGroups } from '$lib/data/derive/continentGroups'
 import { computeRecordStats } from '$lib/data/derive/stats'
 import { buildPersonGroups } from '$lib/data/derive/personGroups'
 import { parseGlobePoints } from '$lib/data/derive/globePoints'
+import { parsePfeFranceGeoPoints } from '$lib/data/derive/pfeFranceGeoPoints'
 import { buildTimelineRecords } from '$lib/data/derive/timeline'
 
 export const load: PageServerLoad = async () => {
@@ -50,6 +51,7 @@ export const load: PageServerLoad = async () => {
       ...pt,
       titles: titleMap.get(pt.name) ?? [],
     }))
+    geoPoints.push(...parsePfeFranceGeoPoints(pfeFrance))
 
     const globePoints: GlobePoint[] = [
       ...parseGlobePoints(mobilites, 'mobilites'),

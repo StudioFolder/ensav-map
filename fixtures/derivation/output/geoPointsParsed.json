@@ -950,12 +950,12 @@
     "type": "city"
   },
   {
-    "city": "Azrou",
+    "city": "Azrou-n-Tohor",
     "continent": "Afrique",
     "country": "Algérie",
-    "lat": 25.5520246,
-    "lon": 6.8663263,
-    "name": "Azrou",
+    "lat": 36.49607,
+    "lon": 4.3819,
+    "name": "Azrou-n-Tohor",
     "province": "",
     "type": "city"
   },
@@ -2183,8 +2183,8 @@
     "city": "Azrou",
     "continent": "Afrique",
     "country": "Maroc",
-    "lat": 35.1572487,
-    "lon": -3.768611,
+    "lat": 33.4342,
+    "lon": -5.2214,
     "name": "Azrou",
     "province": "",
     "type": "city"

@@ -3021,7 +3021,7 @@
       "person": "Tinahy Meja Narindra Ramboasalama",
       "record": {
         "ArchiRès link": null,
-        "City 1": "Antananarivo",
+        "City 1": "Tananarive",
         "City 2": null,
         "City 3": null,
         "City 4": null,
@@ -3048,7 +3048,7 @@
         "Student 3": null,
         "Title": "Antananarivo, vivre dans les rizières",
         "Type": "PFE",
-        "UpdatedAt": null
+        "UpdatedAt": "2026-04-11 22:31:40+00:00"
       },
       "year": 2019
     },
@@ -6669,7 +6669,7 @@
       "person": "Nawel Chikh",
       "record": {
         "ArchiRès link": null,
-        "City 1": "Azrou",
+        "City 1": "Azrou-n-Tohor",
         "City 2": null,
         "City 3": null,
         "City 4": null,
@@ -6693,7 +6693,7 @@
         "Student 3": null,
         "Title": "Le jour a le visage de la nuit",
         "Type": null,
-        "UpdatedAt": null
+        "UpdatedAt": "2026-04-11 22:37:38+00:00"
       },
       "year": 2021
     },
@@ -7396,7 +7396,7 @@
       "dateValue": 2021.125,
       "label": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
       "month": 2,
-      "person": "Nicolas Parroneau",
+      "person": "Nicolas Paronneau",
       "record": {
         "ArchiRès link": null,
         "City 1": "Berlin",
@@ -7421,12 +7421,12 @@
         "Reference code": null,
         "Region": null,
         "Start date": "2021-02-01",
-        "Student 1": "Nicolas Parroneau",
+        "Student 1": "Nicolas Paronneau",
         "Student 2": null,
         "Student 3": null,
         "Title": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
         "Type": "PFE",
-        "UpdatedAt": null
+        "UpdatedAt": "2026-04-10 23:47:55+00:00"
       },
       "year": 2021
     },
@@ -10649,7 +10649,7 @@
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
-      "person": "Eulalie Vide",
+      "person": "Eulalie Vidé",
       "record": {
         "ArchiRès link": null,
         "City 1": "Buenos Aires",
@@ -10671,12 +10671,12 @@
         "Publication year": "2023",
         "Reference code": null,
         "Region": null,
-        "Student 1": "Eulalie Vide",
+        "Student 1": "Eulalie Vidé",
         "Student 2": null,
         "Student 3": null,
         "Title": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
         "Type": null,
-        "UpdatedAt": null
+        "UpdatedAt": "2026-04-10 23:53:38+00:00"
       },
       "year": 2023
     },
@@ -16880,14 +16880,14 @@
         "Reference code": "E_PFE_03/2025/3552",
         "Region": "Occitanie",
         "Student 1": "Florence Lalande",
-        "Student 2": "Naya Singainy",
+        "Student 2": "Naya Singaïny",
         "Student 3": null,
         "Supervisor 1": "Emilie Gascon",
         "Supervisor 2": "Ingrid Taillandier",
         "Supervisor 3": null,
         "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
         "Type": "PFE (France)",
-        "UpdatedAt": null
+        "UpdatedAt": "2026-04-10 23:52:08+00:00"
       },
       "year": 2025
     },

@@ -6914,14 +6914,14 @@
           "Reference code": "E_PFE_03/2025/3552",
           "Region": "Occitanie",
           "Student 1": "Florence Lalande",
-          "Student 2": "Naya Singainy",
+          "Student 2": "Naya Singaïny",
           "Student 3": null,
           "Supervisor 1": "Emilie Gascon",
           "Supervisor 2": "Ingrid Taillandier",
           "Supervisor 3": null,
           "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
           "Type": "PFE (France)",
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-10 23:52:08+00:00"
         },
         "role": "supervisor",
         "title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux"
@@ -7643,7 +7643,7 @@
     ]
   },
   {
-    "name": "Eulalie Vide",
+    "name": "Eulalie Vidé",
     "records": [
       {
         "dataset": "memoires",
@@ -7668,24 +7668,16 @@
           "Publication year": "2023",
           "Reference code": null,
           "Region": null,
-          "Student 1": "Eulalie Vide",
+          "Student 1": "Eulalie Vidé",
           "Student 2": null,
           "Student 3": null,
           "Title": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
           "Type": null,
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-10 23:53:38+00:00"
         },
         "role": "student",
         "title": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires"
-      }
-    ],
-    "roles": [
-      "student"
-    ]
-  },
-  {
-    "name": "Eulalie Vidé",
-    "records": [
+      },
       {
         "dataset": "pfe",
         "record": {
@@ -8642,14 +8634,14 @@
           "Reference code": "E_PFE_03/2025/3552",
           "Region": "Occitanie",
           "Student 1": "Florence Lalande",
-          "Student 2": "Naya Singainy",
+          "Student 2": "Naya Singaïny",
           "Student 3": null,
           "Supervisor 1": "Emilie Gascon",
           "Supervisor 2": "Ingrid Taillandier",
           "Supervisor 3": null,
           "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
           "Type": "PFE (France)",
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-10 23:52:08+00:00"
         },
         "role": "student",
         "title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux"
@@ -11345,14 +11337,14 @@
           "Reference code": "E_PFE_03/2025/3552",
           "Region": "Occitanie",
           "Student 1": "Florence Lalande",
-          "Student 2": "Naya Singainy",
+          "Student 2": "Naya Singaïny",
           "Student 3": null,
           "Supervisor 1": "Emilie Gascon",
           "Supervisor 2": "Ingrid Taillandier",
           "Supervisor 3": null,
           "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
           "Type": "PFE (France)",
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-10 23:52:08+00:00"
         },
         "role": "supervisor",
         "title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux"
@@ -19268,7 +19260,7 @@
         "dataset": "memoires",
         "record": {
           "ArchiRès link": null,
-          "City 1": "Azrou",
+          "City 1": "Azrou-n-Tohor",
           "City 2": null,
           "City 3": null,
           "City 4": null,
@@ -19292,7 +19284,7 @@
           "Student 3": null,
           "Title": "Le jour a le visage de la nuit",
           "Type": null,
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-11 22:37:38+00:00"
         },
         "role": "student",
         "title": "Le jour a le visage de la nuit"
@@ -19339,44 +19331,6 @@
     ]
   },
   {
-    "name": "Naya Singainy",
-    "records": [
-      {
-        "dataset": "pfe_france",
-        "record": {
-          "ArchiRès link": "https://www.archires.archi.fr/recherche/viewnotice/id_sigb/579068/id_int_bib/1/id_site/20/record_type/1",
-          "City": "Auch",
-          "Continent": "Europe",
-          "Country": "France",
-          "CreatedAt": "2026-04-04 19:13:56+00:00",
-          "Cycle": "Master",
-          "Département": "Gers",
-          "Geographic coordinates": "43.64625777828602, 0.5919668969702374",
-          "Id": 23,
-          "Landmark": null,
-          "Neighbourhood": null,
-          "Publication year": "2025",
-          "Reference code": "E_PFE_03/2025/3552",
-          "Region": "Occitanie",
-          "Student 1": "Florence Lalande",
-          "Student 2": "Naya Singainy",
-          "Student 3": null,
-          "Supervisor 1": "Emilie Gascon",
-          "Supervisor 2": "Ingrid Taillandier",
-          "Supervisor 3": null,
-          "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
-          "Type": "PFE (France)",
-          "UpdatedAt": null
-        },
-        "role": "student",
-        "title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux"
-      }
-    ],
-    "roles": [
-      "student"
-    ]
-  },
-  {
     "name": "Naya Singaïny",
     "records": [
       {
@@ -19411,6 +19365,36 @@
         },
         "role": "student",
         "title": "As ilhas do Porto"
+      },
+      {
+        "dataset": "pfe_france",
+        "record": {
+          "ArchiRès link": "https://www.archires.archi.fr/recherche/viewnotice/id_sigb/579068/id_int_bib/1/id_site/20/record_type/1",
+          "City": "Auch",
+          "Continent": "Europe",
+          "Country": "France",
+          "CreatedAt": "2026-04-04 19:13:56+00:00",
+          "Cycle": "Master",
+          "Département": "Gers",
+          "Geographic coordinates": "43.64625777828602, 0.5919668969702374",
+          "Id": 23,
+          "Landmark": null,
+          "Neighbourhood": null,
+          "Publication year": "2025",
+          "Reference code": "E_PFE_03/2025/3552",
+          "Region": "Occitanie",
+          "Student 1": "Florence Lalande",
+          "Student 2": "Naya Singaïny",
+          "Student 3": null,
+          "Supervisor 1": "Emilie Gascon",
+          "Supervisor 2": "Ingrid Taillandier",
+          "Supervisor 3": null,
+          "Title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
+          "Type": "PFE (France)",
+          "UpdatedAt": "2026-04-10 23:52:08+00:00"
+        },
+        "role": "student",
+        "title": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux"
       }
     ],
     "roles": [
@@ -19817,15 +19801,7 @@
         },
         "role": "student",
         "title": "Le Pallasseum, une illustration de l'intégration urbaine, sociale et architecturale du grand ensemble dans la ville de Berlin-Ouest"
-      }
-    ],
-    "roles": [
-      "student"
-    ]
-  },
-  {
-    "name": "Nicolas Parroneau",
-    "records": [
+      },
       {
         "dataset": "pfe",
         "record": {
@@ -19852,12 +19828,12 @@
           "Reference code": null,
           "Region": null,
           "Start date": "2021-02-01",
-          "Student 1": "Nicolas Parroneau",
+          "Student 1": "Nicolas Paronneau",
           "Student 2": null,
           "Student 3": null,
           "Title": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
           "Type": "PFE",
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-10 23:47:55+00:00"
         },
         "role": "student",
         "title": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch"
@@ -25107,7 +25083,7 @@
         "dataset": "pfe",
         "record": {
           "ArchiRès link": null,
-          "City 1": "Antananarivo",
+          "City 1": "Tananarive",
           "City 2": null,
           "City 3": null,
           "City 4": null,
@@ -25134,7 +25110,7 @@
           "Student 3": null,
           "Title": "Antananarivo, vivre dans les rizières",
           "Type": "PFE",
-          "UpdatedAt": null
+          "UpdatedAt": "2026-04-11 22:31:40+00:00"
         },
         "role": "student",
         "title": "Antananarivo, vivre dans les rizières"

@@ -5,6 +5,7 @@ export function buildTitleMap(
 ): Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>> {
   const map = new Map<string, Array<{ title: string; dataset: string; person: string; record: Record<string, unknown> }>>()
   for (const { rows, key } of datasets) {
+    if (key === 'pfe_france') continue
     const dsConfig = getDataset(key as DatasetKey)
     const fields = dsConfig.locationFields ?? []
     const personField = dsConfig.personField ?? 'Student 1'
