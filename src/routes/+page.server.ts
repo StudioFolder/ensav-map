@@ -20,6 +20,7 @@ import { buildPersonGroups } from '$lib/data/derive/personGroups'
 import { parseGlobePoints } from '$lib/data/derive/globePoints'
 import { parsePfeFranceGeoPoints } from '$lib/data/derive/pfeFranceGeoPoints'
 import { buildTimelineRecords } from '$lib/data/derive/timeline'
+import { buildGeoPointContinents } from '$lib/data/derive/rowContinents'
 
 export const load: PageServerLoad = async () => {
   const basePoints = loadGeoPoints()
@@ -71,7 +72,8 @@ export const load: PageServerLoad = async () => {
 
     const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
     const personGroups = buildPersonGroups(allDatasets)
-    const { records: timelineRecords, missing: timelineMissing } = buildTimelineRecords(memoires, pfeFrance, pfe, p45, theses)
+    const geoPointContinents = buildGeoPointContinents(geoPoints)
+    const { records: timelineRecords, missing: timelineMissing } = buildTimelineRecords(memoires, pfeFrance, pfe, p45, theses, { geoPointContinents, countries: geoAreas })
 
     return { datasets, sourceError: false, globePoints, geoPoints, countryZones, continentGroups, continentMissing, continentUniqueShown, recordStats, personGroups, timelineRecords, timelineMissing }
   } catch {

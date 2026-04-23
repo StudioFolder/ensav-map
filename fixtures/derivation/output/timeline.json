@@ -218,6 +218,7 @@
   ],
   "records": [
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2012.7083333333333,
       "endDateValue": 2015.7083333333333,
@@ -259,6 +260,7 @@
       "year": 2012
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -301,6 +303,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -343,6 +348,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Antarctique"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -385,6 +393,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -427,6 +438,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -469,6 +483,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -511,6 +528,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -553,6 +573,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -595,6 +618,7 @@
       "year": 2013
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -637,6 +661,7 @@
       "year": 2013
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -679,6 +704,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -721,6 +749,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -763,6 +794,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -805,6 +839,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -847,6 +884,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -889,6 +929,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -931,6 +974,7 @@
       "year": 2013
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -973,6 +1017,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -1015,6 +1062,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2013.0416666666667,
       "endDateValue": 2013.5416666666667,
@@ -1057,6 +1107,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2013.2083333333333,
       "endDateValue": 2018.2083333333333,
@@ -1098,6 +1151,9 @@
       "year": 2013
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2014.0416666666667,
       "endDateValue": 2014.5416666666667,
@@ -1140,6 +1196,9 @@
       "year": 2014
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2014.0416666666667,
       "endDateValue": 2021.0416666666667,
@@ -1181,6 +1240,9 @@
       "year": 2014
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "Alger",
@@ -1216,6 +1278,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "Espaces inconscients : du panorama berlinois à l'intervention",
@@ -1251,6 +1316,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "Immeuble ordinaire et musée extraordinaire : le Lower East side Tenement Museum et ses appartements témoins à New-York",
@@ -1286,6 +1354,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "L'écologie urbaine sur les berges Nanji, vouloir et pouvoir. Le cas d'étude : berges Nanji du fleuve Han à Séoul. : l'écosystème urbain au travers du questionnement de la renaturation d'un fleuve dans une grande métropole",
@@ -1321,6 +1392,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "L'insertion d'un parc communautaire dans une périphérie dense anciennement agricole : le Parco Uditore",
@@ -1356,6 +1430,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "La métropolisation d'Abidjan, opportunités et vulnérabilités : les conditions du passage de la ville à la métropole",
@@ -1391,6 +1468,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2015.0416666666667,
       "label": "Processus expérimentaux : Epecuen",
@@ -1426,6 +1506,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2015.4583333333333,
       "endDateValue": 2018.625,
@@ -1467,6 +1550,7 @@
       "year": 2015
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2015.9583333333333,
       "endDateValue": 2018.9583333333333,
@@ -1508,6 +1592,9 @@
       "year": 2015
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2016.0416666666667,
       "label": "IBA Emscher Park - la fabrication d'un projet territorial",
@@ -1543,6 +1630,9 @@
       "year": 2016
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2016.0416666666667,
       "label": "L'Amibe et le Corail : l'urbanité de Tokyo : une étude pour le futur des mégapoles",
@@ -1578,6 +1668,9 @@
       "year": 2016
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2016.0416666666667,
       "label": "La mort dans la culture Merina et sa matérialisation dans la ville d'Antananarivo",
@@ -1613,6 +1706,9 @@
       "year": 2016
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2016.0416666666667,
       "label": "Que fait-on du silo 5 ? Montréal, héritage d'une zone industrielle",
@@ -1648,6 +1744,7 @@
       "year": 2016
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2016.0416666666667,
       "endDateValue": 2016.5416666666667,
@@ -1690,6 +1787,9 @@
       "year": 2016
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "p45",
       "dateValue": 2016.0416666666667,
       "endDateValue": 2018.0416666666667,
@@ -1731,6 +1831,9 @@
       "year": 2016
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Une authenticité en danger, le tourisme et Santorin",
@@ -1766,6 +1869,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Bangkok stories, inspiré de faits réels",
@@ -1801,6 +1907,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Le bois brulé - en quête d'une identité",
@@ -1836,6 +1945,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Carthage, cohabitation entre cité antique et ville moderne",
@@ -1871,6 +1983,10 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Afrique",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Au contact de l'eau : du risque à l'opportunité urbaine",
@@ -1906,6 +2022,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Frontera, limites matérielles et immatérielles de la ségrégation socio-territoriale : Córdoba, Argentine",
@@ -1941,6 +2060,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Les quartiers non-lotis au Burkina Faso : des quartiers illégaux au cœur du processus d'urbanisation",
@@ -1976,6 +2098,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Les réappropriations temporaires comme laboratoire de la ville : les réappropriations temporaires d'espaces abandonnés à Berlin comme nouvelle forme d'urbanisme, l'exemple du Prinzessinengarten",
@@ -2011,6 +2136,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Songdo, Corée du Sud : la smart city aura-t-elle besoin des architectes pour avoir une âme ?",
@@ -2046,6 +2174,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2017.0416666666667,
       "label": "Les temps croisés ville & infrastructure, le cas des friches ferroviaires à Cordoba",
@@ -2081,6 +2212,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "p45",
       "dateValue": 2017.0416666666667,
       "endDateValue": 2020.0416666666667,
@@ -2122,6 +2256,9 @@
       "year": 2017
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "A Proposition for the Re-creation of Timber Structures in Turkey",
@@ -2157,6 +2294,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Auroville est-elle une utopie réalisable ?",
@@ -2192,6 +2332,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Brasília, utopie & contradiction : reconstitution d'une histoire à travers l'archive",
@@ -2227,6 +2370,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Le Castello Sforzesco, une matérialité décryptée",
@@ -2262,6 +2408,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Ceci n'est pas qu'une façade",
@@ -2297,6 +2446,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Comment un objet architectural permet le développement d'un quartier",
@@ -2332,6 +2484,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Le design participatif ou l'architecture en crise",
@@ -2367,6 +2522,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Etude de cas : le matériau composite terre + typha, production et mise en oeuvre",
@@ -2402,6 +2560,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "eξάρχεια,cœur intellectuel et contestataire",
@@ -2437,6 +2598,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Le fantasme et la réalité de la Smart City, Songdo en Corée du Sud",
@@ -2472,6 +2636,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Le foyer social de l'ESMA de Roger Bastin et Jacques Dupuis : un témoin de l'architecture moderne en péril",
@@ -2507,6 +2674,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "L'habitat flottant",
@@ -2542,6 +2712,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Les Montréalais à la reconquête de leur ville, espaces vacants et usages temporaires",
@@ -2577,6 +2750,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Les rizières et les bas-quartiers à Antananarivo",
@@ -2612,6 +2788,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Sotoporteghi de Venise",
@@ -2647,6 +2826,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "Village olympique, de créateur de lien social à générateur de ville fantôme",
@@ -2682,6 +2864,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2018.0416666666667,
       "label": "La ville nouvelle de Diamniadio au regard de Dakar",
@@ -2717,6 +2902,7 @@
       "year": 2018
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2018.0416666666667,
       "endDateValue": 2018.5416666666667,
@@ -2759,6 +2945,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "p45",
       "dateValue": 2018.0416666666667,
       "endDateValue": 2021.2916666666667,
@@ -2800,6 +2989,9 @@
       "year": 2018
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2019.0416666666667,
       "label": "A travers le pare-brise : Récits automobiles à Houston",
@@ -2835,6 +3027,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2019.0416666666667,
       "label": "Architecture de bois en Espagne, analyse comparée de cultures constructives européennes",
@@ -2870,6 +3065,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2019.0416666666667,
       "label": "De la vision à l'expérimentation puis à la culture. Etude de cas du « Case Study House Program » dans les revues Aujourd'hui: Art et Architecture et Arts & Architecture",
@@ -2905,6 +3103,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2019.0416666666667,
       "label": "L'acceptation de l'aléa littoral comme élément de réflexion sur le paradigme Homme-Milieu : l'exemple de la piscine de Leça da Palmeira",
@@ -2940,6 +3141,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2019.0416666666667,
       "label": "L'objet \"Auroville\"",
@@ -2975,6 +3179,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Acupuncture urbaine à Almada, des situations dans la ville",
@@ -3014,6 +3221,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Antananarivo, vivre dans les rizières",
@@ -3053,6 +3263,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Antarctique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Croisière blanche",
@@ -3092,6 +3305,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "La dérive",
@@ -3131,6 +3347,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Eaux douces, eaux amères : un parc de phytoméditation à Pondichéry",
@@ -3170,6 +3389,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Favignana, archipel des îles Egades : vers un tourisme raisonné au fil de l'eau",
@@ -3209,6 +3431,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Fischerinsel",
@@ -3248,6 +3473,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Invisible city : Refinding Landscape for an Industrial Area in Zhangjiang High-tech park",
@@ -3287,6 +3515,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Mamao Vallon, territoire isolé, potentialité locale : Tahiti : les trois temps du bambou",
@@ -3326,6 +3557,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.0416666666667,
       "label": "Stadshaven, l'empreinte des sols",
@@ -3365,6 +3599,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.125,
       "label": "La désobéissance formelle",
@@ -3404,6 +3641,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.125,
       "label": "Bijlmerbajes, the great escape",
@@ -3443,6 +3683,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.125,
       "label": "Tanger, urbanisation d'un mythe",
@@ -3482,6 +3725,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.125,
       "label": "Tenerife",
@@ -3521,6 +3767,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.125,
       "label": "Non-exposition : ports francs et entrepôt de Genève",
@@ -3560,6 +3809,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2019.2083333333333,
       "endDateValue": 2019.5416666666667,
@@ -3601,6 +3853,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "L'empreinte de la Mattanza à Favignana. La Campéria, un lieu de travail retrouvé et un lieu d'apprentissage créé",
@@ -3640,6 +3895,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Palmarin, reine du Sine",
@@ -3679,6 +3937,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Ruines contemporaines",
@@ -3718,6 +3979,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "4D City : Urban Regeneration of Historic Block in Shanghai Old City",
@@ -3757,6 +4021,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "A floatin'gap",
@@ -3796,6 +4063,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Andrea Mantegna, vie et architecture",
@@ -3835,6 +4105,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Estacion de Retiro - Mitre, transport interrégional en Argentine : gare hyperloop, modalité et nodalité du terminal",
@@ -3874,6 +4147,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Evolvable renewal : Revitalization of Zhangjiang Cement Factory",
@@ -3913,6 +4189,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Expérience d'éco-restructuration à Dakar",
@@ -3952,6 +4231,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Lima Norte",
@@ -3991,6 +4273,10 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Sud",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Maripasoula, la ville amazonienne de la lisière au centre bourg",
@@ -4030,6 +4316,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Nitaskinan ; une réconciliation identitaire Atikamekw du territoire : une semaine à Wetomaci",
@@ -4069,6 +4358,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2019.4583333333333,
       "label": "Une rivière de briques, une source d'eau du ciel",
@@ -4108,6 +4400,9 @@
       "year": 2019
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Anonymat et singularisation : le signe vecteur d'identité",
@@ -4143,6 +4438,10 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Architecture et chaos : un cas de frontière entre la Turquie et la Syrie",
@@ -4178,6 +4477,11 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Antarctique",
+        "Arctique",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Architectures congelées",
@@ -4213,6 +4517,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Les casas de Tigre",
@@ -4248,6 +4555,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Une construction de l'après - guerre interagissant avec son environnement est - elle toujours d'actualité ? : étude comparative entre deux oeuvres architecturales des années 1950 : Solar Hemicycle, pionnière du bioclimatique ; maison Farnworth, protagoniste de l'architecture moderne",
@@ -4283,6 +4593,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Le Danube roumain, vers une reconquête de la biodiversité",
@@ -4318,6 +4631,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Entre les frontières de Nicosie, une expérience de mémoire spatiale",
@@ -4353,6 +4669,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Expériences de la rupture : Porto, trois cadrages sur la ville",
@@ -4388,6 +4707,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Habiter l’inhabitable : De ces lieux de mémoire, que restera-t-il ?",
@@ -4423,6 +4745,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Habiter sans oublier, le rôle de l'architecture dans le processus de mémoire",
@@ -4458,6 +4783,10 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Istanbul à Taksim Meydanı : Transformations physiques et sociales, le jeu de la politique et de l’espace public",
@@ -4493,6 +4822,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "L'amour et la révolution : récit d'une résistance ordinaire dans le quartier d'Exarcheia",
@@ -4528,6 +4860,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "L'architecture religieuse de Giovanni Michelucci est-elle une architecture sculpture ?",
@@ -4563,6 +4898,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "L'habitat japonais, entre tradition et modernité",
@@ -4598,6 +4936,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Le moderne et l'ornement : sur les traces de l'expression formelle dans l'œuvre de Gino Valle au Frioul",
@@ -4633,6 +4974,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Le Pallasseum, une illustration de l'intégration urbaine, sociale et architecturale du grand ensemble dans la ville de Berlin-Ouest",
@@ -4668,6 +5012,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Océanie"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Le parc national Uluru-Kata-Tjuta témoin d'une colonisation facteur d'évolution culturelle",
@@ -4703,6 +5050,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Regarder la ville autrement : Madrid, ses espaces délaissés et ses laboratoires citoyens",
@@ -4738,6 +5088,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Les résidences fermées de Barra da Tijuca dans le tissu urbain et social de Rio de Janeiro",
@@ -4773,6 +5126,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Le sable de l'arène : les vices et les vertus de l'enceinte sportive",
@@ -4808,6 +5164,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2020.0416666666667,
       "label": "Tourisme, du centre historique aux Ilhas, évolution architecturale et urbanistique de Porto",
@@ -4843,6 +5202,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Fabriquer un regard: le cadrage révélateur du paysage",
@@ -4882,6 +5244,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Les abords du Tage lisboète: d'une requalification vers une interaction nouvelle entre la ville et sa côte",
@@ -4921,6 +5286,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Cité d'enfouissement des déchets nucléaires en Asie centrale",
@@ -4960,6 +5328,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Data center, évidence de l'immatérialité",
@@ -4999,6 +5370,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Entropique patrimoine",
@@ -5038,6 +5412,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Eveil d'une ville oubliée, Consonno archétype d'une dérive architecturale",
@@ -5077,6 +5454,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Exodus, architecture post-traumatique",
@@ -5116,6 +5496,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Garùa",
@@ -5155,6 +5538,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Ile San Lorenzo",
@@ -5194,6 +5580,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Kagbeni",
@@ -5233,6 +5622,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Fabriquer un regard: le cadrage, révélateur du paysage",
@@ -5272,6 +5664,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Renouveau de l'architecture soudano-sahélienne par les gares du TER Dakar-Diamniadio",
@@ -5311,6 +5706,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Les Mahallas traditionnelles tachkentoises et leur confrontation à l'urbanisation contemporaine",
@@ -5350,6 +5748,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Oualidia, promenade sur la lagune: nostalgie et renouveau",
@@ -5389,6 +5790,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "SFEC (Station forestière pour l'étude du climat)",
@@ -5428,6 +5832,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "SFEC (Station forestière pour l'étude du climat)",
@@ -5467,6 +5874,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "SFEC (Station forestière pour l'étude du climat)",
@@ -5506,6 +5916,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.125,
       "label": "Sanya revitalizing",
@@ -5545,6 +5958,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.4583333333333,
       "label": "Fashion Dao, Shanghai fashion institute",
@@ -5584,6 +6000,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Beyrouth, entre ruines et manifeste",
@@ -5623,6 +6042,10 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Défaire la frontière : territoire, architecture, paysage entre Turquie et Syrie",
@@ -5662,6 +6085,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Emessa : un quartier en franges de l'oasis, exemple de reconstruction à Homs (Syrie) après la guerre",
@@ -5701,6 +6127,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "L'héritage des valeurs de la shitamachi (ville basse) tokyoïte comme valeur de lien social",
@@ -5740,6 +6169,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Réhabilitation du Ledras Palace : un théatre de toutes les transformations urbaines de Nicosie",
@@ -5779,6 +6211,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Roma Termini, entre lieu de passage et lieu de vie",
@@ -5818,6 +6253,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.5416666666667,
       "label": "Redynamisation de la presqu'île de Walia",
@@ -5857,6 +6295,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "La via Giulia et les berges de Rome",
@@ -5896,6 +6337,7 @@
       "year": 2020
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "La déformation",
@@ -5935,6 +6377,10 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "L'architecture de l'oubli : disparition, effacement, permanence",
@@ -5974,6 +6420,7 @@
       "year": 2020
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "Miroir, miroir, dis-moi qui est la plus belle?",
@@ -6013,6 +6460,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "Mahagasthota, Nuwara Elita",
@@ -6052,6 +6502,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "La réalité de rêve, l'imagination de l'hôpital psychiatrique spirituel",
@@ -6091,6 +6544,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "Régionalisme critique en Kabylie",
@@ -6130,6 +6586,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "Shanghai - Paris : échanges typologiques d'aménagements urbains",
@@ -6169,6 +6628,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2020.7083333333333,
       "label": "La tour Phénix: au rythme du feu",
@@ -6208,6 +6670,9 @@
       "year": 2020
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Les aqueducs et l’urbanisation de Rome",
@@ -6243,6 +6708,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Beyrouth, corpus photographique",
@@ -6278,6 +6746,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Les centres commerciaux d’Orchard Road : Reflet d’un monde en transition",
@@ -6313,6 +6784,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Codex Mundi : Le leg des contre-cultures étasuniennes des années 1960 pour un monde de fin",
@@ -6348,6 +6822,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "La commande architecturale face au souci écologique : Al-‘Ula, une nature morte",
@@ -6383,6 +6860,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Les couleurs de Rome : entre image perçue et image construite",
@@ -6418,6 +6898,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Ecrire la ville : récits, images, objets. : Étude de la stratégie urbaine de la municipalité de Rio de Janeiro au travers de l’analyse sociospatiale d’un espace public récemment créé, une confrontation entre entre fonction, forme et usages au sien du projet Porto Maravilhia",
@@ -6453,6 +6936,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Etude de l'architecture en bois de ravenala à Madagascar",
@@ -6488,6 +6974,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Fabrique de \"l'authenticité\" & continuité urbaine : De la conception à l’usage des espaces à Barcelone",
@@ -6523,6 +7012,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Faire fonctionner la nature : Du lithium dans les paysages énergétiques à la défense de l’accès à l’eau",
@@ -6558,6 +7050,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Au fil de La Cañada, ses histoires révélées",
@@ -6593,6 +7088,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "La Guerre : Le matériau : Source de drame, exutoire... source de réparation ? : Cas de la République Démocratique du Congo",
@@ -6628,6 +7126,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Houston, ville zéro-déchet : Chimère ou réalité ?",
@@ -6663,6 +7164,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Le jour a le visage de la nuit",
@@ -6698,6 +7202,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Las Vegas : Architecture du fantasme",
@@ -6733,6 +7240,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Marges Magnétiques, un mur de séparation dans les réseaux du tourisme global",
@@ -6768,6 +7278,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Palerme, rythmes locaux et temps long, des pulsations contradictoires",
@@ -6803,6 +7316,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "La représentation de la crise écologique dans le milieu politique: Le cas des COP.",
@@ -6838,6 +7354,7 @@
       "year": 2021
     },
     {
+      "continents": [],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Le retour des murs",
@@ -6873,6 +7390,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Les ruines de Berlin : Une dualité entre héritage et valorisation foncière",
@@ -6908,6 +7428,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "« Skiing at the mall » : Ski Dubai, une expérience de la nature entre quatre murs",
@@ -6943,6 +7466,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Spatialiser l’offshore : une base de données pour comprendre la Mer du Nord",
@@ -6978,6 +7504,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Story of a young architect’s house = Une recherche en parallèle sur la maison Koenig n°1 et le roman de Viollet-le-Duc",
@@ -7013,6 +7542,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Les Toits Terrasses de Rome : Paysage urbain et échappée visuelle hors de la ville Échappatoires ou éléments clés de la qualité urbaine ? ... du rêve à la nécessité",
@@ -7048,6 +7580,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Tokyo habiter la ville \"mature\" : quelles leçons pour la préfiguration des manières d'habiter dans les villes de l'OCDE en cours d'expansion urbaine ?",
@@ -7083,6 +7618,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Tokyo, XXIe siècle. Perspectives d’évolution de l’habitat à l’aube de la décroissance démographique",
@@ -7118,6 +7656,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "D’un rocher dans l’océan indien à un micro-êtat : L’Île Maurice face à l’anthropisation et la mondialisation",
@@ -7153,6 +7694,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2021.0416666666667,
       "label": "Villes et limites : perception des limites d'une ville par ses habitants",
@@ -7188,6 +7732,7 @@
       "year": 2021
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2021.0416666666667,
       "endDateValue": 2021.5416666666667,
@@ -7230,6 +7775,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.0416666666667,
       "endDateValue": 2021.5416666666667,
@@ -7272,6 +7820,7 @@
       "year": 2021
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2021.0416666666667,
       "endDateValue": 2021.5416666666667,
@@ -7314,6 +7863,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Adghers, renaissance d'un héritage",
@@ -7353,6 +7905,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Amsterdam Nord, habiter le port",
@@ -7392,6 +7947,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Enjeux d'un quartier périphérique berlinois, entre enclavement et lieu de passage : étude de cas du quartier de Buch",
@@ -7431,6 +7989,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Habiter au-delà de l'architecture : quatre scénarios d'implantation à Marfa, Texas",
@@ -7470,6 +8031,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "L'île imperméable: quarteto de agua",
@@ -7509,6 +8073,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Le monde des fleurs et des saules, l'hanamachi vertical de Shimabara",
@@ -7548,6 +8115,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "La nécropole du Caire, cité des morts et des vivants",
@@ -7587,6 +8157,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Sous la terre comme au ciel",
@@ -7626,6 +8199,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "La technique au service de l'émotion",
@@ -7665,6 +8241,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.125,
       "label": "Une terre qui avance, la pampa liquide",
@@ -7704,6 +8283,7 @@
       "year": 2021
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2021.4583333333333,
       "label": "Arche de Noé: architecture du post-anthropocène",
@@ -7743,6 +8323,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.4583333333333,
       "label": "El Hank, la fabrique de la pause",
@@ -7782,6 +8365,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.4583333333333,
       "label": "Sur le chemin de Mbeubeuss: un livre ouvert sur la société sénégalaise",
@@ -7821,6 +8407,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.4583333333333,
       "label": "Yamabuki: penser une autre façon d'habiter avec nos ainés",
@@ -7860,6 +8449,7 @@
       "year": 2021
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Abri, Nourriture, Vêtement, Combustible, Méditation - Un voyage initiatique sur le Danube",
@@ -7899,6 +8489,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Apparaître, le fantôme de la vallée Murcia",
@@ -7938,6 +8531,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Habiter le Japon rural : espaces en \"co-dividualité\" dans les territoires ruraux en déclin, à l'Ere du \"nomadisme\" numérique",
@@ -7977,6 +8573,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Otium, un cheminement de pensées : restructuration de la gare Porta Genova à Milan en résidence d'artistes",
@@ -8016,6 +8615,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Palerme, voir, pour être vu : ou quel rôle pour l'architecte dans la ville informelle",
@@ -8055,6 +8657,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Paysage combinatoire",
@@ -8094,6 +8699,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Shaping the climatic flows, intermitent rainwater infrastructure",
@@ -8133,6 +8741,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "This mess is a place, penser un après-effondrement du système libanais à Bacharré",
@@ -8172,6 +8783,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2021.5416666666667,
       "label": "Fundo San Juan, une ferme laitière à Río Bueno, une affaire de famille",
@@ -8211,6 +8825,9 @@
       "year": 2021
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Olivette firme moderne du XXe siècle = Faire après \"la modernité\"",
@@ -8246,6 +8863,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La place du travail dans l'espace domestique",
@@ -8281,6 +8901,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La plaza major de Valladolid",
@@ -8316,6 +8939,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Regards sur la périphérie de Rome",
@@ -8351,6 +8977,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Apprivoiser le soleil : vision muséale en Scandinavie à travers la revue \"Aujourd'hui art et architecture\"",
@@ -8386,6 +9015,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Un artifice préservé : Le cas de l'oasis d'Alviano",
@@ -8421,6 +9053,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Beyrouth des reconstructions à mille et une images",
@@ -8456,6 +9091,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Coexister avec le risque d’inondation : Etude de cas de la ville de Trujillo au Pérou",
@@ -8491,6 +9129,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La colline de Strefi : une lutte urbaine pour le droit à la nature",
@@ -8526,6 +9167,10 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Ecrire la ville : traces, Périphéries, limites",
@@ -8561,6 +9206,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Face aux acqua alta : le Mose, un ouvrage technique innovant ?",
@@ -8596,6 +9244,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Au fil de l'eau, habiter la ville-port",
@@ -8631,6 +9282,10 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Fragments d’une architecte : Une autobiographie sensorielle",
@@ -8666,6 +9321,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Les golfs de Marrakech, mythe d'une nature idéal",
@@ -8701,6 +9359,10 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Ici, ce n'est pas comme ailleurs : Au bord de l'abîme",
@@ -8736,6 +9398,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Learning from Polykatoikia",
@@ -8771,6 +9436,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "L'espace-temps du musée d'art moderne de Rio à travers la revue \"Aujourd'hui Art et Architecture\"",
@@ -8806,6 +9474,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La nature en personne : une étude sur la reconnaissance de la rivière Magpie",
@@ -8841,6 +9512,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Olivette firme moderne du XXe siècle = Faire après \"la modernité\"",
@@ -8876,6 +9550,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Les parcs nationaux en question : la place du parc national de Yellowstone dans l'ontologie naturaliste",
@@ -8911,6 +9588,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "PAYSAGES [EXTRA]TERRESTRES : Un bout de Mars dans le Pacifique",
@@ -8946,6 +9626,7 @@
       "year": 2022
     },
     {
+      "continents": [],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La place du travail dans l'espace domestique",
@@ -8981,6 +9662,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "Pour une connaissance familière de la ville de Shkodra. Le guide pour les intimes : entre toponymes officiels et désignations populaires",
@@ -9016,6 +9700,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La représentation de la crise écologique dans le milieu politique: Le cas des COP.",
@@ -9051,6 +9738,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2022.0416666666667,
       "label": "La ville marchée. Vers une perception de Milan",
@@ -9086,6 +9776,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "Lac Tchad : Un eldorado",
@@ -9125,6 +9818,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "Living Space : Coopératives d'habitation en Suisse",
@@ -9164,6 +9860,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "Panelki : 50 ans plus tard, où aller ?",
@@ -9203,6 +9902,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "''Mon petit Univers'' Un centre d'accompagnement pour les enfants autistes",
@@ -9242,6 +9944,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "Sans visa",
@@ -9281,6 +9986,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.125,
       "label": "Bricoles vénitiennes: sur le fil des habitants de Venise",
@@ -9320,6 +10028,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2022.2083333333333,
       "endDateValue": 2022.5416666666667,
@@ -9361,6 +10072,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Beyrouth, vestige d'un cœur oublié",
@@ -9400,6 +10114,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Les architectures du métissage: un aller-retour entre le Vietnam et la France",
@@ -9439,6 +10156,7 @@
       "year": 2022
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Comment l'architecture d'un bâtiment de grossiste répartiteur pharmaceutique en Afrique de l'Ouest, peut influer sur les politiques sanitaires, sociales et environnementales locales",
@@ -9478,6 +10196,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "De l'habitat précaire à l'autoconstruction assistée : Réhabilitation du groupe scolaire Le Président, à Douala (Cameroun), Quartier Nkolmintag",
@@ -9517,6 +10238,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Dreispitz, L'incertain dans la ville productive",
@@ -9556,6 +10280,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Ebaka na boboto : une structure d'accueil à Pointe-Noire",
@@ -9595,6 +10322,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "La maison de tout le monde",
@@ -9634,6 +10364,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Parcourir la dérive: école et centre culturel à Séoul",
@@ -9673,6 +10406,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Ruralité post-métropole à Aragon: fictions matérielles",
@@ -9712,6 +10448,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Un toit pour les anges",
@@ -9751,6 +10490,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Village dans le centre ville : Maison pour les personnes après la retraite en Chine",
@@ -9790,6 +10532,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "www.2500000t.com",
@@ -9829,6 +10574,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Esquisse d'un avenir urbain et social en Tunisie : Une citoyenneté effective et performative à travers l’habitat et la cité",
@@ -9868,6 +10616,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2022.4583333333333,
       "label": "Le ksar et l'habitant, une possible réconciliation",
@@ -9907,6 +10658,7 @@
       "year": 2022
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2022.5416666666667,
       "label": "Les réserves comme \"musées bis\": conservation et présentation des œuvres au cœur d'un débat",
@@ -9946,6 +10698,9 @@
       "year": 2022
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "100 ans de logement social en Algérie, le résultat?",
@@ -9981,6 +10736,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Al'Ula, une image vivante d'un patrimoine hérité",
@@ -10016,6 +10774,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Belgrade : between large and small-scale battles",
@@ -10051,6 +10812,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "De l'ombre à la lumière : Le complexe minier d'Arlit au Niger",
@@ -10086,6 +10850,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Dissonantia : le cas du safari",
@@ -10121,6 +10888,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "La dualité dans les communs des bidonvilles = A travers l'urbanisme tactique de l'école de la villa Fiorito - Buenos Aires",
@@ -10156,6 +10926,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Les favelas dans la ville de Rio de Janeiro",
@@ -10191,6 +10964,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Le geste de la main",
@@ -10226,6 +11002,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Le geste de revendiquer",
@@ -10261,6 +11040,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "La gestion des risques d'inondation dans la métropole de Manille : Les limites sociales et environnementales d'un Plan Directeur d'ingénierie technique",
@@ -10296,6 +11078,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Habiter la trame urbaine : le quartier de l'Eixample à Barcelone",
@@ -10331,6 +11116,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Habiter un logement autoconstruit : entre contraintes et adaptabilité, le cas des logements horizontaux Ecochard du Hay Mohammadi",
@@ -10366,6 +11154,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Impact : habitat et résilience en Guadeloupe",
@@ -10401,6 +11192,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Impact de la planification territoriale sur le rapport entre nature et société : Exemple de Porto Marghera",
@@ -10436,6 +11230,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Les jardins partagés genevois : entre intégration, coexistence humaine & végétale et revendication",
@@ -10471,6 +11268,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "L'évolutivité de la polykatoikia athénienne : entre hier et aujourd'hui, pour sa pertinence de demain",
@@ -10506,6 +11306,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "L'impact de l'évolution des toilettes dans l'architecture à Buenos Aires",
@@ -10541,6 +11344,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Le logement et l'accord de paix en Colombie",
@@ -10576,6 +11382,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Le mirador, un patrimoine en péril ?",
@@ -10611,6 +11420,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Pasquino, devenirs d'un portrait urbain",
@@ -10646,6 +11458,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "Potentiel de l'agriculture urbaine pour le développement de Buenos Aires",
@@ -10681,6 +11496,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2023.0416666666667,
       "label": "La question patrimoniale dans un contexte de reconstruction en mosaique",
@@ -10716,6 +11534,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.0416666666667,
       "endDateValue": 2023.5416666666667,
@@ -10758,6 +11579,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.0416666666667,
       "endDateValue": 2023.5416666666667,
@@ -10800,6 +11624,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Les squelettes de Beyrouth",
@@ -10839,6 +11666,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Avô Kan Foun : Une architecture sociale de fibre et de terre",
@@ -10878,6 +11708,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Formel informel: relation des identités berlinoises",
@@ -10917,6 +11750,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "L'habitat sous le prisme du soin: étude des populations de l'ouest guyanais et leur mode de vie",
@@ -10956,6 +11792,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Stimuler un héritage",
@@ -10995,6 +11832,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Yakumama, de l’eau sacrée à l’eau citoyenne : Plantation et recollecte de l'eau dans la ville de Trujillo au Pérou",
@@ -11034,6 +11874,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.125,
       "label": "Zindi nèeré : Une cité d'accueil pour les personnes déplacés internes (PDI) du Burkina Faso",
@@ -11073,6 +11916,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Réhabiliter le logement social al Firdaws",
@@ -11112,6 +11958,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "L’agriparc de Erriadh à Djerba en Tunisie : Une nouvelle dynamique territoriale pour la valorisation d’un patrimoine locale en voie de disparition",
@@ -11151,6 +12000,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "La cité du soin",
@@ -11190,6 +12042,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Curaskogur : La forêt qui abrite tous",
@@ -11229,6 +12082,10 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Datça : Transmission du savoir faire, un outil pour le dessin du territoire",
@@ -11268,6 +12125,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Ourika community gardens - Research Center : Cooperative research center in residence",
@@ -11307,6 +12167,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Res Publica - Res Fertilis /",
@@ -11346,6 +12209,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Xinjiang. Terrain de conflits, terre des communs",
@@ -11385,6 +12249,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "3,5x3,5x3,5: 180 logements à Lisbonne",
@@ -11424,6 +12291,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Bangkok XXII",
@@ -11463,6 +12333,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Host Tower",
@@ -11502,6 +12375,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "SQU-Athènes Legal",
@@ -11541,6 +12417,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2023.4583333333333,
       "label": "Théâtre du monde: du théâtre à la monumentalisation du collectif",
@@ -11580,6 +12457,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2023.5,
       "label": "La résilience est là où on ne l'attend pas : Contre-récit pour l'avenir du polder de Doel",
@@ -11618,6 +12498,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.5416666666667,
@@ -11659,6 +12542,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11700,6 +12586,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11741,6 +12630,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11782,6 +12672,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11823,6 +12714,7 @@
       "year": 2023
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11864,6 +12756,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2023.7083333333333,
       "endDateValue": 2024.0416666666667,
@@ -11905,6 +12800,9 @@
       "year": 2023
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Appren-tissage",
@@ -11940,6 +12838,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "As ilhas do Porto",
@@ -11975,6 +12876,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Au-delà du pétrole: une dynamique de pouvoir entre écologie et économie dans le contexte du projet Willow",
@@ -12010,6 +12914,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Beyrouth des reconstructions à mille et une images",
@@ -12045,6 +12952,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Le canapé rouge, une utopie critique de salon : Entre crise et émancipation dans le design italien de la fin des années 1960",
@@ -12080,6 +12990,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Un chemin vers l'utopie. Vers un nouveau modèle: l'autogestion est-elle une alternative au système? Propositions de solutions actuelles et mise en place des conditions de viabilité du modèle",
@@ -12115,6 +13028,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Constellation",
@@ -12150,6 +13066,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Le conteneur dans les camps de réfugié(e)s : Entre solution d'hospitalité et surveillance des corps",
@@ -12185,6 +13105,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Corral-là, un patrimoine populaire pour questionner l'architecture vernaculaire",
@@ -12220,6 +13143,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "La cuisine comme laboratoire, de la femme au foyer à \"l'architecte ménagère\" dans l'entre-deux-guerres, 1918-1939",
@@ -12255,6 +13182,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Un écosystème menacé: l'exploitation pétrolière du Delta du Niger par l'entreprise Shell",
@@ -12290,6 +13220,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ecrire la ville : traces, Périphéries, limites",
@@ -12325,6 +13259,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Etre(s)_Squat : En quoi les squats, en tant qu'objets et phénomènes sociaux, révèlent-ils des dynamiques complexes permettant de redéfinir des notions architecturales et politiques contemporaines?",
@@ -12360,6 +13297,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "La fondation d’une capitale au cœur du Cerrado : Une ville moderne face à la crise hydrique et aux inégalités socio-spatiales",
@@ -12395,6 +13335,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "La forêt de Tijuca: l'étrange cas d'un espace forestier en ville /",
@@ -12430,6 +13373,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Habiter le temporaire : l'hospitalité au Bellevue di Monaco de Munich",
@@ -12465,6 +13411,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ici, ce n'est pas comme ailleurs : Au bord de l'abîme",
@@ -12500,6 +13450,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ile Maurice, le projet du métro express",
@@ -12535,6 +13488,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "L'architecture comme vecteur de réconciliation en contexte touristique autochtone : L’apprentissage par l’immersion, l’étude de cas du projet du complexe hôtelier Nuapten Nuapmau (« cercle de vie » en innu) dans la communauté autochtone de Mashteuiatsh au Québec",
@@ -12570,6 +13526,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique",
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "L'architecture semi-souterraine, un modèle pour aujourd'hui et pour demain?",
@@ -12605,6 +13565,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Learning from Polykatoikia",
@@ -12640,6 +13603,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "L'espace-temps du musée d'art moderne de Rio à travers la revue \"Aujourd'hui Art et Architecture\"",
@@ -12675,6 +13641,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "L'interprétation du corps féminin par Henry van de Velde",
@@ -12710,6 +13679,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "L'orphelin, son habitation, sa ville. Entre architecture institutionnelle et réponses communautaires: Edea, Cameroun",
@@ -12745,6 +13717,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Luckenwald, obsolescence et ostalgie d'un quartier est-allemand patrimonialisé: un kebab, quatre récits",
@@ -12780,6 +13755,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Les méandres de l'Arizona: réflexions sur la crise de l'eau dans le sud-Ouest des Etats-Unis",
@@ -12815,6 +13793,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Une mémoire bousculée: Place des Martyrs, Beyrouth",
@@ -12850,6 +13831,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Polémique sur la destruction et la reconstruction du marché Sandaga à l’identique",
@@ -12885,6 +13869,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Quand l'étau se resserre: Bargny à la croisée des défis de l'érosion côtière et d'une politique d'émergence délétères",
@@ -12920,6 +13907,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Remettre le logement au service de la societé: le cas de Vienne",
@@ -12955,6 +13945,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ruine contemporaine: développement d'interactions et de pratiques autour du parc du lac Bullicante: un patrimoine hybride à définir",
@@ -12990,6 +13983,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Le tartan et la soie, mises en scène du thé par Charles Rennie et Margaret Macdonald Mackintosh",
@@ -13025,6 +14022,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Théatre des opérations, douleurs du monde",
@@ -13060,6 +14061,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ville et mémoire: développement et conservation à travers une mémoire collective",
@@ -13095,6 +14099,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "La ville marchée. Vers une perception de Milan",
@@ -13130,6 +14137,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2024.0416666666667,
       "label": "Ville numérique et son double numérique. Quels effets sur la qualité de vie et la conception architecturale?",
@@ -13165,6 +14176,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2024.0416666666667,
       "endDateValue": 2024.5416666666667,
@@ -13207,6 +14219,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Architecture \"seuls-ensemble\", au-delà de l'utopie",
@@ -13246,6 +14259,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Matière à (se) reconstruire : Le défi de la reconstruction en terre post-séisme au Maroc",
@@ -13285,6 +14301,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Ode au Typha : l'invasif comme opportunité",
@@ -13324,6 +14343,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "\"Panosikoma\" ou l'art de bâtir sa maison",
@@ -13363,6 +14385,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Senerchia : valorisation d’un territoire autour d’un développement alternatif du tourisme",
@@ -13402,6 +14427,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Trame vivante: une architecture contextuelle à Point-à-Pitre",
@@ -13441,6 +14470,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Réactiver Troina : une synergie territoriale en faveur d'un équilibre du déjà là",
@@ -13480,6 +14512,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Bab Boudir, revalorisation d’un village touristique : raconter l'histoire d'un lieu...",
@@ -13519,6 +14554,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "De la case à la case",
@@ -13558,6 +14594,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Dellys, la casbah oubliée",
@@ -13597,6 +14636,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.125,
       "label": "Poubelle recèle",
@@ -13636,6 +14678,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13677,6 +14722,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13718,6 +14766,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13759,6 +14808,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13800,6 +14850,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13841,6 +14892,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13882,6 +14934,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13923,6 +14978,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "p45",
       "dateValue": 2024.2083333333333,
       "endDateValue": 2024.5416666666667,
@@ -13964,6 +15022,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Jievit, instants de vie",
@@ -14003,6 +15064,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Joint Security Area, the Korean peninsula: architecture and co-existence",
@@ -14042,6 +15106,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "L'eau comme risque et ressource. Scénarii de montée des eaux à Jakarta",
@@ -14081,6 +15148,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "La scène de la mémoire",
@@ -14120,6 +15190,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Petits ensembles",
@@ -14159,6 +15232,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Projet résilient d'architecture durable en Martinique",
@@ -14198,6 +15275,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Rotterdam, la ville port face aux crues",
@@ -14237,6 +15317,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "La ville et la tour",
@@ -14276,6 +15359,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "1700 logements à Casablanca, entre désirs et réalité de la cité d'El Hank",
@@ -14315,6 +15401,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Affordances climatiques à Tenerife: de l'obsolescence à la réappropriation collaborative",
@@ -14354,6 +15443,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2024.4583333333333,
       "label": "Entre les murs, the drystane story",
@@ -14393,6 +15485,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14434,6 +15529,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14475,6 +15571,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14516,6 +15615,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14557,6 +15657,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14598,6 +15699,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14639,6 +15741,7 @@
       "year": 2024
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14680,6 +15783,9 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2024.7083333333333,
       "endDateValue": 2025.0416666666667,
@@ -14721,6 +15827,10 @@
       "year": 2024
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Architecture écologique, regard croisé France-Canada: l'influence des cadres législatifs",
@@ -14756,6 +15866,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Au-delà des murs de la raison : Dialogue entre un paysage habité et un bâti en suspens, enjeux de mémoire et de conservation de l'hôpital Otto Wagner am Steinhof",
@@ -14791,6 +15904,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Californie du Sud: Los Angeles et les catastrophes naturelles : un développement urbanistique horizontal qui organise ses propres paradoxes",
@@ -14826,6 +15942,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Carved by water- Les traces des inondations à Cidade de Deus",
@@ -14861,6 +15980,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "\"Cet espace était notre havre de paix\", le monastère de Toumliline sur les hauteurs du Moyen-atlas marocain, de 1952 à nos jours : Une communauté monastique au coeur d’une architecture Bauhaus et de jardins aux influences variées, pensés par le Frère Jean-Michel Reder",
@@ -14896,6 +16018,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La commune immobile, enjeux de l’émergence du tourisme rural montagnard sur l’identité d’un territoire. Cas de la commune de Bou Iblane au Moyen-Atlas",
@@ -14931,6 +16056,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Côté coeur",
@@ -14966,6 +16094,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Le destin des patrimoines délaissés du Mezzogiorno : Revitalisation des patrimoines anciens à risque d'abandon dans le sud de l'Italie",
@@ -15001,6 +16132,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La DMZ, refuge militarisé : Questionner la frontière, sa nature et son épaisseur, l’architecture militaire comme facteur d’échelle et un refuge inattendu pour la biodiversité de la péninsule",
@@ -15036,6 +16170,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La Dolce Napoli: imaginaire et tourisme des quartiers espagnols de Naples",
@@ -15071,6 +16208,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Drop City, l'architecture comme manifeste de la contre-culture américaine",
@@ -15106,6 +16246,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Entre les canaux et les foules. L'autochtonie vénitienne au défit du surtourisme",
@@ -15141,6 +16284,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Entre les Fissures et les Tissus : Habiter l’Hétérotopie d’un Séisme",
@@ -15176,6 +16322,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Faire (sur)vivre le Marché de Ballarò, Le patrimoine immatériel à la clé d’une rénovation urbaine réussie des centres historiques",
@@ -15211,6 +16360,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La fondation d’une capitale au cœur du Cerrado : Une ville moderne face à la crise hydrique et aux inégalités socio-spatiales",
@@ -15246,6 +16398,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Influences entrelacées, réinterprétation du patrimoine industriel énergétique et son rôle dans la redéfinition des territoires urbains : SantralIstanbul, une ancienne centrale électrique à Istanbul, Turquie",
@@ -15281,6 +16437,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Nord",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Interstice à jeux: de restes urbains à parcs de poche",
@@ -15316,6 +16476,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Le jardin du temps: la banque de graines mondiale du Svalbard face à l'urgence climatique",
@@ -15351,6 +16514,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Jaune",
@@ -15386,6 +16552,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'architecture ancestrale vernaculaire vers l'architecture de demain",
@@ -15421,6 +16590,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'architecture de Luis Barragan, l'expérience émotionnelle à travers les couleurs",
@@ -15456,6 +16628,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'architecture participative, l'adaptation d'une profession : La méthode OP-OD à Munich, Allemagne",
@@ -15491,6 +16666,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'autorecupero, une curiosité romaine",
@@ -15526,6 +16704,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'essor du Wolof",
@@ -15561,6 +16742,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "L'ultime archétype d'un écosystème caractéristique: les casoni vénitiens à la croisée de l'érosion lagunaire et d'une politique de sauvegarde égarée",
@@ -15596,6 +16780,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Le meilleur des pavillons. Józefosław et l’urbanisme de la Transformation polonaise",
@@ -15631,6 +16818,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Mémoire et oubli, Istanbul",
@@ -15666,6 +16857,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La montée des eaux et l'architecture flottante",
@@ -15701,6 +16896,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Paysages opérationnalisés : Enjeux miniers dans l’extrême nord, une infrastructure territoriale intensifiée en toile de fond",
@@ -15736,6 +16934,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Polémique sur la destruction et la reconstruction du marché Sandaga à l’identique",
@@ -15771,6 +16972,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "RE – CONSTRUIRE L’IDENTITE : Le rôle de l’héritage dans la renaissance d’Akasaki après le séisme de janvier 2024",
@@ -15806,6 +17010,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La réappropriation du vide urbain : La Villa Filippina, exemple de persistance des formes et usages dans un environnement urbain en évolution",
@@ -15841,6 +17048,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La réhabilitation des bidonvilles: de l'habitat spontané à l'habitat pérenne : Comment convertir un habitat informel précaire en une habitation durable et pérenne? Le cas du Cameroun : les Elobis de Yaoundé.",
@@ -15876,6 +17086,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Les rénovations des monuments historiques du centre de Dakar : une dynamique au renouvellement urbain ? Exemple du marché Sandaga : Conserver l'histoire de Sandaga en assurant sa modernité",
@@ -15911,6 +17124,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Les représentations féminines dans l'espace public de Rome",
@@ -15946,6 +17162,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Ré-usiner le passé : Renaissance du patrimoine industriel espagnol – L’exemple du Matadero Madrid",
@@ -15981,6 +17200,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Le rôle de la gentrification dans la transformation identitaire d'anciens quartiers ouvriers : le cas de Testaccio et son marché",
@@ -16016,6 +17238,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "SMOG",
@@ -16051,6 +17276,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "Les stades italiens et le coup de sifflet patrimonial, Entre enjeux de protection et de valorisation, quel équilibre pour le Stadio Olimpico de Rome?",
@@ -16086,6 +17314,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La Torre Velasca à Milan. Le groupe BBPR: stratégies et limites architecturales",
@@ -16121,6 +17352,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "memoires",
       "dateValue": 2025.0416666666667,
       "label": "La vereda, usages et pratiques du trottoir à Buenos Aires",
@@ -16156,6 +17390,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "L'Alma, une architecture sociale pour changer d'image",
@@ -16188,6 +17425,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Ré-habiter l'île Berder : vers un tourisme plus responsable",
@@ -16220,6 +17460,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Les bouveries de la Haute-Borne, réhabiliter pour accompagner la future forêt de Maubuisson",
@@ -16252,6 +17495,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "VIV:R:E LA DECROISSANCE. Joinville laboratoire communal",
@@ -16284,6 +17530,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Réinventer l'habitat urbain à travers l'existant",
@@ -16316,6 +17565,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Trames héritées, usages renouvelés: reconversion d'un site tertiaire en logements",
@@ -16348,6 +17600,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Hypothèse d'une ruine",
@@ -16380,6 +17635,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Une réhabilitation Archive, qui respecte le passé en préparant l'avenir",
@@ -16412,6 +17670,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Repenser l'architecture comme outil de soin et d'émancipation contre les violences conjugales",
@@ -16444,6 +17705,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Paris 2050: vers un nouveau vernaculaire parisien",
@@ -16476,6 +17740,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Habiter Ossau à travers les contes",
@@ -16508,6 +17775,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Nielles et autres alentours, ou comment proposer une alternative à la privatisation de notre littoral?",
@@ -16540,6 +17810,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Territoires en déprise: les ressources du patrimoine religieux : Le cas de l'abbaye Belle-Etoile",
@@ -16572,6 +17845,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Un autre chemin",
@@ -16604,6 +17880,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Réseau friches, les friches industrielles sur un territoire rural au service d'une résilience économique",
@@ -16636,6 +17915,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "INVERSO: une école à pédagogie plurielle et intergénérationnelle",
@@ -16668,6 +17950,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Rendez-vous au sommet",
@@ -16700,6 +17985,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "D'une dalle à l'autre. Recomposer un cadre de vie entre Seine et Défense",
@@ -16732,6 +18020,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "[Réhabiliter] Ecole Montaigne Franceschi, éduquer à travers l'architecture",
@@ -16764,6 +18055,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Habiter le jardin productif. Comment construire la ville alternative en territoire agri-urbain",
@@ -16796,6 +18090,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Temps libre",
@@ -16828,6 +18125,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Transition vers un nouvel usage: transformation de la grande soufflerie de Meudon",
@@ -16860,6 +18160,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Vivre dans le lit de la rivière du Gers à Auch, livret d'analyse des enjeux territoriaux",
@@ -16892,6 +18195,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Terres, Terroirs, Territoires",
@@ -16924,6 +18230,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "\"Quand l'Adour déborde à Bayonne\"",
@@ -16956,6 +18265,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "29, 32, 38. La gestion des risques climatiques dans le quartier de Beaugrenelle comme levier de transformation urbaine",
@@ -16988,6 +18300,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Un (h)ero pas comme les autres",
@@ -17020,6 +18335,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "POLYTOPIA, habiter la verticalité autrement",
@@ -17052,6 +18370,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Du filage de coton au tissage des liens intergénérationnels - Réhabilitation de la filature Léveillé",
@@ -17084,6 +18405,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "2025-2050-2100: les maisons pavillonnaires face aux risques climatiques",
@@ -17116,6 +18440,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Le moulin du pont à Genillé",
@@ -17148,6 +18475,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "La rue de Montreuil en sursis- Réhabiliter pour survivre",
@@ -17180,6 +18510,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Matières d'horizons, synergies rurales de la saisonnalité",
@@ -17212,6 +18545,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Inversement",
@@ -17244,6 +18580,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "(Re)investir l'héritage vacant du cognac",
@@ -17276,6 +18615,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Coexistences rurales-Habiter un village du Haut-Allier",
@@ -17308,6 +18650,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Revalorisation de l'ancien quartier du chapitre des chanoinesses de la Basilique Saint-Maurice d'Epinal",
@@ -17340,6 +18685,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "La ville trace des frontières, l'architecture ouvre des chemins",
@@ -17372,6 +18720,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Transition 1.0: récit d'une ville productive et coopérative",
@@ -17404,6 +18755,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Bocage et bâti, mitoyennetés en mutation",
@@ -17436,6 +18790,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Réhabiliter durablement, le rail comme outil de réversibilité",
@@ -17468,6 +18825,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Vers un nouvel archipel des possibles: les friches ardennaises entre régénération et résilience territoriale",
@@ -17500,6 +18860,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Marseille, cohabiter avec l'infrastructure",
@@ -17532,6 +18895,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Ces bourgs, mon bourg",
@@ -17564,6 +18930,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Graufthal, Au fil de l'eau, Entre les rochers",
@@ -17596,6 +18965,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Passage technique : Guide des arpenteurs",
@@ -17628,6 +19000,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Les nymphes et un coin du monde",
@@ -17660,6 +19035,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "RBX 2035/Ethnopolis : Un double récit pour la réhabilitation de l'ex-usine Lemaire Dillies, dans le quartier central Anseele Motte-Bossut à Roubaix (Nord)",
@@ -17692,6 +19070,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Architecture métissée pour habiter le climat de demain",
@@ -17724,6 +19105,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Construire l'experimentation, un laboratoire mobile d'architecture",
@@ -17756,6 +19140,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Reconstruire l'invisible: une sous-station électrique comme refuge pour les femmes sans-abris",
@@ -17788,6 +19175,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "22 v'la les eaux",
@@ -17820,6 +19210,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Penser la ville, panser le lien: investir la friche hospitalière au service de l'insertion",
@@ -17852,6 +19245,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "DALL-ÏTE-La ville sous la ville : Le quartier de la Défense, un patrimoine vertical",
@@ -17884,6 +19280,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Du souvenir estival au montage d'une cohabitation rurale dans le Luberon, réhabilitation des anciennes colonies de vacances de la commune de Marseille à Buoux",
@@ -17916,6 +19315,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe_france",
       "dateValue": 2025.0416666666667,
       "label": "Réhabilitation de la piscine de Luminy: une calanque urbaine dans un quartier en pleine nature",
@@ -17948,6 +19350,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Architecture sans frontières: \"The no man land\"",
@@ -17987,6 +19390,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Tokyo, Texas",
@@ -18026,6 +19430,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Faire parler le silence",
@@ -18065,6 +19470,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Izba en migration",
@@ -18104,6 +19512,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Izba en migration",
@@ -18143,6 +19554,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "La lisière de la forêt de Tijuca, une couture écosystémique pour la forêt, la ville et ses habitants",
@@ -18182,6 +19596,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Okalosia",
@@ -18221,6 +19638,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Retour en terre natale: à la trace d'une mémoire oubliée",
@@ -18260,6 +19678,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Une Waldstadt pour Luckenwalde, limites et continuités",
@@ -18299,6 +19720,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Dakar, une ville des mondes",
@@ -18338,6 +19762,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Nord"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.125,
       "label": "Tokyo, Texas",
@@ -18377,6 +19804,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18418,6 +19846,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18459,6 +19888,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18500,6 +19930,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18541,6 +19972,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18582,6 +20016,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18623,6 +20058,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18664,6 +20100,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Amérique du Sud"
+      ],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18705,6 +20144,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "p45",
       "dateValue": 2025.2083333333333,
       "endDateValue": 2025.5416666666667,
@@ -18746,6 +20188,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Derrière le rideau, les espaces intercalaires de Kyoto à Paris",
@@ -18785,6 +20231,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Marea su Carea- Méditerranéismes sardes reconfigurés",
@@ -18824,6 +20273,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Déjà-là (réinterptétation de l'ancien site de la quarantaine d'Anyang en un quartier culturel de proximité)",
@@ -18863,6 +20315,10 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique",
+        "Asie"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Souvenirs de TE-WU-RA",
@@ -18902,6 +20358,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Réhabilitation d'une friche industrielle Carsid à Charleroi",
@@ -18941,6 +20400,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Au fil de l'ombre, tisser les interstices de protection et d'inclusion",
@@ -18980,6 +20442,7 @@
       "year": 2025
     },
     {
+      "continents": [],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Architecture métissée pour habiter le climat de demain",
@@ -19019,6 +20482,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Europe"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Arpentia Menzora, une traversée sensible et critique des territoires comme matrice d'action",
@@ -19058,6 +20524,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Retisser les oasis",
@@ -19097,6 +20566,9 @@
       "year": 2025
     },
     {
+      "continents": [
+        "Afrique"
+      ],
       "dataset": "pfe",
       "dateValue": 2025.4583333333333,
       "label": "Retisser les Oasis",

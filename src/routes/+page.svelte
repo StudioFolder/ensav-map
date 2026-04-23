@@ -245,7 +245,7 @@
         onvisiblechange={(p, w) => { peopleCountOverride = { people: p, works: w } }}
       />
     {:else if projectionType === 'timeline'}
-      <TimelineView records={data.timelineRecords} {hiddenDatasets} onselect={openItems} />
+      <TimelineView records={data.timelineRecords} {hiddenDatasets} onselect={openItems} {theme} />
     {:else}
       {#key `${projectionType}-${theme}-${[...hiddenDatasets].sort().join(',')}`}
         <Globe points={visibleGlobePoints} geoPoints={visibleGeoPoints} countryZones={visibleCountryZones} {projectionType} {theme} onselect={openItems} onfocuschange={(v) => { globeFocused = v }} clearFocusTrigger={globeClearTrigger} />

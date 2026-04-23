@@ -11,6 +11,7 @@ import { buildPersonGroups } from '$lib/data/derive/personGroups'
 import { parseGlobePoints } from '$lib/data/derive/globePoints'
 import { parsePfeFranceGeoPoints } from '$lib/data/derive/pfeFranceGeoPoints'
 import { buildTimelineRecords } from '$lib/data/derive/timeline'
+import { buildGeoPointContinents } from '$lib/data/derive/rowContinents'
 import {
   fetchPartenariatsMobilites,
   fetchPartenariatsHorsMobilites,
@@ -71,8 +72,9 @@ function runDerivations(
     buildContinentGroups(allDatasets, allPartenariats, geoPoints, geoAreas, continentEN)
   const recordStats = computeRecordStats(allDatasets, geoPoints, countryZones, globePoints.length, allPartenariats)
   const personGroups = buildPersonGroups(allDatasets)
+  const geoPointContinents = buildGeoPointContinents(geoPoints)
   const { records: timelineRecords, missing: timelineMissing } =
-    buildTimelineRecords(memoires, pfeFrance, pfe, p45, theses)
+    buildTimelineRecords(memoires, pfeFrance, pfe, p45, theses, { geoPointContinents, countries: geoAreas })
 
   return {
     basePoints,

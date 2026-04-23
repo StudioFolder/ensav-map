@@ -149,6 +149,7 @@ export interface TimelineRecord {
   dataset: string
   person: string
   record: Record<string, unknown>
+  continents?: string[]  // FR continent names, sorted alphabetically; empty when no geo data
 }
 
 export interface Memoire {
