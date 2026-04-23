@@ -20,10 +20,11 @@
   } = $props()
 
   const DOT = 8
-  const D = 9            // minimum center-to-center distance
-  const D2 = D * D
-  const PADDING = 40     // horizontal padding each side
+  const D = 9            // row height in the swim-lane grid
+  const PADDING = 40     // horizontal padding each side of the SVG
   const PILL_GAP = 2     // horizontal blank space between adjacent pills (px)
+  const LEFT_MARGIN = 140  // space reserved at left for lane labels
+  const LANE_GAP = 12    // vertical gap between swim lanes
   const AXIS_GAP = 14      // gap between blob base and axis line
   const TICK_SIZE = 4      // height of year boundary ticks below the axis
   const MONTH_GAP = 4      // gap between axis and month initials
@@ -150,9 +151,10 @@
   })
 
   const svgWidth = $derived(Math.max(0, containerWidth - 2 * PADDING))
+  const timelineWidth = $derived(Math.max(0, svgWidth - LEFT_MARGIN))
 
   function dateToX(dv: number): number {
-    return (dv - minDate) / (maxDate - minDate) * svgWidth
+    return LEFT_MARGIN + (dv - minDate) / (maxDate - minDate) * timelineWidth
   }
 
   // Pill extent in pixels, derived from calendar fields rather than mid-month
@@ -174,48 +176,119 @@
   }
 
   /**
-   * Row-based packing. Visible records are processed in time order; each one
-   * drops into the lowest row (row height = D px) where its horizontal extent
-   * doesn't conflict with anything already placed there. Produces a tidy grid
-   * rather than a diagonal beeswarm.
+   * Swim-lane layout. One lane per category of the active criterion
+   * (datasets for 'Type', continents for 'Continent'). Within each lane,
+   * records are packed into rows by time order using the same
+   * "lowest row that fits" rule as before — but the packing state is local
+   * to the lane, so lanes don't contaminate each other.
    *
-   * Layout depends on `isVisible`, so hiding items via the sidebar or the
-   * legend filters re-packs the remaining ones. Combined with a CSS transition
-   * on `transform`, the rest glide to their new positions.
+   * Lane order is stable (TIMELINE_DATASET_KEYS for Type, alphabetical for
+   * Continent with 'unknown' last). Empty lanes keep a 1-row-tall slot so
+   * the structure stays intact when filters empty them out.
+   *
+   * Layout depends on `isVisible` and `colorBy`, so both sidebar/legend
+   * filtering and criterion switching re-pack and animate via animate:flip.
    */
-  const placedItems = $derived.by(() => {
-    if (svgWidth <= 0) return []
 
-    const visible = sortedRecords.filter(isVisible)
-    if (visible.length === 0) return []
-
-    const rows: Array<Array<{ left: number; right: number }>> = []
-    const placed: Array<{ x: number; x2: number | undefined; y: number; rec: TimelineRecord }> = []
-
-    for (const rec of visible) {
-      const { x, x2 } = pillExtent(rec)
-      // Collision extent: pills use [x, x2]; dots are treated as a DOT-wide
-      // box centered on x so they don't crowd neighbouring pills.
-      const left = x2 !== undefined ? x : x - DOT / 2
-      const right = x2 !== undefined ? x2 : x + DOT / 2
-
-      let rowIdx = 0
-      while (rowIdx < rows.length) {
-        const conflicts = rows[rowIdx].some(it => !(right <= it.left || left >= it.right))
-        if (!conflicts) break
-        rowIdx++
-      }
-      if (rowIdx === rows.length) rows.push([])
-      rows[rowIdx].push({ left, right })
-      placed.push({ x, x2, y: rowIdx * D, rec })
+  // Continents currently present across unfiltered records (used as lane
+  // order when colorBy === 'continent'). Dataset-level filters prune the
+  // list (a continent only contributed by a hidden dataset disappears); the
+  // legend's own continent filter does NOT prune — deselected continents
+  // keep their lane so the user can reselect.
+  const presentContinentKeys = $derived.by(() => {
+    const keys = new Set<string>()
+    for (const rec of sortedRecords) {
+      if (hiddenDatasets.has(rec.dataset)) continue
+      if (hiddenDatasetsLegend.has(rec.dataset)) continue
+      keys.add(rec.continents?.[0] ?? 'unknown')
     }
-
-    return placed
+    const sorted = [...keys].filter(k => k !== 'unknown').sort()
+    if (keys.has('unknown')) sorted.push('unknown')
+    return sorted
   })
 
-  const maxDotY = $derived(placedItems.reduce((m, p) => Math.max(m, p.y), 0))
-  const dotAreaHeight = $derived(maxDotY + DOT)
-  const axisY = $derived(dotAreaHeight + AXIS_GAP)
+  // The lane a record belongs to under the active criterion
+  function laneOf(rec: TimelineRecord): string {
+    if (colorBy === 'dataset') return rec.dataset
+    return rec.continents?.[0] ?? 'unknown'
+  }
+
+  const laneKeys = $derived.by<string[]>(() => {
+    if (colorBy === 'dataset') return [...TIMELINE_DATASET_KEYS]
+    return presentContinentKeys
+  })
+
+  function isLaneHidden(key: string): boolean {
+    if (colorBy === 'dataset') return hiddenDatasetsLegend.has(key)
+    return hiddenContinentsLegend.has(key)
+  }
+
+  function toggleLane(key: string) {
+    if (colorBy === 'dataset') toggleDatasetLegend(key)
+    else toggleContinentLegend(key)
+  }
+
+  function laneLabelFor(key: string): string {
+    if (colorBy === 'dataset') return DATASET_LABELS[key as keyof typeof DATASET_LABELS] ?? key
+    return continentLabel(key)
+  }
+
+  function laneColorFor(key: string): string {
+    const sub = colorBy === 'dataset' ? palette.dataset : palette.continent
+    return (sub[key] ?? sub['unknown']).base
+  }
+
+  const layout = $derived.by(() => {
+    if (svgWidth <= 0) return { placed: [], lanes: [], totalHeight: 0 }
+
+    const visible = sortedRecords.filter(isVisible)
+
+    // Group visible records by lane
+    const byLane = new Map<string, TimelineRecord[]>()
+    for (const rec of visible) {
+      const lane = laneOf(rec)
+      if (!byLane.has(lane)) byLane.set(lane, [])
+      byLane.get(lane)!.push(rec)
+    }
+
+    const placed: Array<{ x: number; x2: number | undefined; y: number; rec: TimelineRecord }> = []
+    const lanes: Array<{ key: string; y: number; height: number }> = []
+
+    let cumulativeY = 0
+    for (const key of laneKeys) {
+      const rows: Array<Array<{ left: number; right: number }>> = []
+      const laneRecs = byLane.get(key) ?? []
+
+      for (const rec of laneRecs) {
+        const { x, x2 } = pillExtent(rec)
+        const left = x2 !== undefined ? x : x - DOT / 2
+        const right = x2 !== undefined ? x2 : x + DOT / 2
+
+        let rowIdx = 0
+        while (rowIdx < rows.length) {
+          if (!rows[rowIdx].some(it => !(right <= it.left || left >= it.right))) break
+          rowIdx++
+        }
+        if (rowIdx === rows.length) rows.push([])
+        rows[rowIdx].push({ left, right })
+        placed.push({ x, x2, y: cumulativeY + rowIdx * D, rec })
+      }
+
+      const rowsUsed = Math.max(rows.length, 1)  // empty lanes still take 1 row of space
+      const height = rowsUsed * D
+      lanes.push({ key, y: cumulativeY, height })
+      cumulativeY += height + LANE_GAP
+    }
+
+    const totalHeight = Math.max(0, cumulativeY - LANE_GAP)
+    return { placed, lanes, totalHeight }
+  })
+
+  const placedItems = $derived(layout.placed)
+  const lanes = $derived(layout.lanes)
+  const totalHeight = $derived(layout.totalHeight)
+
+  const axisY = $derived(totalHeight + AXIS_GAP)
   const svgHeight = $derived(axisY + MONTH_GAP + MONTH_HEIGHT + YEAR_GAP + YEAR_HEIGHT + 4)
 
   // SVG rect top for a dot whose swarm y is swarmY
@@ -233,23 +306,6 @@
   const pixPerMonth = $derived(svgWidth / ((maxDate - minDate) * 12))
   // Show month initials only when there's at least 6px per month
   const showMonths = $derived(pixPerMonth >= 6)
-
-  // Continent legend keys: iterated over the full unfiltered record set (not
-  // placedItems, which is filter-aware) so deselecting a continent in the
-  // legend doesn't remove its own entry — it just dims. Dataset-level filters
-  // (sidebar + legend) DO prune the list, so a continent only contributed by
-  // a hidden dataset correctly disappears.
-  const presentContinentKeys = $derived.by(() => {
-    const keys = new Set<string>()
-    for (const rec of sortedRecords) {
-      if (hiddenDatasets.has(rec.dataset)) continue
-      if (hiddenDatasetsLegend.has(rec.dataset)) continue
-      keys.add(rec.continents?.[0] ?? 'unknown')
-    }
-    const sorted = [...keys].filter(k => k !== 'unknown').sort()
-    if (keys.has('unknown')) sorted.push('unknown')
-    return sorted
-  })
 
   function dateLabel(rec: TimelineRecord): string {
     const startLabel = rec.month ? `${MONTHS_FR[rec.month - 1]} ${rec.year}` : String(rec.year)
@@ -301,6 +357,9 @@
 
   .year-label { fill: rgb(0 0 0 / 0.45); font-size: 9px; font-weight: 500; }
   :global(.dark) .year-label { fill: rgb(255 255 255 / 0.45); }
+
+  .lane-label { fill: rgb(0 0 0 / 0.7); font-size: 10px; font-weight: 500; }
+  :global(.dark) .lane-label { fill: rgb(255 255 255 / 0.7); }
 </style>
 
 <div class="absolute inset-0 overflow-auto" bind:clientWidth={containerWidth}>
@@ -320,44 +379,59 @@
       >Continent</button>
     </div>
 
-    <!-- Legend — no outline; each entry is a click-to-toggle filter. Filters
-         accumulate and persist across criterion switches. -->
-    <div class="absolute top-14 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3 bg-white dark:bg-gray-900 rounded-lg px-3 py-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
-      {#if colorBy === 'dataset'}
-        {#each TIMELINE_DATASET_KEYS as key}
-          <button
-            type="button"
-            onclick={() => toggleDatasetLegend(key)}
-            class="flex items-center gap-1.5 transition-opacity {hiddenDatasetsLegend.has(key) ? 'opacity-30' : 'hover:opacity-70'}"
-          >
-            <span class="block shrink-0 w-2 h-2 rounded-full" style="background: {palette.dataset[key]?.base ?? palette.dataset['unknown'].base}"></span>
-            <span>{DATASET_LABELS[key]}</span>
-          </button>
-        {/each}
-      {:else}
-        {#each presentContinentKeys as key}
-          <button
-            type="button"
-            onclick={() => toggleContinentLegend(key)}
-            class="flex items-center gap-1.5 transition-opacity {hiddenContinentsLegend.has(key) ? 'opacity-30' : 'hover:opacity-70'}"
-          >
-            <span class="block shrink-0 w-2 h-2 rounded-full" style="background: {palette.continent[key]?.base ?? palette.continent['unknown'].base}"></span>
-            <span>{continentLabel(key)}</span>
-          </button>
-        {/each}
-      {/if}
-    </div>
   {/if}
 
   <div class="min-w-full min-h-full flex items-end justify-center py-12">
-    {#if placedItems.length > 0 && svgWidth > 0}
+    {#if records.length > 0 && svgWidth > 0}
       <svg
         width={svgWidth}
         height={svgHeight}
         style="overflow: visible; font-family: inherit; margin: 0 {PADDING}px;"
       >
-        <!-- Axis line -->
-        <line class="axis-line" x1={0} y1={axisY} x2={svgWidth} y2={axisY} stroke-width="1" />
+        <!-- Lane labels (left gutter) — click to toggle filter for that lane -->
+        {#each lanes as lane (lane.key)}
+          {@const cy = rectY(lane.y) + DOT / 2}
+          <g
+            style="cursor: pointer;"
+            opacity={isLaneHidden(lane.key) ? 0.3 : 1}
+            onclick={() => toggleLane(lane.key)}
+          >
+            <rect
+              x={8}
+              y={cy - 3}
+              width={6}
+              height={6}
+              rx={1.5}
+              fill={laneColorFor(lane.key)}
+            />
+            <text
+              class="lane-label"
+              x={20}
+              y={cy + 3}
+              text-anchor="start"
+              style="user-select: none;"
+            >{laneLabelFor(lane.key)}</text>
+          </g>
+        {/each}
+
+        <!-- Main axis line (bottom). Month/year labels below anchor to this. -->
+        <line class="axis-line" x1={LEFT_MARGIN} y1={axisY} x2={svgWidth} y2={axisY} stroke-width="1" />
+
+        <!-- Per-lane baselines — each lane gets its own reference line so you
+             can read dates within a lane without looking down to the main
+             axis. Skipped for the bottom lane since the main axis covers it. -->
+        {#each lanes as lane (lane.key)}
+          {#if lane.y > 0}
+            <line
+              class="axis-line"
+              x1={LEFT_MARGIN}
+              x2={svgWidth}
+              y1={axisY - lane.y}
+              y2={axisY - lane.y}
+              stroke-width="1"
+            />
+          {/if}
+        {/each}
 
         <!-- Year boundaries + month initials + year labels -->
         {#each axisYears as year}
